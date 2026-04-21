@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GWT Medical – Dental 3D Printing Solutions</title>
+  <title>GWT Medical – Dentalna rješenja za 3D tisak</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -62,6 +62,7 @@
       display: flex;
       gap: 2rem;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
@@ -86,6 +87,22 @@
 
     .nav-cta:hover { background: rgba(255,255,255,0.25) !important; }
 
+    .lang-toggle {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.35);
+      color: #fff;
+      padding: 0.3rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      cursor: pointer;
+      transition: background 0.2s;
+      line-height: 1;
+    }
+
+    .lang-toggle:hover { background: rgba(255,255,255,0.25); }
+
     /* ── HERO ── */
     .hero {
       background: var(--blue);
@@ -105,9 +122,7 @@
       margin-bottom: 1.4rem;
     }
 
-    .hero-text h1 span {
-      color: #7EC8F5;
-    }
+    .hero-text h1 span { color: #7EC8F5; }
 
     .hero-text p {
       font-size: 1.1rem;
@@ -244,9 +259,7 @@
     }
 
     /* ── PRODUCT SECTION ── */
-    .product-section {
-      background: var(--white);
-    }
+    .product-section { background: var(--white); }
 
     .product-grid {
       display: grid;
@@ -255,9 +268,7 @@
       align-items: center;
     }
 
-    .product-image-wrap {
-      position: relative;
-    }
+    .product-image-wrap { position: relative; }
 
     .product-image-wrap img {
       width: 100%;
@@ -328,9 +339,7 @@
     }
 
     /* ── SHADES ── */
-    .shades-section {
-      background: var(--grey-100);
-    }
+    .shades-section { background: var(--grey-100); }
 
     .shades-grid {
       display: flex;
@@ -375,9 +384,7 @@
     }
 
     /* ── APPLICATIONS ── */
-    .applications-section {
-      background: var(--white);
-    }
+    .applications-section { background: var(--white); }
 
     .apps-grid {
       display: grid;
@@ -432,9 +439,7 @@
     }
 
     /* ── GALLERY ── */
-    .gallery-section {
-      background: var(--grey-100);
-    }
+    .gallery-section { background: var(--grey-100); }
 
     .gallery-grid {
       display: grid;
@@ -450,9 +455,7 @@
       cursor: pointer;
     }
 
-    .gallery-item.wide {
-      grid-column: span 2;
-    }
+    .gallery-item.wide { grid-column: span 2; }
 
     .gallery-item img {
       width: 100%;
@@ -462,9 +465,7 @@
       display: block;
     }
 
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
+    .gallery-item:hover img { transform: scale(1.05); }
 
     .gallery-overlay {
       position: absolute;
@@ -477,9 +478,7 @@
       padding: 1.2rem;
     }
 
-    .gallery-item:hover .gallery-overlay {
-      opacity: 1;
-    }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
 
     .gallery-caption {
       color: #fff;
@@ -502,11 +501,7 @@
 
     .paintart-section .section-label { color: #7EC8F5; }
     .paintart-section .section-title { color: #fff; }
-
-    .paintart-section .section-desc {
-      color: rgba(255,255,255,0.75);
-      max-width: 100%;
-    }
+    .paintart-section .section-desc { color: rgba(255,255,255,0.75); max-width: 100%; }
 
     .paintart-features {
       list-style: none;
@@ -570,15 +565,10 @@
       justify-content: center;
     }
 
-    .paintart-image img {
-      width: 100%;
-      display: block;
-    }
+    .paintart-image img { width: 100%; display: block; }
 
     /* ── PROCESS ── */
-    .process-section {
-      background: var(--white);
-    }
+    .process-section { background: var(--white); }
 
     .process-steps {
       display: grid;
@@ -619,17 +609,8 @@
       box-shadow: 0 0 0 2px var(--blue);
     }
 
-    .process-step h3 {
-      font-size: 0.95rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .process-step p {
-      font-size: 0.85rem;
-      color: var(--grey-600);
-      line-height: 1.6;
-    }
+    .process-step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .process-step p { font-size: 0.85rem; color: var(--grey-600); line-height: 1.6; }
 
     /* ── CTA ── */
     .cta-section {
@@ -638,14 +619,8 @@
       padding: 80px 5%;
     }
 
-    .cta-section .section-title {
-      max-width: 600px;
-      margin: 0 auto 1rem;
-    }
-
-    .cta-section .section-desc {
-      margin: 0 auto 2.5rem;
-    }
+    .cta-section .section-title { max-width: 600px; margin: 0 auto 1rem; }
+    .cta-section .section-desc { margin: 0 auto 2.5rem; }
 
     .cta-buttons {
       display: flex;
@@ -666,10 +641,7 @@
       display: inline-block;
     }
 
-    .btn-blue:hover {
-      background: var(--blue-dark);
-      transform: translateY(-2px);
-    }
+    .btn-blue:hover { background: var(--blue-dark); transform: translateY(-2px); }
 
     .btn-ghost {
       border: 2px solid var(--blue);
@@ -697,16 +669,11 @@
       gap: 1.5rem;
     }
 
-    .footer-logo img { height: 36px; }
+    .footer-logo { height: 36px; overflow: hidden; display: flex; align-items: center; }
+    .footer-logo img { height: 110px; display: block; }
+    .footer-copy { font-size: 0.85rem; }
 
-    .footer-copy {
-      font-size: 0.85rem;
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1.5rem;
-    }
+    .footer-links { display: flex; gap: 1.5rem; }
 
     .footer-links a {
       color: rgba(255,255,255,0.6);
@@ -750,29 +717,30 @@
     </a>
     <ul class="nav-links">
       <li><a href="#product">Crowntec</a></li>
-      <li><a href="#applications">Applications</a></li>
-      <li><a href="#gallery">Clinical Cases</a></li>
+      <li><a href="#applications" data-i18n="nav-applications"></a></li>
+      <li><a href="#gallery" data-i18n="nav-gallery"></a></li>
       <li><a href="#paintart">Paintart</a></li>
-      <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+      <li><a href="#contact" class="nav-cta" data-i18n="nav-contact"></a></li>
+      <li><button class="lang-toggle" id="langToggle" onclick="toggleLang()">EN</button></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero" id="top">
     <div class="hero-text">
-      <p class="section-label" style="color:#7EC8F5;">Dental 3D Printing Solutions</p>
-      <h1>The Future of <span>Dental Restorations</span> Is Here</h1>
-      <p>GWT Medical delivers advanced ceramic composite resins for chairside and laboratory 3D printing — enabling same-day permanent crowns, inlays, onlays, veneers, and full-arch prosthetics.</p>
+      <p class="section-label" style="color:#7EC8F5;" data-i18n="hero-label"></p>
+      <h1 data-i18n="hero-h1"></h1>
+      <p data-i18n="hero-p"></p>
       <div class="hero-buttons">
-        <a href="#product" class="btn-primary">Explore Crowntec</a>
-        <a href="#gallery" class="btn-outline">See Clinical Cases</a>
+        <a href="#product" class="btn-primary" data-i18n="hero-btn1"></a>
+        <a href="#gallery" class="btn-outline" data-i18n="hero-btn2"></a>
       </div>
     </div>
     <div class="hero-image-wrap">
-      <img src="brand_assets/crowntec.webp" alt="Saremco Print Crowntec resin with shade guide" />
+      <img src="brand_assets/crowntec.webp" alt="Saremco Print Crowntec" />
       <div class="hero-badge">
         <span class="dot"></span>
-        FDA 510(k) · CE · TGA Certified
+        <span data-i18n="hero-badge"></span>
       </div>
     </div>
   </section>
@@ -781,19 +749,19 @@
   <div class="stats-strip">
     <div class="stat-item">
       <h3>&gt;135 MPa</h3>
-      <p>Flexural Strength</p>
+      <p data-i18n="stat1"></p>
     </div>
     <div class="stat-item">
       <h3>&gt;4000 MPa</h3>
-      <p>Elastic Modulus</p>
+      <p data-i18n="stat2"></p>
     </div>
     <div class="stat-item">
-      <h3>4 Years</h3>
-      <p>Shelf Life</p>
+      <h3>4 <span data-i18n="stat3-unit"></span></h3>
+      <p data-i18n="stat3"></p>
     </div>
     <div class="stat-item">
-      <h3>10+ Shades</h3>
-      <p>VITA Shade System</p>
+      <h3>10+ <span data-i18n="stat4-unit"></span></h3>
+      <p data-i18n="stat4"></p>
     </div>
   </div>
 
@@ -801,36 +769,32 @@
   <section class="product-section" id="product">
     <div class="product-grid">
       <div class="product-image-wrap">
-        <div class="product-tag">3D Printing Material</div>
+        <div class="product-tag" data-i18n="product-tag"></div>
         <img src="brand_assets/crowntec.webp" alt="Saremco Print Crowntec" />
       </div>
       <div class="product-info">
-        <p class="section-label">Featured Product</p>
+        <p class="section-label" data-i18n="product-label"></p>
         <h2 class="section-title">Saremco Print Crowntec</h2>
-        <p class="product-desc">
-          Crowntec is a ceramic composite resin engineered for the 3D printing of permanent dental restorations. Whether in a chairside setup or a full dental laboratory, it enables clinicians to deliver high-quality restorations in record time — from implant crowns and bridges to inlays, onlays, veneers, and full-arch denture teeth.
-          <br /><br />
-          Beyond its outstanding physical properties ensuring longevity and durability, Crowntec excels in esthetics. Restorations polish to a high shine and can be further characterized using Saremco Els Paintart stains — specially developed for printed ceramics and compatible with zirconia work as well.
-        </p>
+        <p class="product-desc" data-i18n="product-desc"></p>
         <div class="specs-grid">
           <div class="spec-card">
             <div class="spec-value">&gt;135 MPa</div>
-            <div class="spec-label">Flexural Strength (DIN EN ISO 4049)</div>
+            <div class="spec-label" data-i18n="spec1-label"></div>
           </div>
           <div class="spec-card">
             <div class="spec-value">&gt;4000 MPa</div>
-            <div class="spec-label">Young's Modulus of Elasticity</div>
+            <div class="spec-label" data-i18n="spec2-label"></div>
           </div>
           <div class="spec-card">
             <div class="spec-value">500 g</div>
-            <div class="spec-label">Standard Packaging</div>
+            <div class="spec-label" data-i18n="spec3-label"></div>
           </div>
           <div class="spec-card">
-            <div class="spec-value">4 Years</div>
-            <div class="spec-label">Shelf Life</div>
+            <div class="spec-value">4 <span data-i18n="stat3-unit"></span></div>
+            <div class="spec-label" data-i18n="spec4-label"></div>
           </div>
         </div>
-        <p style="font-size:0.85rem; font-weight:600; color:var(--grey-600); margin-bottom:0.8rem;">Regulatory Approvals</p>
+        <p style="font-size:0.85rem; font-weight:600; color:var(--grey-600); margin-bottom:0.8rem;" data-i18n="reg-label"></p>
         <div class="certifications">
           <span class="cert-badge">FDA 510(k)</span>
           <span class="cert-badge">CE Mark</span>
@@ -844,40 +808,40 @@
   <!-- SHADES -->
   <section class="shades-section">
     <div class="section-header center">
-      <p class="section-label">Color System</p>
-      <h2 class="section-title">Available VITA Shades</h2>
-      <p class="section-desc">Standard stock shades covering the full range of clinical needs. Additional shades available upon request.</p>
+      <p class="section-label" data-i18n="shades-label"></p>
+      <h2 class="section-title" data-i18n="shades-title"></h2>
+      <p class="section-desc" data-i18n="shades-desc"></p>
     </div>
     <div class="shades-grid">
       <div class="shade-card">
-        <div class="shade-swatch" style="background: #F8F3ED;"></div>
+        <div class="shade-swatch" style="background:#F8F3ED;"></div>
         <div class="shade-name">Snow White</div>
-        <div class="shade-note">Bleach Shade</div>
+        <div class="shade-note" data-i18n="shade-bleach"></div>
       </div>
       <div class="shade-card">
-        <div class="shade-swatch" style="background: #F2E8D6;"></div>
+        <div class="shade-swatch" style="background:#F2E8D6;"></div>
         <div class="shade-name">B1</div>
-        <div class="shade-note">Standard stock</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
       </div>
       <div class="shade-card">
-        <div class="shade-swatch" style="background: #EFE1C0;"></div>
+        <div class="shade-swatch" style="background:#EFE1C0;"></div>
         <div class="shade-name">A1</div>
-        <div class="shade-note">Standard stock</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
       </div>
       <div class="shade-card">
-        <div class="shade-swatch" style="background: #E8D5A6;"></div>
+        <div class="shade-swatch" style="background:#E8D5A6;"></div>
         <div class="shade-name">A2</div>
-        <div class="shade-note">Standard stock</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
       </div>
       <div class="shade-card">
-        <div class="shade-swatch" style="background: #DEC78D;"></div>
+        <div class="shade-swatch" style="background:#DEC78D;"></div>
         <div class="shade-name">A3</div>
-        <div class="shade-note">Standard stock</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
       </div>
       <div class="shade-card" style="opacity:0.7;">
-        <div class="shade-swatch" style="background: #D4B96B;"></div>
+        <div class="shade-swatch" style="background:#D4B96B;"></div>
         <div class="shade-name">A3.5 – D3</div>
-        <div class="shade-note">On request</div>
+        <div class="shade-note" data-i18n="shade-request"></div>
       </div>
     </div>
   </section>
@@ -885,52 +849,52 @@
   <!-- APPLICATIONS -->
   <section class="applications-section" id="applications">
     <div class="section-header">
-      <p class="section-label">Clinical Applications</p>
-      <h2 class="section-title">What Can You Print?</h2>
-      <p class="section-desc">Crowntec's mechanical properties and biocompatibility make it suitable for a wide range of permanent and prosthetic dental restorations.</p>
+      <p class="section-label" data-i18n="apps-label"></p>
+      <h2 class="section-title" data-i18n="apps-title"></h2>
+      <p class="section-desc" data-i18n="apps-desc"></p>
     </div>
     <div class="apps-grid">
       <div class="app-card">
         <div class="app-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg>
         </div>
-        <h3>Permanent Crowns</h3>
-        <p>Full anatomical posterior and anterior crowns with excellent marginal fit, durability, and natural esthetics matching VITA shade guide standards.</p>
+        <h3 data-i18n="app1-title"></h3>
+        <p data-i18n="app1-desc"></p>
       </div>
       <div class="app-card">
         <div class="app-icon">
           <svg viewBox="0 0 24 24"><rect x="3" y="8" width="18" height="10" rx="2"/><path d="M7 8V6a2 2 0 014 0v2M13 8V6a2 2 0 014 0v2"/></svg>
         </div>
-        <h3>Inlays &amp; Onlays</h3>
-        <p>Chairside same-day inlay and onlay restorations. 3D printed, tried in, characterized, and cemented in a single appointment.</p>
+        <h3 data-i18n="app2-title"></h3>
+        <p data-i18n="app2-desc"></p>
       </div>
       <div class="app-card">
         <div class="app-icon">
           <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
         </div>
-        <h3>Veneers</h3>
-        <p>Ultra-thin esthetic veneers for anterior teeth. Easy polishing and full characterization capability for lifelike results.</p>
+        <h3 data-i18n="app3-title"></h3>
+        <p data-i18n="app3-desc"></p>
       </div>
       <div class="app-card">
         <div class="app-icon">
           <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
-        <h3>Bridges</h3>
-        <p>Multi-unit bridge frameworks and restorations, including implant-supported cases requiring high flexural strength and long-term stability.</p>
+        <h3 data-i18n="app4-title"></h3>
+        <p data-i18n="app4-desc"></p>
       </div>
       <div class="app-card">
         <div class="app-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
         </div>
-        <h3>Full-Arch Prosthetics</h3>
-        <p>Printed teeth for All-On-4 and All-On-5 full-arch restorations — both temporary and permanent — with outstanding fluorescence matching natural dentition under UV.</p>
+        <h3 data-i18n="app5-title"></h3>
+        <p data-i18n="app5-desc"></p>
       </div>
       <div class="app-card">
         <div class="app-icon">
           <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
         </div>
-        <h3>Denture Teeth</h3>
-        <p>Individual and full-set denture teeth with natural fluorescence verified under UV lamp. Compatible with acrylic denture bases for complete prosthetic solutions.</p>
+        <h3 data-i18n="app6-title"></h3>
+        <p data-i18n="app6-desc"></p>
       </div>
     </div>
   </section>
@@ -938,71 +902,71 @@
   <!-- GALLERY -->
   <section class="gallery-section" id="gallery">
     <div class="section-header center">
-      <p class="section-label">Clinical Cases</p>
-      <h2 class="section-title">Real Results from Real Clinicians</h2>
-      <p class="section-desc">Cases documented by dentists and dental technicians using Saremco Print Crowntec in chairside and laboratory workflows.</p>
+      <p class="section-label" data-i18n="gallery-label"></p>
+      <h2 class="section-title" data-i18n="gallery-title"></h2>
+      <p class="section-desc" data-i18n="gallery-desc"></p>
     </div>
     <div class="gallery-grid">
       <div class="gallery-item wide">
-        <img src="brand_assets/PHOTO-2026-02-19-15-51-13.jpg" alt="Permanent crowns in-mouth result" />
+        <img src="brand_assets/PHOTO-2026-02-19-15-51-13.jpg" alt="" />
         <div class="gallery-overlay">
-          <p class="gallery-caption">Permanent 3D Printed Crowns — In-Mouth Result</p>
+          <p class="gallery-caption" data-i18n="cap1"></p>
         </div>
       </div>
       <div class="gallery-item">
-        <img src="brand_assets/PHOTO-2026-01-17-18-39-20 3.jpg" alt="Full upper jaw denture after polishing and characterization" />
+        <img src="brand_assets/PHOTO-2026-01-17-18-39-20 3.jpg" alt="" />
         <div class="gallery-overlay">
-          <p class="gallery-caption">Full-Arch Upper Denture — After Characterization</p>
+          <p class="gallery-caption" data-i18n="cap2"></p>
         </div>
       </div>
       <div class="gallery-item">
-        <img src="brand_assets/[AFTER] Crowns.JPG" alt="3D printed crowns on dental model" />
+        <img src="brand_assets/[AFTER] Crowns.JPG" alt="" />
         <div class="gallery-overlay">
-          <p class="gallery-caption">3D Printed Posterior Crowns on Model</p>
+          <p class="gallery-caption" data-i18n="cap3"></p>
         </div>
       </div>
       <div class="gallery-item">
-        <img src="brand_assets/fluo.jpg" alt="Fluorescence test under UV lamp showing natural fluorescence" />
+        <img src="brand_assets/fluo.jpg" alt="" />
         <div class="gallery-overlay">
-          <p class="gallery-caption">UV Fluorescence Test — Mimics Natural Dentition</p>
+          <p class="gallery-caption" data-i18n="cap4"></p>
         </div>
       </div>
       <div class="gallery-item wide">
-        <img src="brand_assets/WhatsApp Image 2024-11-11 at 10.53.07_aeda0896.jpg" alt="3D printed implant-supported prosthesis components" />
+        <img src="brand_assets/WhatsApp Image 2024-11-11 at 10.53.07_aeda0896.jpg" alt="" />
         <div class="gallery-overlay">
-          <p class="gallery-caption">Implant-Supported Full-Arch Prosthetics — Crowntec Teeth with Metal Bar</p>
+          <p class="gallery-caption" data-i18n="cap5"></p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- CHAIRSIDE WORKFLOW CASE -->
+  <!-- PROCESS -->
   <section class="process-section" id="workflow">
     <div class="section-header center">
-      <p class="section-label">Chairside Workflow</p>
-      <h2 class="section-title">Same-Day Restoration in 4 Steps</h2>
-      <p class="section-desc">From scan to cementation — all within a single appointment using Crowntec and your existing dental 3D printer.</p>
+      <p class="section-label" data-i18n="process-label"></p>
+      <h2 class="section-title" data-i18n="process-title"></h2>
+      <p class="section-desc" data-i18n="process-desc"></p>
     </div>
     <div class="process-steps">
       <div class="process-step">
         <div class="step-number">1</div>
-        <h3>Scan &amp; Design</h3>
-        <p>Intraoral scan and digital design of the restoration using standard CAD/CAM software.</p>
+        <h3 data-i18n="step1-title"></h3>
+        <p data-i18n="step1-desc"></p>
       </div>
       <div class="process-step">
         <div class="step-number">2</div>
-        <h3>3D Print</h3>
-        <p>Print the restoration in the selected VITA shade. Crowntec is compatible with most dental 3D printers.</p>
+        <h3 data-i18n="step2-title"></h3>
+        <p data-i18n="step2-desc"></p>
       </div>
       <div class="process-step">
         <div class="step-number">3</div>
-        <h3>Polish &amp; Characterize</h3>
-        <p>Polish the restoration to a high shine. Optionally apply Saremco Els Paintart stains for lifelike color depth.</p>
+        <h3 data-i18n="step3-title"></h3>
+        <p data-i18n="step3-desc"></p>
       </div>
       <div class="process-step">
         <div class="step-number">4</div>
-        <h3>Try In &amp; Cement</h3>
-        <p>Try the restoration for fit and occlusion, then permanently cement. Patient leaves with a finished restoration.</p>
+        <h3 data-i18n="step4-title"></h3>
+        <p data-i18n="step4-desc"></p>
       </div>
     </div>
   </section>
@@ -1011,41 +975,41 @@
   <section class="paintart-section" id="paintart">
     <div class="paintart-grid">
       <div>
-        <p class="section-label">Companion Product</p>
+        <p class="section-label" data-i18n="paintart-label"></p>
         <h2 class="section-title">Saremco Els Paintart Kit</h2>
-        <p class="section-desc">A professional characterization stain kit designed specifically for 3D printed and composite dental restorations, delivering outstanding esthetics and a natural appearance.</p>
+        <p class="section-desc" data-i18n="paintart-desc"></p>
         <ul class="paintart-features">
-          <li>No TEGDMA and no HEMA monomers — no patient irritation</li>
-          <li>No TPO (Trimethylolpropane Oxide)</li>
-          <li>Works on both printed and milled ceramic restorations</li>
-          <li>Simple application with rapid light polymerization</li>
-          <li>Long-lasting pigment stability</li>
-          <li>Available as complete kit or individual colors</li>
+          <li data-i18n="feat1"></li>
+          <li data-i18n="feat2"></li>
+          <li data-i18n="feat3"></li>
+          <li data-i18n="feat4"></li>
+          <li data-i18n="feat5"></li>
+          <li data-i18n="feat6"></li>
         </ul>
         <div class="paintart-colors" style="margin-top:2rem;">
-          <div class="color-chip" style="background:#F5F0E8;" data-name="White"></div>
-          <div class="color-chip" style="background:#D4A017;" data-name="Yellow"></div>
-          <div class="color-chip" style="background:#7B4A2D;" data-name="Brown"></div>
-          <div class="color-chip" style="background:#808080;" data-name="Grey"></div>
-          <div class="color-chip" style="background:#4A90D9;" data-name="Blue"></div>
-          <div class="color-chip" style="background:#C0392B;" data-name="Red"></div>
-          <div class="color-chip" style="background:#E8E0D0;" data-name="Incisal"></div>
+          <div class="color-chip" style="background:#F5F0E8;" data-i18n-chip="chip-white"></div>
+          <div class="color-chip" style="background:#D4A017;" data-i18n-chip="chip-yellow"></div>
+          <div class="color-chip" style="background:#7B4A2D;" data-i18n-chip="chip-brown"></div>
+          <div class="color-chip" style="background:#808080;" data-i18n-chip="chip-grey"></div>
+          <div class="color-chip" style="background:#4A90D9;" data-i18n-chip="chip-blue"></div>
+          <div class="color-chip" style="background:#C0392B;" data-i18n-chip="chip-red"></div>
+          <div class="color-chip" style="background:#E8E0D0;" data-i18n-chip="chip-incisal"></div>
         </div>
       </div>
       <div class="paintart-image">
-        <img src="brand_assets/Paintart syringe.png" alt="Saremco Els Paintart syringe with color swatches" />
+        <img src="brand_assets/Paintart syringe.png" alt="Saremco Els Paintart" />
       </div>
     </div>
   </section>
 
   <!-- CTA -->
   <section class="cta-section" id="contact">
-    <p class="section-label">Get in Touch</p>
-    <h2 class="section-title">Ready to Bring 3D Printing to Your Practice?</h2>
-    <p class="section-desc">Contact GWT Medical to learn more about Saremco Print Crowntec, request samples, or discuss integration into your chairside or laboratory workflow.</p>
+    <p class="section-label" data-i18n="cta-label"></p>
+    <h2 class="section-title" data-i18n="cta-title"></h2>
+    <p class="section-desc" data-i18n="cta-desc"></p>
     <div class="cta-buttons">
-      <a href="mailto:info@gwtmedical.com" class="btn-blue">Contact Us</a>
-      <a href="#product" class="btn-ghost">Learn More</a>
+      <a href="mailto:info@gwtmedical.com" class="btn-blue" data-i18n="cta-btn1"></a>
+      <a href="#product" class="btn-ghost" data-i18n="cta-btn2"></a>
     </div>
   </section>
 
@@ -1054,13 +1018,265 @@
     <div class="footer-logo">
       <img src="brand_assets/GWT Medical logo.png" alt="GWT Medical" />
     </div>
-    <p class="footer-copy">&copy; 2026 GWT Medical. All rights reserved.</p>
+    <p class="footer-copy" data-i18n="footer-copy"></p>
     <div class="footer-links">
-      <a href="#product">Products</a>
-      <a href="#gallery">Cases</a>
-      <a href="#contact">Contact</a>
+      <a href="#product" data-i18n="footer-link1"></a>
+      <a href="#gallery" data-i18n="footer-link2"></a>
+      <a href="#contact" data-i18n="footer-link3"></a>
     </div>
   </footer>
+
+  <script>
+    const translations = {
+      hr: {
+        /* NAV */
+        'nav-applications': 'Primjene',
+        'nav-gallery':      'Klinički slučajevi',
+        'nav-contact':      'Kontakt',
+
+        /* HERO */
+        'hero-label': 'Dentalna rješenja za 3D tisak',
+        'hero-h1':    'Budućnost <span>dentalnih nadomjestaka</span> je ovdje',
+        'hero-p':     'GWT Medical isporučuje napredne keramičke kompozitne smole za chairside i laboratorijski 3D tisak — omogućujući izradu trajnih krunica, inleja, onleja, ljuskica i cjelovitih protetskih radova isti dan.',
+        'hero-btn1':  'Istražite Crowntec',
+        'hero-btn2':  'Pogledajte kliničke slučajeve',
+        'hero-badge': 'FDA 510(k) · CE · TGA certificirano',
+
+        /* STATS */
+        'stat1':      'Savojna čvrstoća',
+        'stat2':      'Elastični modul',
+        'stat3-unit': 'godine',
+        'stat3':      'Rok trajanja',
+        'stat4-unit': 'nijansa',
+        'stat4':      'VITA sustav boja',
+
+        /* PRODUCT */
+        'product-tag':   'Materijal za 3D tisak',
+        'product-label': 'Istaknuti proizvod',
+        'product-desc':  'Crowntec je keramička kompozitna smola namijenjena 3D ispisu trajnih dentalnih nadomjestaka. Bez obzira radi li se o chairside postavu ili punom dentalnom laboratoriju, omogućuje kliničarima izradu visokokvalitetnih nadomjestaka u rekordnom vremenu — od implantnih krunica i mostova do inleja, onleja, ljuskica i zuba totalnih proteza.<br /><br />Osim izvrsnih fizikalnih svojstava koja osiguravaju trajnost i dugotrajnost, Crowntec se ističe estetikom. Nadomjesci se poliraju do visokog sjaja i mogu se dodatno karakterizirati Saremco Els Paintart bojama — posebno razvijenim za ispisanu keramiku i kompatibilnim i sa cirkonijevim radovima.',
+        'spec1-label':   'Savojna čvrstoća (DIN EN ISO 4049)',
+        'spec2-label':   'Youngov modul elastičnosti',
+        'spec3-label':   'Standardno pakiranje',
+        'spec4-label':   'Rok trajanja',
+        'reg-label':     'Regulatorna odobrenja',
+
+        /* SHADES */
+        'shades-label':   'Sustav boja',
+        'shades-title':   'Dostupne VITA nijanse',
+        'shades-desc':    'Standardne zalihe boja pokrivaju cijeli raspon kliničkih potreba. Dodatne nijanse dostupne na upit.',
+        'shade-bleach':   'Bijela nijansa',
+        'shade-stock':    'Standardna zaliha',
+        'shade-request':  'Na upit',
+
+        /* APPLICATIONS */
+        'apps-label': 'Kliničke primjene',
+        'apps-title': 'Što možete ispisati?',
+        'apps-desc':  'Mehanička svojstva i biokompatibilnost Crowntec-a čine ga prikladnim za širok raspon trajnih i protetskih dentalnih nadomjestaka.',
+        'app1-title': 'Trajne krunice',
+        'app1-desc':  'Potpuno anatomske stražnje i prednje krunice s izvrsnim rubnim zatvaranjem, trajnošću i prirodnom estetikom prema VITA standardima.',
+        'app2-title': 'Inleji i onleji',
+        'app2-desc':  'Chairside inleji i onleji isti dan — 3D ispisani, probani, karakterizirani i cementirani u jednom posjetu.',
+        'app3-title': 'Ljuskice',
+        'app3-desc':  'Ultratanke estetske ljuskice za prednje zube. Jednostavno poliranje i puna mogućnost karakterizacije za prirodan izgled.',
+        'app4-title': 'Mostovi',
+        'app4-desc':  'Višečlani mostovi i nadogradnje, uključujući implantno nošene slučajeve koji zahtijevaju visoku savojnu čvrstoću i dugoročnu stabilnost.',
+        'app5-title': 'Totalne proteze (All-on-4/5)',
+        'app5-desc':  'Ispisani zubi za All-On-4 i All-On-5 protetske radove — privremene i trajne — s izvrsnom fluorescencijom koja oponaša prirodne zube pod UV svjetlom.',
+        'app6-title': 'Zubi proteza',
+        'app6-desc':  'Individualni i cjeloviti setovi zuba za proteze s prirodnom fluorescencijom verificiranom pod UV lampom. Kompatibilni s akrilnim bazama za potpuna protetska rješenja.',
+
+        /* GALLERY */
+        'gallery-label': 'Klinički slučajevi',
+        'gallery-title': 'Stvarni rezultati od stvarnih stručnjaka',
+        'gallery-desc':  'Slučajevi koje su dokumentirali stomatolozi i dentalni tehničari koristeći Saremco Print Crowntec u chairside i laboratorijskim radnim procesima.',
+        'cap1': 'Trajne 3D ispisane krunice — rezultat u ustima',
+        'cap2': 'Gornja totalna proteza — nakon poliranja i karakterizacije',
+        'cap3': '3D ispisane stražnje krunice na modelu',
+        'cap4': 'UV fluorescencijski test — oponaša prirodno zubalo',
+        'cap5': 'Implantno nošena totalna proteza — Crowntec zubi s metalnom šinom',
+
+        /* PROCESS */
+        'process-label': 'Chairside tijek rada',
+        'process-title': 'Nadomjestak isti dan u 4 koraka',
+        'process-desc':  'Od skena do cementiranja — sve u jednom posjetu uz Crowntec i vaš postojeći dentalni 3D pisač.',
+        'step1-title':   'Sken i dizajn',
+        'step1-desc':    'Intraoralni sken i digitalni dizajn nadomjeska standardnim CAD/CAM softverom.',
+        'step2-title':   '3D tisak',
+        'step2-desc':    'Nadomjestak se ispisuje u odabranoj VITA nijansi. Crowntec je kompatibilan s većinom dentalnih 3D pisača.',
+        'step3-title':   'Poliranje i karakterizacija',
+        'step3-desc':    'Nadomjestak se polira do visokog sjaja. Po potrebi se nanose Saremco Els Paintart boje za prirodnu dubinu boje.',
+        'step4-title':   'Proba i cementiranje',
+        'step4-desc':    'Nadomjestak se proba za prilijeganje i okluziju, a zatim trajno cementira. Pacijent odlazi s gotovim nadomjestkom.',
+
+        /* PAINTART */
+        'paintart-label': 'Prateći proizvod',
+        'paintart-desc':  'Profesionalni set boja za karakterizaciju, razvijen posebno za 3D ispisane i kompozitne dentalne nadomjeske — pruža izvrsnu estetiku i prirodan izgled.',
+        'feat1': 'Bez TEGDMA i HEMA monomera — bez iritacije pacijenta',
+        'feat2': 'Bez TPO (Trimetilolpropan oksida)',
+        'feat3': 'Djeluje na ispisanim i glodalačkim keramičkim nadomjescima',
+        'feat4': 'Jednostavna aplikacija s brzom svjetlosnom polimerizacijom',
+        'feat5': 'Dugotrajna stabilnost pigmenta',
+        'feat6': 'Dostupan kao kompletni set ili pojedinačne boje',
+        'chip-white':   'Bijela',
+        'chip-yellow':  'Žuta',
+        'chip-brown':   'Smeđa',
+        'chip-grey':    'Siva',
+        'chip-blue':    'Plava',
+        'chip-red':     'Crvena',
+        'chip-incisal': 'Incizalna',
+
+        /* CTA */
+        'cta-label': 'Kontaktirajte nas',
+        'cta-title': 'Spremi za uvođenje 3D tiska u vašu ordinaciju?',
+        'cta-desc':  'Kontaktirajte GWT Medical za više informacija o Saremco Print Crowntec-u, zatražite uzorke ili razgovarajte o integraciji u vaš chairside ili laboratorijski radni proces.',
+        'cta-btn1':  'Kontaktirajte nas',
+        'cta-btn2':  'Saznajte više',
+
+        /* FOOTER */
+        'footer-copy':  '© 2026 GWT Medical. Sva prava pridržana.',
+        'footer-link1': 'Proizvodi',
+        'footer-link2': 'Slučajevi',
+        'footer-link3': 'Kontakt',
+      },
+
+      en: {
+        /* NAV */
+        'nav-applications': 'Applications',
+        'nav-gallery':      'Clinical Cases',
+        'nav-contact':      'Contact Us',
+
+        /* HERO */
+        'hero-label': 'Dental 3D Printing Solutions',
+        'hero-h1':    'The Future of <span>Dental Restorations</span> Is Here',
+        'hero-p':     'GWT Medical delivers advanced ceramic composite resins for chairside and laboratory 3D printing — enabling same-day permanent crowns, inlays, onlays, veneers, and full-arch prosthetics.',
+        'hero-btn1':  'Explore Crowntec',
+        'hero-btn2':  'See Clinical Cases',
+        'hero-badge': 'FDA 510(k) · CE · TGA Certified',
+
+        /* STATS */
+        'stat1':      'Flexural Strength',
+        'stat2':      'Elastic Modulus',
+        'stat3-unit': 'Years',
+        'stat3':      'Shelf Life',
+        'stat4-unit': 'Shades',
+        'stat4':      'VITA Shade System',
+
+        /* PRODUCT */
+        'product-tag':   '3D Printing Material',
+        'product-label': 'Featured Product',
+        'product-desc':  'Crowntec is a ceramic composite resin engineered for the 3D printing of permanent dental restorations. Whether in a chairside setup or a full dental laboratory, it enables clinicians to deliver high-quality restorations in record time — from implant crowns and bridges to inlays, onlays, veneers, and full-arch denture teeth.<br /><br />Beyond its outstanding physical properties ensuring longevity and durability, Crowntec excels in esthetics. Restorations polish to a high shine and can be further characterized using Saremco Els Paintart stains — specially developed for printed ceramics and compatible with zirconia work as well.',
+        'spec1-label':   'Flexural Strength (DIN EN ISO 4049)',
+        'spec2-label':   "Young's Modulus of Elasticity",
+        'spec3-label':   'Standard Packaging',
+        'spec4-label':   'Shelf Life',
+        'reg-label':     'Regulatory Approvals',
+
+        /* SHADES */
+        'shades-label':   'Color System',
+        'shades-title':   'Available VITA Shades',
+        'shades-desc':    'Standard stock shades covering the full range of clinical needs. Additional shades available upon request.',
+        'shade-bleach':   'Bleach Shade',
+        'shade-stock':    'Standard stock',
+        'shade-request':  'On request',
+
+        /* APPLICATIONS */
+        'apps-label': 'Clinical Applications',
+        'apps-title': 'What Can You Print?',
+        'apps-desc':  "Crowntec's mechanical properties and biocompatibility make it suitable for a wide range of permanent and prosthetic dental restorations.",
+        'app1-title': 'Permanent Crowns',
+        'app1-desc':  'Full anatomical posterior and anterior crowns with excellent marginal fit, durability, and natural esthetics matching VITA shade guide standards.',
+        'app2-title': 'Inlays &amp; Onlays',
+        'app2-desc':  'Chairside same-day inlay and onlay restorations. 3D printed, tried in, characterized, and cemented in a single appointment.',
+        'app3-title': 'Veneers',
+        'app3-desc':  'Ultra-thin esthetic veneers for anterior teeth. Easy polishing and full characterization capability for lifelike results.',
+        'app4-title': 'Bridges',
+        'app4-desc':  'Multi-unit bridge frameworks and restorations, including implant-supported cases requiring high flexural strength and long-term stability.',
+        'app5-title': 'Full-Arch Prosthetics',
+        'app5-desc':  'Printed teeth for All-On-4 and All-On-5 full-arch restorations — both temporary and permanent — with outstanding fluorescence matching natural dentition under UV.',
+        'app6-title': 'Denture Teeth',
+        'app6-desc':  'Individual and full-set denture teeth with natural fluorescence verified under UV lamp. Compatible with acrylic denture bases for complete prosthetic solutions.',
+
+        /* GALLERY */
+        'gallery-label': 'Clinical Cases',
+        'gallery-title': 'Real Results from Real Clinicians',
+        'gallery-desc':  'Cases documented by dentists and dental technicians using Saremco Print Crowntec in chairside and laboratory workflows.',
+        'cap1': 'Permanent 3D Printed Crowns — In-Mouth Result',
+        'cap2': 'Full-Arch Upper Denture — After Characterization',
+        'cap3': '3D Printed Posterior Crowns on Model',
+        'cap4': 'UV Fluorescence Test — Mimics Natural Dentition',
+        'cap5': 'Implant-Supported Full-Arch Prosthetics — Crowntec Teeth with Metal Bar',
+
+        /* PROCESS */
+        'process-label': 'Chairside Workflow',
+        'process-title': 'Same-Day Restoration in 4 Steps',
+        'process-desc':  'From scan to cementation — all within a single appointment using Crowntec and your existing dental 3D printer.',
+        'step1-title':   'Scan &amp; Design',
+        'step1-desc':    'Intraoral scan and digital design of the restoration using standard CAD/CAM software.',
+        'step2-title':   '3D Print',
+        'step2-desc':    'Print the restoration in the selected VITA shade. Crowntec is compatible with most dental 3D printers.',
+        'step3-title':   'Polish &amp; Characterize',
+        'step3-desc':    'Polish the restoration to a high shine. Optionally apply Saremco Els Paintart stains for lifelike color depth.',
+        'step4-title':   'Try In &amp; Cement',
+        'step4-desc':    'Try the restoration for fit and occlusion, then permanently cement. Patient leaves with a finished restoration.',
+
+        /* PAINTART */
+        'paintart-label': 'Companion Product',
+        'paintart-desc':  'A professional characterization stain kit designed specifically for 3D printed and composite dental restorations, delivering outstanding esthetics and a natural appearance.',
+        'feat1': 'No TEGDMA and no HEMA monomers — no patient irritation',
+        'feat2': 'No TPO (Trimethylolpropane Oxide)',
+        'feat3': 'Works on both printed and milled ceramic restorations',
+        'feat4': 'Simple application with rapid light polymerization',
+        'feat5': 'Long-lasting pigment stability',
+        'feat6': 'Available as complete kit or individual colors',
+        'chip-white':   'White',
+        'chip-yellow':  'Yellow',
+        'chip-brown':   'Brown',
+        'chip-grey':    'Grey',
+        'chip-blue':    'Blue',
+        'chip-red':     'Red',
+        'chip-incisal': 'Incisal',
+
+        /* CTA */
+        'cta-label': 'Get in Touch',
+        'cta-title': 'Ready to Bring 3D Printing to Your Practice?',
+        'cta-desc':  'Contact GWT Medical to learn more about Saremco Print Crowntec, request samples, or discuss integration into your chairside or laboratory workflow.',
+        'cta-btn1':  'Contact Us',
+        'cta-btn2':  'Learn More',
+
+        /* FOOTER */
+        'footer-copy':  '© 2026 GWT Medical. All rights reserved.',
+        'footer-link1': 'Products',
+        'footer-link2': 'Cases',
+        'footer-link3': 'Contact',
+      }
+    };
+
+    let currentLang = 'hr';
+
+    function applyLang(lang) {
+      const t = translations[lang];
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) el.innerHTML = t[key];
+      });
+
+      document.querySelectorAll('[data-i18n-chip]').forEach(el => {
+        const key = el.dataset.i18nChip;
+        if (t[key] !== undefined) el.dataset.name = t[key];
+      });
+
+      document.documentElement.lang = lang;
+      document.getElementById('langToggle').textContent = lang === 'hr' ? 'EN' : 'HR';
+      currentLang = lang;
+    }
+
+    function toggleLang() {
+      applyLang(currentLang === 'hr' ? 'en' : 'hr');
+    }
+
+    applyLang('hr');
+  </script>
 
 </body>
 </html>
