@@ -87,21 +87,30 @@
 
     .nav-cta:hover { background: rgba(255,255,255,0.25) !important; }
 
-    .lang-toggle {
+    .lang-select {
       background: rgba(255,255,255,0.12);
       border: 1px solid rgba(255,255,255,0.35);
       color: #fff;
-      padding: 0.3rem 0.75rem;
+      padding: 0.3rem 0.6rem;
       border-radius: 6px;
       font-size: 0.78rem;
-      font-weight: 800;
-      letter-spacing: 0.08em;
+      font-weight: 700;
+      letter-spacing: 0.06em;
       cursor: pointer;
       transition: background 0.2s;
-      line-height: 1;
+      appearance: none;
+      -webkit-appearance: none;
+      outline: none;
+      font-family: inherit;
     }
 
-    .lang-toggle:hover { background: rgba(255,255,255,0.25); }
+    .lang-select option {
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .lang-select:hover { background: rgba(255,255,255,0.25); }
 
     /* ── HERO ── */
     .hero {
@@ -721,7 +730,12 @@
       <li><a href="#gallery" data-i18n="nav-gallery"></a></li>
       <li><a href="#paintart">Paintart</a></li>
       <li><a href="#contact" class="nav-cta" data-i18n="nav-contact"></a></li>
-      <li><button class="lang-toggle" id="langToggle" onclick="toggleLang()">EN</button></li>
+      <li>
+        <select class="lang-select" id="langToggle" onchange="applyLang(this.value)">
+          <option value="hr">HR</option>
+          <option value="en">EN</option>
+        </select>
+      </li>
     </ul>
   </nav>
 
@@ -1267,12 +1281,8 @@
       });
 
       document.documentElement.lang = lang;
-      document.getElementById('langToggle').textContent = lang === 'hr' ? 'EN' : 'HR';
+      document.getElementById('langToggle').value = lang;
       currentLang = lang;
-    }
-
-    function toggleLang() {
-      applyLang(currentLang === 'hr' ? 'en' : 'hr');
     }
 
     applyLang('hr');
