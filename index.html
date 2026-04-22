@@ -146,30 +146,13 @@
 
     .nav-contact-btn:hover { background: rgba(255,255,255,0.25) !important; }
 
-    .lang-select {
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.35);
-      color: #fff;
-      padding: 0.3rem 0.6rem;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      transition: background 0.2s;
-      appearance: none;
-      -webkit-appearance: none;
-      outline: none;
-      font-family: inherit;
-    }
+    .lang-dropdown { min-width: 150px; }
 
-    .lang-select option {
-      background: var(--blue);
-      color: #fff;
+    .lang-dropdown a.lang-active {
+      color: var(--blue);
       font-weight: 700;
+      background: var(--blue-pale);
     }
-
-    .lang-select:hover { background: rgba(255,255,255,0.25); }
 
     /* ── HERO ── */
     .hero {
@@ -812,10 +795,14 @@
       <li><a href="#" data-i18n="nav-support"></a></li>
       <li><a href="#contact" class="nav-contact-btn" data-i18n="nav-contact"></a></li>
       <li>
-        <select class="lang-select" id="langToggle" onchange="applyLang(this.value)">
-          <option value="hr">HR</option>
-          <option value="en">EN</option>
-        </select>
+        <a href="#">
+          <span id="langLabel">HR</span>
+          <span class="nav-arrow">▼</span>
+        </a>
+        <div class="nav-dropdown lang-dropdown">
+          <a href="#" id="lang-hr" onclick="applyLang('hr'); return false;">HR – Hrvatski</a>
+          <a href="#" id="lang-en" onclick="applyLang('en'); return false;">EN – English</a>
+        </div>
       </li>
     </ul>
   </nav>
@@ -1382,7 +1369,9 @@
       });
 
       document.documentElement.lang = lang;
-      document.getElementById('langToggle').value = lang;
+      document.getElementById('langLabel').textContent = lang.toUpperCase();
+      document.getElementById('lang-hr').classList.toggle('lang-active', lang === 'hr');
+      document.getElementById('lang-en').classList.toggle('lang-active', lang === 'en');
       currentLang = lang;
     }
 

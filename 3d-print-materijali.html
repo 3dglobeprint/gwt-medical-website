@@ -89,10 +89,14 @@
       <li><a href="#" data-i18n="nav-support"></a></li>
       <li><a href="index.html#contact" class="nav-contact-btn" data-i18n="nav-contact"></a></li>
       <li>
-        <select class="lang-select" id="langToggle" onchange="applyLang(this.value)">
-          <option value="hr">HR</option>
-          <option value="en">EN</option>
-        </select>
+        <a href="#">
+          <span id="langLabel">HR</span>
+          <span class="nav-arrow">▼</span>
+        </a>
+        <div class="nav-dropdown lang-dropdown">
+          <a href="#" id="lang-hr" onclick="applyLang('hr'); return false;">HR – Hrvatski</a>
+          <a href="#" id="lang-en" onclick="applyLang('en'); return false;">EN – English</a>
+        </div>
       </li>
     </ul>
   </nav>
@@ -146,7 +150,9 @@
         if (translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
       });
       document.documentElement.lang = lang;
-      document.getElementById('langToggle').value = lang;
+      document.getElementById('langLabel').textContent = lang.toUpperCase();
+      document.getElementById('lang-hr').classList.toggle('lang-active', lang === 'hr');
+      document.getElementById('lang-en').classList.toggle('lang-active', lang === 'en');
       currentLang = lang;
     }
     applyLang('hr');
