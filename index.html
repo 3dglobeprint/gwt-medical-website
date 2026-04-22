@@ -245,6 +245,101 @@
     .section-header.center { text-align: center; }
     .section-header.center .section-desc { margin: 0 auto; }
 
+    /* ── CAROUSEL ── */
+    .carousel {
+      position: relative;
+      width: 100%;
+      height: 560px;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    .carousel-slide.active { opacity: 1; }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-slide-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,20,60,0.72) 0%, transparent 55%);
+    }
+
+    .carousel-caption {
+      position: absolute;
+      bottom: 3.5rem;
+      left: 5%;
+      right: 5%;
+      color: #fff;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+      max-width: 700px;
+    }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 1.2rem;
+      left: 0; right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      z-index: 10;
+    }
+
+    .carousel-dot {
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .carousel-dot.active {
+      background: #fff;
+      transform: scale(1.25);
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: #fff;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: background 0.2s;
+    }
+
+    .carousel-arrow:hover { background: rgba(255,255,255,0.28); }
+    .carousel-arrow.prev { left: 2%; }
+    .carousel-arrow.next { right: 2%; }
+
+    @media (max-width: 600px) {
+      .carousel { height: 300px; }
+      .carousel-arrow { display: none; }
+    }
+
     /* ── STATS STRIP ── */
     .stats-strip {
       background: var(--blue-pale);
@@ -779,6 +874,38 @@
     </div>
   </div>
 
+  <!-- CAROUSEL -->
+  <div class="carousel" id="mainCarousel">
+    <div class="carousel-slide active">
+      <img src="brand_assets/PHOTO-2026-02-19-15-51-13.jpg" alt="" />
+      <div class="carousel-slide-overlay"></div>
+      <p class="carousel-caption" data-i18n="cap1"></p>
+    </div>
+    <div class="carousel-slide">
+      <img src="brand_assets/PHOTO-2026-01-17-18-39-20 3.jpg" alt="" />
+      <div class="carousel-slide-overlay"></div>
+      <p class="carousel-caption" data-i18n="cap2"></p>
+    </div>
+    <div class="carousel-slide">
+      <img src="brand_assets/[AFTER] Crowns.JPG" alt="" />
+      <div class="carousel-slide-overlay"></div>
+      <p class="carousel-caption" data-i18n="cap3"></p>
+    </div>
+    <div class="carousel-slide">
+      <img src="brand_assets/fluo.jpg" alt="" />
+      <div class="carousel-slide-overlay"></div>
+      <p class="carousel-caption" data-i18n="cap4"></p>
+    </div>
+    <div class="carousel-slide">
+      <img src="brand_assets/WhatsApp Image 2024-11-11 at 10.53.07_aeda0896.jpg" alt="" />
+      <div class="carousel-slide-overlay"></div>
+      <p class="carousel-caption" data-i18n="cap5"></p>
+    </div>
+    <button class="carousel-arrow prev" onclick="carouselStep(-1)">&#8592;</button>
+    <button class="carousel-arrow next" onclick="carouselStep(1)">&#8594;</button>
+    <div class="carousel-dots" id="carouselDots"></div>
+  </div>
+
   <!-- PRODUCT -->
   <section class="product-section" id="product">
     <div class="product-grid">
@@ -1286,6 +1413,38 @@
     }
 
     applyLang('hr');
+
+    /* ── CAROUSEL ── */
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dotsContainer = document.getElementById('carouselDots');
+    let current = 0;
+    let carouselTimer;
+
+    slides.forEach((_, i) => {
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+      dot.addEventListener('click', () => goToSlide(i));
+      dotsContainer.appendChild(dot);
+    });
+
+    function goToSlide(n) {
+      slides[current].classList.remove('active');
+      dotsContainer.children[current].classList.remove('active');
+      current = (n + slides.length) % slides.length;
+      slides[current].classList.add('active');
+      dotsContainer.children[current].classList.add('active');
+      resetTimer();
+    }
+
+    function carouselStep(dir) { goToSlide(current + dir); }
+
+    function resetTimer() {
+      clearInterval(carouselTimer);
+      carouselTimer = setInterval(() => goToSlide(current + 1), 10000);
+    }
+
+    resetTimer();
   </script>
 
 </body>
