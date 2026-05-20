@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="brand_assets/favicon.png" />
   <title>Rayshape Edge Mini – GWT Medical</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -33,25 +34,96 @@
     .nav-dropdown a:hover { background: var(--blue-pale); color: var(--blue); }
     .nav-contact-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #fff !important; padding: 0.4rem 1rem !important; border-radius: 6px; transition: background 0.2s !important; }
     .nav-contact-btn:hover { background: rgba(255,255,255,0.25) !important; }
-    .lang-select { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.35); color: #fff; padding: 0.3rem 0.6rem; border-radius: 6px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.06em; cursor: pointer; transition: background 0.2s; appearance: none; -webkit-appearance: none; outline: none; font-family: inherit; }
-    .lang-select option { background: var(--blue); color: #fff; font-weight: 700; }
-    .lang-select:hover { background: rgba(255,255,255,0.25); }
+    .lang-dropdown { left: auto !important; right: 0; }
+    .lang-active { color: var(--blue) !important; background: var(--blue-pale) !important; }
+    /* Flyout submenu */
+    .nav-dropdown-item { position: relative; }
+    .nav-dropdown-item > a { display: flex; justify-content: space-between; align-items: center; }
+    .sub-arrow { font-size: 1rem; opacity: 0.5; margin-left: 0.5rem; }
+    .nav-subdropdown { position: absolute; left: 100%; top: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 32px rgba(0,74,173,0.18); min-width: 200px; opacity: 0; pointer-events: none; transform: translateX(-6px); transition: opacity 0.2s, transform 0.2s; z-index: 300; padding: 0.4rem; border: 1px solid var(--grey-200); }
+    .has-submenu:hover .nav-subdropdown { opacity: 1; pointer-events: all; transform: translateX(0); }
 
-    /* PAGE HERO */
-    .page-hero { background: var(--blue); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 5% 80px; }
-    .page-hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; color: #fff; margin-bottom: 1rem; line-height: 1.15; }
-    .page-hero p { color: rgba(255,255,255,0.65); font-size: 1.05rem; margin-bottom: 2.5rem; }
-    .back-link { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-    .back-link:hover { color: #fff; border-color: rgba(255,255,255,0.8); }
+    /* HERO */
+    .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 72px; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('brand_assets/Rayshape Edge Mini - Banner.png'); background-size: cover; background-position: center; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,36,84,0.82) 0%, rgba(0,74,173,0.60) 55%, rgba(0,74,173,0.15) 100%); }
+    .hero-content { position: relative; z-index: 2; padding: 5% 5% 6%; max-width: 640px; }
+    .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.9); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.4rem; }
+    .hero-content h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
+    .hero-content p { color: rgba(255,255,255,0.78); font-size: 1.1rem; margin-bottom: 2rem; max-width: 480px; line-height: 1.7; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; color: var(--blue); font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+
+    /* HIGHLIGHTS STRIP */
+    .highlights { background: var(--blue); padding: 3rem 5%; }
+    .highlights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.15); border-radius: var(--radius); overflow: hidden; }
+    .highlight-item { background: rgba(255,255,255,0.06); padding: 2rem 1.5rem; text-align: center; }
+    .highlight-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .highlight-item h3 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .highlight-item p { color: rgba(255,255,255,0.65); font-size: 0.85rem; line-height: 1.5; }
+
+    /* SECTIONS */
+    .section { padding: 6rem 5%; }
+    .section-alt { background: var(--grey-100); }
+    .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.05rem; color: var(--grey-600); max-width: 580px; line-height: 1.7; }
+
+    /* INTRO */
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .intro-text { }
+    .intro-text p { color: var(--grey-600); margin-top: 1.5rem; line-height: 1.8; font-size: 1.02rem; }
+    .intro-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); }
+    .intro-image img { width: 100%; display: block; }
+
+    /* SPECS TABLE */
+    .specs-wrap { max-width: 780px; margin: 3rem auto 0; }
+    .specs-table { width: 100%; border-collapse: collapse; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .specs-table tr:nth-child(odd) { background: var(--white); }
+    .specs-table tr:nth-child(even) { background: var(--grey-100); }
+    .specs-table td { padding: 1rem 1.4rem; font-size: 0.95rem; border-bottom: 1px solid var(--grey-200); }
+    .specs-table td:first-child { font-weight: 600; color: var(--blue); width: 44%; }
+    .specs-table tr:last-child td { border-bottom: none; }
+
+    /* APPLICATIONS */
+    .apps-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
+    .app-pill { background: var(--white); border: 1.5px solid var(--grey-200); color: var(--text); font-size: 0.88rem; font-weight: 500; padding: 0.55rem 1.1rem; border-radius: 30px; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+    .app-pill:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-pale); }
+
+    /* RESULTS */
+    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .results-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); }
+    .results-image img { width: 100%; display: block; }
+    .results-text h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--text); }
+    .results-text p { color: var(--grey-600); line-height: 1.8; margin-bottom: 1.5rem; font-size: 0.98rem; }
+    .compat-badges { display: flex; flex-direction: column; gap: 0.6rem; }
+    .compat-badge { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--blue-pale); border-radius: 10px; border-left: 4px solid var(--blue); }
+    .compat-badge-dot { width: 10px; height: 10px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
+    .compat-badge span { font-size: 0.88rem; font-weight: 600; color: var(--blue-dark); }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); padding: 6rem 5%; text-align: center; }
+    .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: #fff; margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.72); font-size: 1.05rem; max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .cta-btn { display: inline-block; background: #fff; color: var(--blue); font-weight: 700; font-size: 1rem; padding: 1rem 2.2rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.28); }
+    .cta-note { margin-top: 1.2rem; color: rgba(255,255,255,0.5); font-size: 0.82rem; }
 
     /* FOOTER */
     footer { background: #033F8F; color: rgba(255,255,255,0.7); padding: 48px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
-    .footer-logo { }
     .footer-logo img { height: 31px; display: block; }
     .footer-copy { font-size: 0.85rem; }
     .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
     .footer-links a:hover { color: #fff; }
+
+    @media (max-width: 900px) {
+      .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+      .intro-grid, .results-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    }
+    @media (max-width: 600px) {
+      .highlights-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -120,10 +192,132 @@
     </ul>
   </nav>
 
-  <section class="page-hero">
-    <h1 data-i18n="page-title"></h1>
-    <p data-i18n="page-coming-soon"></p>
-    <a href="index.html" class="back-link" data-i18n="page-back"></a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-badge" data-i18n="hero-badge"></span>
+      <h1>Rayshape<br>Edge Mini</h1>
+      <p data-i18n="hero-desc"></p>
+      <a href="mailto:info@gwtmedical.com?subject=Upit%20–%20Rayshape%20Edge%20Mini" class="hero-cta" data-i18n="hero-cta"></a>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <div class="highlights">
+    <div class="highlights-grid">
+      <div class="highlight-item">
+        <span class="highlight-icon">🎯</span>
+        <h3 data-i18n="hl1-title"></h3>
+        <p data-i18n="hl1-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">📱</span>
+        <h3 data-i18n="hl2-title"></h3>
+        <p data-i18n="hl2-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">🔄</span>
+        <h3 data-i18n="hl3-title"></h3>
+        <p data-i18n="hl3-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">🔓</span>
+        <h3 data-i18n="hl4-title"></h3>
+        <p data-i18n="hl4-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p class="section-label" data-i18n="intro-label"></p>
+        <h2 class="section-title" data-i18n="intro-title"></h2>
+        <p data-i18n="intro-p1"></p>
+        <p data-i18n="intro-p2"></p>
+      </div>
+      <div class="intro-image">
+        <img src="brand_assets/Rayshape Edge Mini - Banner.png" alt="Rayshape Edge Mini" />
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="section section-alt">
+    <div style="text-align:center; margin-bottom: 1rem;">
+      <p class="section-label" data-i18n="specs-label"></p>
+      <h2 class="section-title" style="margin: 0 auto;" data-i18n="specs-title"></h2>
+    </div>
+    <div class="specs-wrap">
+      <table class="specs-table">
+        <tbody>
+          <tr><td data-i18n="spec-buildvol-label"></td><td data-i18n="spec-buildvol-val"></td></tr>
+          <tr><td data-i18n="spec-pixel-label"></td><td data-i18n="spec-pixel-val"></td></tr>
+          <tr><td data-i18n="spec-layer-label"></td><td data-i18n="spec-layer-val"></td></tr>
+          <tr><td data-i18n="spec-speed-label"></td><td data-i18n="spec-speed-val"></td></tr>
+          <tr><td data-i18n="spec-lcd-label"></td><td data-i18n="spec-lcd-val"></td></tr>
+          <tr><td data-i18n="spec-res-label"></td><td data-i18n="spec-res-val"></td></tr>
+          <tr><td data-i18n="spec-light-label"></td><td data-i18n="spec-light-val"></td></tr>
+          <tr><td data-i18n="spec-touch-label"></td><td data-i18n="spec-touch-val"></td></tr>
+          <tr><td data-i18n="spec-conn-label"></td><td data-i18n="spec-conn-val"></td></tr>
+          <tr><td data-i18n="spec-power-label"></td><td data-i18n="spec-power-val"></td></tr>
+          <tr><td data-i18n="spec-dims-label"></td><td data-i18n="spec-dims-val"></td></tr>
+          <tr><td data-i18n="spec-weight-label"></td><td data-i18n="spec-weight-val"></td></tr>
+          <tr><td data-i18n="spec-software-label"></td><td data-i18n="spec-software-val"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section class="section">
+    <p class="section-label" data-i18n="apps-label"></p>
+    <h2 class="section-title" data-i18n="apps-title"></h2>
+    <p class="section-subtitle" data-i18n="apps-subtitle"></p>
+    <div class="apps-grid">
+      <span class="app-pill" data-i18n="app1"></span>
+      <span class="app-pill" data-i18n="app2"></span>
+      <span class="app-pill" data-i18n="app3"></span>
+      <span class="app-pill" data-i18n="app4"></span>
+      <span class="app-pill" data-i18n="app5"></span>
+      <span class="app-pill" data-i18n="app6"></span>
+      <span class="app-pill" data-i18n="app7"></span>
+      <span class="app-pill" data-i18n="app8"></span>
+      <span class="app-pill" data-i18n="app9"></span>
+      <span class="app-pill" data-i18n="app10"></span>
+      <span class="app-pill" data-i18n="app11"></span>
+      <span class="app-pill" data-i18n="app12"></span>
+    </div>
+  </section>
+
+  <!-- RESULTS -->
+  <section class="section section-alt">
+    <p class="section-label" data-i18n="results-label"></p>
+    <h2 class="section-title" data-i18n="results-title"></h2>
+    <div class="results-grid">
+      <div class="results-image">
+        <img src="brand_assets/Rayshape Edge Mini - printed crowns.png" alt="Printed dental crowns" />
+      </div>
+      <div class="results-text">
+        <h3 data-i18n="results-h3"></h3>
+        <p data-i18n="results-p"></p>
+        <div class="compat-badges">
+          <div class="compat-badge"><div class="compat-badge-dot"></div><span>saremco CROWNTEC</span></div>
+          <div class="compat-badge"><div class="compat-badge-dot"></div><span>saremco DENTURETEC</span></div>
+          <div class="compat-badge"><div class="compat-badge-dot"></div><span data-i18n="compat-third"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 data-i18n="cta-title"></h2>
+    <p data-i18n="cta-desc"></p>
+    <a href="mailto:info@gwtmedical.com?subject=Upit%20–%20Rayshape%20Edge%20Mini" class="cta-btn" data-i18n="cta-btn"></a>
+    <p class="cta-note" data-i18n="cta-note"></p>
   </section>
 
   <footer>
@@ -143,10 +337,47 @@
         'nav-3dprint':'3D Print','nav-printers':'3D Printeri','nav-materials':'3D Print Materijali',
         'nav-dentistry':'Stomatologija','nav-adhesion':'Adhezija/jetkanje','nav-composites':'Kompoziti',
         'nav-cements':'Cementi','nav-primers':'Primeri','nav-characterization':'Karakterizacija',
-        'nav-models-resin':'Smole za modele','nav-surgical-resin':'Smole za kirurške vodilice','nav-services':'Usluge','nav-education':'Edukacija','nav-support':'Podrška','nav-contact':'Kontakt',
-        'page-title':'Rayshape Edge Mini',
-        'page-coming-soon':'Sadržaj stranice je u pripremi.',
-        'page-back':'← Natrag na početnu',
+        'nav-models-resin':'Smole za modele','nav-surgical-resin':'Smole za kirurške vodilice',
+        'nav-services':'Usluge','nav-education':'Edukacija','nav-support':'Podrška','nav-contact':'Kontakt',
+        'hero-badge':'Dentalni LCD 3D printer',
+        'hero-desc':'Visoka preciznost, brza izrada i otvoreni materijalni sustav za zahtjevnu dentalnu produkciju.',
+        'hero-cta':'Zatražite ponudu →',
+        'hl1-title':'Visoka preciznost','hl1-desc':'Piksel veličine 50 µm za iznimnu razinu detalja.',
+        'hl2-title':'Intuitivan rad','hl2-desc':'5″ osjetljivi zaslon i jednostavno sučelje.',
+        'hl3-title':'Dvije platforme','hl3-desc':'Prilagodljive platforme za veće ili manje serije.',
+        'hl4-title':'Otvoreni sustav','hl4-desc':'Kompatibilan sa saremco i trećim materijalima.',
+        'intro-label':'O printeru',
+        'intro-title':'Preciznost u svakom detalju',
+        'intro-p1':'Rayshape Edge Mini dentalni je 3D printer razvijen za zahtjevna klinička i laboratorijska okruženja. Kombinira mono LCD tehnologiju visoke razlučivosti s naprednom UV LED matricom kako bi svaki otisak bio precizan, ponovljiv i spreman za direktnu kliničku primjenu.',
+        'intro-p2':'Kompaktnog oblika, a impresivnih mogućnosti – Edge Mini idealan je za ordinacije i laboratorije koji žele pouzdanu produkciju krunskih radova, kirurških vodilica, udlaga i ostalih dentalnih aplikacija bez kompromisa u kvaliteti.',
+        'specs-label':'Specifikacije','specs-title':'Tehnički podaci',
+        'spec-buildvol-label':'Volumen gradnje','spec-buildvol-val':'192 × 120 × 200 mm',
+        'spec-pixel-label':'Veličina piksela','spec-pixel-val':'50 µm',
+        'spec-layer-label':'Debljina sloja','spec-layer-val':'0,025 – 0,2 mm',
+        'spec-speed-label':'Brzina ispisa','spec-speed-val':'do 50 mm/h',
+        'spec-lcd-label':'LCD zaslon','spec-lcd-val':'10″ Mono LCD, 8K',
+        'spec-res-label':'Razlučivost','spec-res-val':'7680 × 4320 px',
+        'spec-light-label':'Izvor svjetla','spec-light-val':'UV LED matrica, 405 nm',
+        'spec-touch-label':'Upravljanje','spec-touch-val':'5″ osjetljivi zaslon u boji',
+        'spec-conn-label':'Povezivost','spec-conn-val':'USB, Wi-Fi, Ethernet',
+        'spec-power-label':'Napajanje','spec-power-val':'100 – 240 V AC, 50/60 Hz',
+        'spec-dims-label':'Dimenzije uređaja','spec-dims-val':'330 × 330 × 590 mm',
+        'spec-weight-label':'Masa','spec-weight-val':'~18 kg',
+        'spec-software-label':'Softver za rezanje','spec-software-val':'Rayshape Slicer',
+        'apps-label':'Primjena','apps-title':'Za svaku dentalnu indikaciju',
+        'apps-subtitle':'Edge Mini podržava širok raspon dentalnih aplikacija – od protetike do ortodoncije.',
+        'app1':'Kirurške vodilice','app2':'Udlage (splints)','app3':'Gingivalne maske',
+        'app4':'Try-in proteze','app5':'Individualne žlice','app6':'Zubi za proteze',
+        'app7':'Studijski modeli','app8':'Aligneri','app9':'Privremene restauracije',
+        'app10':'Indirektno lijepljenje','app11':'Definitavne restauracije','app12':'Kalupni radovi',
+        'results-label':'Rezultati','results-title':'Besprijekorna estetika, verificirana kvaliteta',
+        'results-h3':'Optimizirano za saremco materijale',
+        'results-p':'U suradnji s tvrtkom Saremco, Rayshape Edge Mini optimiziran je za postizanje vrhunskih rezultata s materijalima poput CROWNTEC i DENTURETEC smola. Svaki print prolazi kalibriranim profilima koji osiguravaju konzistentnost boje, rubnog zatvaranja i mehaničkih svojstava.',
+        'compat-third':'Otvoreni sustav – kompatibilan s trećim smolama',
+        'cta-title':'Zainteresirani za Edge Mini?',
+        'cta-desc':'Javite nam se za ponudu, demonstraciju ili više tehničkih informacija. Odgovaramo u roku 24 sata.',
+        'cta-btn':'Pošaljite upit',
+        'cta-note':'ili nas kontaktirajte na info@gwtmedical.com',
         'footer-copy':'© 2026 GWT Medical. Sva prava pridržana.',
         'footer-link1':'Početna','footer-link3':'Kontakt',
       },
@@ -154,10 +385,47 @@
         'nav-3dprint':'3D Print','nav-printers':'3D Printers','nav-materials':'3D Print Materials',
         'nav-dentistry':'Dentistry','nav-adhesion':'Adhesion/Etching','nav-composites':'Composites',
         'nav-cements':'Cements','nav-primers':'Primers','nav-characterization':'Characterization',
-        'nav-models-resin':'Model Resins','nav-surgical-resin':'Surgical Guide Resins','nav-services':'Services','nav-education':'Education','nav-support':'Support','nav-contact':'Contact',
-        'page-title':'Rayshape Edge Mini',
-        'page-coming-soon':'Page content is being prepared.',
-        'page-back':'← Back to home',
+        'nav-models-resin':'Model Resins','nav-surgical-resin':'Surgical Guide Resins',
+        'nav-services':'Services','nav-education':'Education','nav-support':'Support','nav-contact':'Contact',
+        'hero-badge':'Dental LCD 3D Printer',
+        'hero-desc':'High precision, fast throughput and an open material system for demanding dental production.',
+        'hero-cta':'Request a Quote →',
+        'hl1-title':'High Precision','hl1-desc':'50 µm pixel size for exceptional detail.',
+        'hl2-title':'Intuitive Operation','hl2-desc':'5″ touchscreen and simple interface.',
+        'hl3-title':'Two Platforms','hl3-desc':'Flexible build platforms for larger or smaller batches.',
+        'hl4-title':'Open System','hl4-desc':'Compatible with saremco and third-party resins.',
+        'intro-label':'About the Printer',
+        'intro-title':'Precision in Every Detail',
+        'intro-p1':'The Rayshape Edge Mini is a dental 3D printer developed for demanding clinical and laboratory environments. It combines high-resolution mono LCD technology with an advanced UV LED array to ensure every print is precise, repeatable, and ready for direct clinical use.',
+        'intro-p2':'Compact in form but impressive in capability – the Edge Mini is ideal for practices and labs that want reliable production of crowns, surgical guides, splints, and other dental applications without compromising on quality.',
+        'specs-label':'Specifications','specs-title':'Technical Data',
+        'spec-buildvol-label':'Build Volume','spec-buildvol-val':'192 × 120 × 200 mm',
+        'spec-pixel-label':'Pixel Size','spec-pixel-val':'50 µm',
+        'spec-layer-label':'Layer Thickness','spec-layer-val':'0.025 – 0.2 mm',
+        'spec-speed-label':'Print Speed','spec-speed-val':'up to 50 mm/h',
+        'spec-lcd-label':'LCD Screen','spec-lcd-val':'10″ Mono LCD, 8K',
+        'spec-res-label':'Resolution','spec-res-val':'7680 × 4320 px',
+        'spec-light-label':'Light Source','spec-light-val':'UV LED Array, 405 nm',
+        'spec-touch-label':'Control','spec-touch-val':'5″ color touchscreen',
+        'spec-conn-label':'Connectivity','spec-conn-val':'USB, Wi-Fi, Ethernet',
+        'spec-power-label':'Power Supply','spec-power-val':'100 – 240 V AC, 50/60 Hz',
+        'spec-dims-label':'Machine Dimensions','spec-dims-val':'330 × 330 × 590 mm',
+        'spec-weight-label':'Weight','spec-weight-val':'~18 kg',
+        'spec-software-label':'Slicing Software','spec-software-val':'Rayshape Slicer',
+        'apps-label':'Applications','apps-title':'For Every Dental Indication',
+        'apps-subtitle':'The Edge Mini supports a wide range of dental applications – from prosthetics to orthodontics.',
+        'app1':'Surgical Guides','app2':'Splints','app3':'Gingiva Masks',
+        'app4':'Try-in Dentures','app5':'Custom Trays','app6':'Denture Teeth',
+        'app7':'Study Models','app8':'Aligners','app9':'Temporary Restorations',
+        'app10':'Indirect Bonding','app11':'Definitive Restorations','app12':'Cast Work',
+        'results-label':'Results','results-title':'Flawless Aesthetics, Verified Quality',
+        'results-h3':'Optimized for saremco Materials',
+        'results-p':'In collaboration with Saremco, the Rayshape Edge Mini has been optimized to achieve outstanding results with materials such as CROWNTEC and DENTURETEC resins. Every print runs through calibrated profiles that ensure consistency in shade, marginal fit, and mechanical properties.',
+        'compat-third':'Open system – compatible with third-party resins',
+        'cta-title':'Interested in the Edge Mini?',
+        'cta-desc':'Contact us for a quote, demonstration, or more technical information. We respond within 24 hours.',
+        'cta-btn':'Send an Inquiry',
+        'cta-note':'or reach us at info@gwtmedical.com',
         'footer-copy':'© 2026 GWT Medical. All rights reserved.',
         'footer-link1':'Home','footer-link3':'Contact',
       }
