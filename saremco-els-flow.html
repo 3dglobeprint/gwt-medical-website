@@ -44,12 +44,75 @@
     .nav-subdropdown { position: absolute; left: 100%; top: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 32px rgba(0,74,173,0.18); min-width: 200px; opacity: 0; pointer-events: none; transform: translateX(-6px); transition: opacity 0.2s, transform 0.2s; z-index: 300; padding: 0.4rem; border: 1px solid var(--grey-200); }
     .has-submenu:hover .nav-subdropdown { opacity: 1; pointer-events: all; transform: translateX(0); }
 
-    /* PAGE HERO */
-    .page-hero { background: var(--blue); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 120px 5% 80px; }
-    .page-hero h1 { font-size: clamp(2.2rem, 5vw, 4rem); font-weight: 800; color: #fff; margin-bottom: 1rem; line-height: 1.15; }
-    .page-hero p { color: rgba(255,255,255,0.65); font-size: 1.05rem; margin-bottom: 2.5rem; }
-    .back-link { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.9rem; font-weight: 500; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
-    .back-link:hover { color: #fff; border-color: rgba(255,255,255,0.8); }
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 72px; background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); }
+    .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 5% 5% 5% 6%; }
+    .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.9); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.4rem; width: fit-content; }
+    .hero-ref { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 600; letter-spacing: 0.08em; margin-bottom: 0.5rem; text-transform: uppercase; }
+    .hero-text h1 { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 0.4rem; }
+    .hero-text h1 em { font-style: normal; color: rgba(255,255,255,0.6); font-size: 0.6em; font-weight: 500; display: block; margin-top: 0.3rem; letter-spacing: 0.02em; }
+    .hero-tagline { color: rgba(255,255,255,0.78); font-size: 1.05rem; margin: 1.2rem 0 2rem; max-width: 440px; line-height: 1.7; }
+    .hero-free { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .hero-free-badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 20px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; color: var(--blue); font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); width: fit-content; }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+    .hero-image { display: flex; align-items: center; justify-content: center; padding: 4rem 5% 4rem 3%; }
+    .hero-image img { max-width: 100%; max-height: 70vh; object-fit: contain; filter: drop-shadow(0 20px 60px rgba(0,0,0,0.35)); }
+
+    /* HIGHLIGHTS */
+    .highlights { background: var(--blue); padding: 3rem 5%; }
+    .highlights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.15); border-radius: var(--radius); overflow: hidden; }
+    .highlight-item { background: rgba(255,255,255,0.06); padding: 2rem 1.5rem; text-align: center; }
+    .highlight-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .highlight-item h3 { color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .highlight-item p { color: rgba(255,255,255,0.65); font-size: 0.82rem; line-height: 1.5; }
+
+    /* SECTIONS */
+    .section { padding: 6rem 5%; }
+    .section-alt { background: var(--grey-100); }
+    .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.02rem; color: var(--grey-600); max-width: 580px; line-height: 1.75; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-text p { color: var(--grey-600); margin-top: 1.4rem; line-height: 1.8; font-size: 1rem; }
+    .about-features { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .feature-row { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .feature-dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; flex-shrink: 0; margin-top: 0.45rem; }
+    .feature-row span { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+    .about-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: var(--grey-100); display: flex; align-items: center; justify-content: center; padding: 2rem; }
+    .about-image img { max-width: 100%; object-fit: contain; }
+
+    /* INDICATIONS */
+    .ind-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+    .ind-card { background: var(--white); border: 1.5px solid var(--grey-200); border-radius: var(--radius); padding: 1.4rem 1.6rem; display: flex; align-items: flex-start; gap: 1rem; transition: border-color 0.2s, box-shadow 0.2s; }
+    .ind-card:hover { border-color: var(--blue); box-shadow: var(--shadow); }
+    .ind-icon { font-size: 1.6rem; flex-shrink: 0; }
+    .ind-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--text); margin-bottom: 0.25rem; }
+    .ind-card p { font-size: 0.85rem; color: var(--grey-600); line-height: 1.5; }
+
+    /* SHADES */
+    .shades-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+    .shade-pill { background: var(--white); border: 1.5px solid var(--grey-200); color: var(--text); font-size: 0.82rem; font-weight: 600; padding: 0.45rem 1rem; border-radius: 20px; transition: border-color 0.2s, background 0.2s; }
+    .shade-pill:hover { border-color: var(--blue); background: var(--blue-pale); color: var(--blue); }
+
+    /* SPECS */
+    .specs-wrap { max-width: 760px; margin: 3rem auto 0; }
+    .specs-table { width: 100%; border-collapse: collapse; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .specs-table tr:nth-child(odd) { background: var(--white); }
+    .specs-table tr:nth-child(even) { background: var(--grey-100); }
+    .specs-table td { padding: 1rem 1.4rem; font-size: 0.95rem; border-bottom: 1px solid var(--grey-200); }
+    .specs-table td:first-child { font-weight: 600; color: var(--blue); width: 40%; }
+    .specs-table tr:last-child td { border-bottom: none; }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); padding: 6rem 5%; text-align: center; }
+    .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: #fff; margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.72); font-size: 1.05rem; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .cta-btn { display: inline-block; background: #fff; color: var(--blue); font-weight: 700; font-size: 1rem; padding: 1rem 2.2rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.28); }
+    .cta-note { margin-top: 1.2rem; color: rgba(255,255,255,0.5); font-size: 0.82rem; }
 
     /* FOOTER */
     footer { background: #033F8F; color: rgba(255,255,255,0.7); padding: 48px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
@@ -58,6 +121,17 @@
     .footer-links { display: flex; gap: 1.5rem; }
     .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
     .footer-links a:hover { color: #fff; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-image { padding: 2rem 5%; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+      .ind-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .highlights-grid { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -135,10 +209,155 @@
     </ul>
   </nav>
 
-  <section class="page-hero">
-    <h1 data-i18n="page-title"></h1>
-    <p data-i18n="page-coming-soon"></p>
-    <a href="kompoziti.html" class="back-link" data-i18n="page-back"></a>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="hero-badge" data-i18n="hero-badge"></span>
+      <p class="hero-ref">REF 7113</p>
+      <h1>saremco ELS flow<em>extra low shrinkage® flow | syringe</em></h1>
+      <p class="hero-tagline" data-i18n="hero-tagline"></p>
+      <div class="hero-free">
+        <span class="hero-free-badge">bez TEGDMA</span>
+        <span class="hero-free-badge">bez HEMA</span>
+        <span class="hero-free-badge" data-i18n="hero-free-tpo"></span>
+        <span class="hero-free-badge" data-i18n="hero-free-radio"></span>
+      </div>
+      <a href="mailto:info@gwtmedical.com?subject=Upit%20–%20Saremco%20ELS%20Flow" class="hero-cta" data-i18n="hero-cta"></a>
+    </div>
+    <div class="hero-image">
+      <img src="brand_assets/els flow composite.png" alt="Saremco ELS Flow Composite" />
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <div class="highlights">
+    <div class="highlights-grid">
+      <div class="highlight-item">
+        <span class="highlight-icon">💉</span>
+        <h3 data-i18n="hl1-title"></h3>
+        <p data-i18n="hl1-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">📉</span>
+        <h3 data-i18n="hl2-title"></h3>
+        <p data-i18n="hl2-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">✨</span>
+        <h3 data-i18n="hl3-title"></h3>
+        <p data-i18n="hl3-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">🦷</span>
+        <h3 data-i18n="hl4-title"></h3>
+        <p data-i18n="hl4-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label" data-i18n="about-label"></p>
+        <h2 class="section-title" data-i18n="about-title"></h2>
+        <p data-i18n="about-p1"></p>
+        <p data-i18n="about-p2"></p>
+        <div class="about-features">
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat1"></span></div>
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat2"></span></div>
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat3"></span></div>
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat4"></span></div>
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat5"></span></div>
+        </div>
+      </div>
+      <div class="about-image">
+        <img src="brand_assets/els flow composite.png" alt="Saremco ELS Flow" />
+      </div>
+    </div>
+  </section>
+
+  <!-- INDICATIONS -->
+  <section class="section section-alt">
+    <p class="section-label" data-i18n="ind-label"></p>
+    <h2 class="section-title" data-i18n="ind-title"></h2>
+    <div class="ind-grid">
+      <div class="ind-card">
+        <span class="ind-icon">🔬</span>
+        <div>
+          <h4 data-i18n="ind1-title"></h4>
+          <p data-i18n="ind1-desc"></p>
+        </div>
+      </div>
+      <div class="ind-card">
+        <span class="ind-icon">🦷</span>
+        <div>
+          <h4 data-i18n="ind2-title"></h4>
+          <p data-i18n="ind2-desc"></p>
+        </div>
+      </div>
+      <div class="ind-card">
+        <span class="ind-icon">🔒</span>
+        <div>
+          <h4 data-i18n="ind3-title"></h4>
+          <p data-i18n="ind3-desc"></p>
+        </div>
+      </div>
+      <div class="ind-card">
+        <span class="ind-icon">⚡</span>
+        <div>
+          <h4 data-i18n="ind4-title"></h4>
+          <p data-i18n="ind4-desc"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SHADES -->
+  <section class="section">
+    <p class="section-label" data-i18n="shades-label"></p>
+    <h2 class="section-title" data-i18n="shades-title"></h2>
+    <p class="section-subtitle" data-i18n="shades-subtitle"></p>
+    <div class="shades-grid">
+      <span class="shade-pill">A1</span>
+      <span class="shade-pill">A2</span>
+      <span class="shade-pill">A3</span>
+      <span class="shade-pill">A3 op.</span>
+      <span class="shade-pill">A3.5 / B4</span>
+      <span class="shade-pill">A4</span>
+      <span class="shade-pill">B1</span>
+      <span class="shade-pill">C2</span>
+      <span class="shade-pill">SW</span>
+      <span class="shade-pill">SW++</span>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="section section-alt">
+    <div style="text-align:center; margin-bottom: 1rem;">
+      <p class="section-label" data-i18n="specs-label"></p>
+      <h2 class="section-title" style="margin: 0 auto;" data-i18n="specs-title"></h2>
+    </div>
+    <div class="specs-wrap">
+      <table class="specs-table">
+        <tbody>
+          <tr><td data-i18n="spec1-label"></td><td data-i18n="spec1-val"></td></tr>
+          <tr><td data-i18n="spec2-label"></td><td data-i18n="spec2-val"></td></tr>
+          <tr><td data-i18n="spec3-label"></td><td data-i18n="spec3-val"></td></tr>
+          <tr><td data-i18n="spec4-label"></td><td data-i18n="spec4-val"></td></tr>
+          <tr><td data-i18n="spec5-label"></td><td data-i18n="spec5-val"></td></tr>
+          <tr><td data-i18n="spec6-label"></td><td data-i18n="spec6-val"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 data-i18n="cta-title"></h2>
+    <p data-i18n="cta-desc"></p>
+    <a href="mailto:info@gwtmedical.com?subject=Upit%20–%20Saremco%20ELS%20Flow" class="cta-btn" data-i18n="cta-btn"></a>
+    <p class="cta-note" data-i18n="cta-note"></p>
   </section>
 
   <footer>
@@ -160,9 +379,43 @@
         'nav-cements':'Cementi','nav-primers':'Primeri','nav-characterization':'Karakterizacija',
         'nav-models-resin':'Smole za modele','nav-surgical-resin':'Smole za kirurške vodilice',
         'nav-services':'Usluge','nav-education':'Edukacija','nav-support':'Podrška','nav-contact':'Kontakt',
-        'page-title':'Saremco ELS Flow',
-        'page-coming-soon':'Sadržaj stranice je u pripremi.',
-        'page-back':'← Natrag na Kompoziti',
+        'hero-badge':'Tekući mikrohibridni kompozit – minimalno invazivne procedure',
+        'hero-tagline':'Svjetlosno polimerizirajući tekući mikrohibridni kompozit za male kavitete i prošireno pečaćenje fisura. Bez TEGDMA i HEMA, s niskim stresom skupljanja i izvrsnom polirabilnošću.',
+        'hero-free-tpo':'bez TPO-a',
+        'hero-free-radio':'radiopakan',
+        'hero-cta':'Zatražite ponudu →',
+        'hl1-title':'Fini tok','hl1-desc':'Precizno nanošenje u teško dostupna mjesta.',
+        'hl2-title':'Nisko skupljanje','hl2-desc':'Minimalni stres skupljanja i dobro rubno zatvaranje.',
+        'hl3-title':'Visoki sjaj','hl3-desc':'Izvrsna i laka polirabilnost do visokog sjaja.',
+        'hl4-title':'Bez TEGDMA/HEMA','hl4-desc':'Povećana biokompatibilnost za osjetljive pacijente.',
+        'about-label':'O proizvodu',
+        'about-title':'Tekući kompozit za precizne detalje',
+        'about-p1':'saremco ELS flow tekući je mikrohibridni kompozit koji dijeli iste prednosti formule bez TEGDMA i HEMA kao i originalni ELS, ali u konzistenciji prilagođenoj za minimalno invazivne zahvate. Idealan je za mala kavitetna punjenja, prošireno pečaćenje fisura i kao podloga (liner).',
+        'about-p2':'Fina konzistencija omogućuje precizno i kontrolirano nanošenje, dok nisko polimerizacijsko skupljanje i radiopaknost osiguravaju dugoročnu kliničku pouzdanost. Dostupan u 10 nijansi koje pokrivaju svakodnevne kliničke potrebe.',
+        'feat1':'Slobodan od TEGDMA i HEMA',
+        'feat2':'Fino tekuća konzistencija za precizno nanošenje',
+        'feat3':'Nisko polimerizacijsko skupljanje',
+        'feat4':'Izvrsna polirabilnost do visokog sjaja',
+        'feat5':'Radiopaknost za laku radiografsku kontrolu',
+        'ind-label':'Indikacije',
+        'ind-title':'Gdje koristiti ELS flow',
+        'ind1-title':'Mali kaviteti','ind1-desc':'Punjenje malih kaviteta klase I i III gdje je preciznost ključna.',
+        'ind2-title':'Pečaćenje fisura','ind2-desc':'Prošireno pečaćenje fisura za zaštitu okluzalnih površina.',
+        'ind3-title':'Liner / baza','ind3-desc':'Primjena kao tekuća podloga ispod konvencionalnih kompozita.',
+        'ind4-title':'Minimalno invazivne tehnike','ind4-desc':'Idealan za restaurativne zahvate s minimalnim gubitkom zubnog tkiva.',
+        'shades-label':'Nijanse','shades-title':'Dostupne nijanse',
+        'shades-subtitle':'10 nijansi pokriva svakodnevne potrebe, uključujući bleach nijanse za izbijeljene zube.',
+        'specs-label':'Specifikacije','specs-title':'Tehnički podaci',
+        'spec1-label':'Tip materijala','spec1-val':'Svjetlosno polimerizirajući tekući mikrohibridni kompozit',
+        'spec2-label':'Pakiranje','spec2-val':'Štrcaljka 2 g',
+        'spec3-label':'REF broj','spec3-val':'REF 7113',
+        'spec4-label':'Indikacije','spec4-val':'Mali kaviteti, pečaćenje fisura, liner/baza',
+        'spec5-label':'Radiopaknost','spec5-val':'Da',
+        'spec6-label':'Bez','spec6-val':'TEGDMA, HEMA, TPO',
+        'cta-title':'Zainteresirani za Saremco ELS flow?',
+        'cta-desc':'Kontaktirajte nas za narudžbu, uzorke ili više informacija.',
+        'cta-btn':'Pošaljite upit',
+        'cta-note':'ili nam pišite na info@gwtmedical.com',
         'footer-copy':'© 2026 GWT Medical. Sva prava pridržana.',
         'footer-link1':'Početna','footer-link3':'Kontakt',
       },
@@ -172,9 +425,43 @@
         'nav-cements':'Cements','nav-primers':'Primers','nav-characterization':'Characterization',
         'nav-models-resin':'Model Resins','nav-surgical-resin':'Surgical Guide Resins',
         'nav-services':'Services','nav-education':'Education','nav-support':'Support','nav-contact':'Contact',
-        'page-title':'Saremco ELS Flow',
-        'page-coming-soon':'Page content is being prepared.',
-        'page-back':'← Back to Composites',
+        'hero-badge':'Flowable Microhybrid Composite – Minimally Invasive',
+        'hero-tagline':'Light-curing flowable microhybrid composite for small cavities and extended fissure sealing. Free from TEGDMA and HEMA, with low shrinkage stress and excellent polishability.',
+        'hero-free-tpo':'TPO-free',
+        'hero-free-radio':'radiopaque',
+        'hero-cta':'Request a Quote →',
+        'hl1-title':'Fine Flow','hl1-desc':'Precise placement in hard-to-reach areas.',
+        'hl2-title':'Low Shrinkage','hl2-desc':'Minimal shrinkage stress and good marginal seal.',
+        'hl3-title':'High Gloss','hl3-desc':'Excellent and easy polishability to a high-gloss finish.',
+        'hl4-title':'TEGDMA/HEMA-free','hl4-desc':'Enhanced biocompatibility for sensitive patients.',
+        'about-label':'About the Product',
+        'about-title':'Flowable Composite for Precise Details',
+        'about-p1':'saremco ELS flow is a flowable microhybrid composite that shares the same TEGDMA- and HEMA-free formula as the original ELS, but in a consistency designed for minimally invasive procedures. It is ideal for small cavity restorations, extended fissure sealing, and use as a liner.',
+        'about-p2':'Its fine consistency allows precise and controlled application, while low polymerisation shrinkage and radiopacity ensure long-term clinical reliability. Available in 10 shades covering everyday clinical needs.',
+        'feat1':'Free from TEGDMA and HEMA',
+        'feat2':'Fine flow consistency for precise placement',
+        'feat3':'Low polymerisation shrinkage',
+        'feat4':'Excellent polishability to a high-gloss finish',
+        'feat5':'Radiopacity for easy radiographic verification',
+        'ind-label':'Indications',
+        'ind-title':'Where to Use ELS flow',
+        'ind1-title':'Small Cavities','ind1-desc':'Class I and III cavity restorations where precision is key.',
+        'ind2-title':'Fissure Sealing','ind2-desc':'Extended fissure sealing for protection of occlusal surfaces.',
+        'ind3-title':'Liner / Base','ind3-desc':'Application as a flowable base beneath conventional composites.',
+        'ind4-title':'Minimally Invasive','ind4-desc':'Ideal for restorative procedures with minimal tooth tissue loss.',
+        'shades-label':'Shades','shades-title':'Available Shades',
+        'shades-subtitle':'10 shades cover everyday needs, including bleach shades for whitened teeth.',
+        'specs-label':'Specifications','specs-title':'Technical Data',
+        'spec1-label':'Material Type','spec1-val':'Light-curing flowable microhybrid composite',
+        'spec2-label':'Packaging','spec2-val':'2 g syringe',
+        'spec3-label':'REF Number','spec3-val':'REF 7113',
+        'spec4-label':'Indications','spec4-val':'Small cavities, fissure sealing, liner/base',
+        'spec5-label':'Radiopacity','spec5-val':'Yes',
+        'spec6-label':'Free from','spec6-val':'TEGDMA, HEMA, TPO',
+        'cta-title':'Interested in Saremco ELS flow?',
+        'cta-desc':'Contact us for orders, samples, or more product information.',
+        'cta-btn':'Send an Inquiry',
+        'cta-note':'or write to us at info@gwtmedical.com',
         'footer-copy':'© 2026 GWT Medical. All rights reserved.',
         'footer-link1':'Home','footer-link3':'Contact',
       }
