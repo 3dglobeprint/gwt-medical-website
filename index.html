@@ -768,6 +768,37 @@
     .process-step h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
     .process-step p { font-size: 0.85rem; color: var(--grey-600); line-height: 1.6; }
 
+    /* ── CLIENTS ── */
+    .clients-section {
+      background: #fff;
+      padding: 72px 5%;
+      text-align: center;
+      border-top: 1px solid var(--grey-200);
+    }
+    .clients-section .section-title {
+      margin-bottom: 3rem;
+      color: var(--text);
+    }
+    .clients-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 3rem 4rem;
+    }
+    .clients-logos img {
+      height: 44px;
+      width: auto;
+      object-fit: contain;
+      filter: grayscale(100%);
+      opacity: 0.65;
+      transition: filter 0.25s, opacity 0.25s;
+    }
+    .clients-logos img:hover {
+      filter: grayscale(0%);
+      opacity: 1;
+    }
+
     /* ── CTA ── */
     .cta-section {
       background: var(--blue-pale);
@@ -1259,6 +1290,21 @@
     </div>
   </section>
 
+  <!-- CLIENTS -->
+  <section class="clients-section">
+    <h2 class="section-title" data-i18n="clients-title"></h2>
+    <div class="clients-logos">
+      <img src="brand_assets/matkovic.png" alt="Matković" />
+      <img src="brand_assets/Nova Med.png" alt="Nova Med" />
+      <img src="brand_assets/SFZG.png" alt="SFZG" />
+      <img src="brand_assets/APEX.png" alt="APEX" />
+      <img src="brand_assets/Identalia.webp" alt="Identalia" />
+      <img src="brand_assets/Maras.png" alt="Maras" />
+      <img src="brand_assets/Gnathos.png" alt="Gnathos" />
+      <img src="brand_assets/Breyer.png" alt="Breyer" />
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section" id="contact">
     <p class="section-label" data-i18n="cta-label"></p>
@@ -1400,6 +1446,9 @@
         'chip-red':     'Crvena',
         'chip-incisal': 'Incizalna',
 
+        /* CLIENTS */
+        'clients-title': 'Naši klijenti',
+
         /* CTA */
         'cta-label': 'Kontaktirajte nas',
         'cta-title': 'Spremi za uvođenje 3D tiska u vašu ordinaciju?',
@@ -1528,6 +1577,9 @@
         'chip-blue':    'Blue',
         'chip-red':     'Red',
         'chip-incisal': 'Incisal',
+
+        /* CLIENTS */
+        'clients-title': 'Our Clients',
 
         /* CTA */
         'cta-label': 'Get in Touch',
