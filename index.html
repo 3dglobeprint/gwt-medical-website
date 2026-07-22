@@ -202,13 +202,49 @@
     /* ── HERO ── */
     .hero {
       background: var(--blue);
-      padding: 140px 5% 80px;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .carousel { position: relative; min-height: 100vh; }
+
+    .carousel-slide {
+      position: absolute;
+      inset: 0;
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 4rem;
       align-items: center;
-      min-height: 100vh;
+      padding: 140px 5% 100px;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
     }
+
+    .carousel-slide.active { opacity: 1; pointer-events: all; }
+
+    .carousel-dots {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.75rem;
+      z-index: 10;
+    }
+
+    .carousel-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      border: 2px solid rgba(255,255,255,0.65);
+      cursor: pointer;
+      transition: background 0.25s, transform 0.25s;
+      padding: 0;
+    }
+
+    .carousel-dot.active { background: #fff; transform: scale(1.3); }
 
     .hero-text h1 {
       font-size: clamp(2rem, 4vw, 3.4rem);
@@ -786,7 +822,7 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      .hero { grid-template-columns: 1fr; padding-top: 100px; text-align: center; }
+      .carousel-slide { grid-template-columns: 1fr; padding-top: 100px; text-align: center; }
       .hero-image-wrap { display: none; }
       .product-grid { grid-template-columns: 1fr; }
       .apps-grid { grid-template-columns: 1fr 1fr; }
@@ -891,21 +927,54 @@
 
   <!-- HERO -->
   <section class="hero" id="top">
-    <div class="hero-text">
-      <p class="section-label" style="color:#7EC8F5;" data-i18n="hero-label"></p>
-      <h1 data-i18n="hero-h1"></h1>
-      <p data-i18n="hero-p"></p>
-      <div class="hero-buttons">
-        <a href="#product" class="btn-primary" data-i18n="hero-btn1"></a>
-        <a href="#gallery" class="btn-outline" data-i18n="hero-btn2"></a>
+    <div class="carousel">
+
+      <!-- Slide 1: Crowntec -->
+      <div class="carousel-slide active">
+        <div class="hero-text">
+          <p class="section-label" style="color:#7EC8F5;" data-i18n="hero-label"></p>
+          <h1 data-i18n="hero-h1"></h1>
+          <p data-i18n="hero-p"></p>
+          <div class="hero-buttons">
+            <a href="#product" class="btn-primary" data-i18n="hero-btn1"></a>
+            <a href="#gallery" class="btn-outline" data-i18n="hero-btn2"></a>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img src="brand_assets/crowntec.webp" alt="Saremco Print Crowntec" />
+          <div class="hero-badge">
+            <span class="dot"></span>
+            <span data-i18n="hero-badge"></span>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="hero-image-wrap">
-      <img src="brand_assets/crowntec.webp" alt="Saremco Print Crowntec" />
-      <div class="hero-badge">
-        <span class="dot"></span>
-        <span data-i18n="hero-badge"></span>
+
+      <!-- Slide 2: ELS Composite -->
+      <div class="carousel-slide">
+        <div class="hero-text">
+          <p class="section-label" style="color:#7EC8F5;" data-i18n="hero2-label"></p>
+          <h1 data-i18n="hero2-h1"></h1>
+          <p data-i18n="hero2-p"></p>
+          <div class="hero-buttons">
+            <a href="saremco-els.html" class="btn-primary" data-i18n="hero2-btn1"></a>
+            <a href="saremco-els-flow.html" class="btn-outline" data-i18n="hero2-btn2"></a>
+          </div>
+        </div>
+        <div class="hero-image-wrap">
+          <img src="brand_assets/els composite .png" alt="Saremco ELS Composite" />
+          <div class="hero-badge">
+            <span class="dot"></span>
+            <span data-i18n="hero2-badge"></span>
+          </div>
+        </div>
       </div>
+
+      <!-- Dot indicators -->
+      <div class="carousel-dots">
+        <button class="carousel-dot active" aria-label="Slide 1"></button>
+        <button class="carousel-dot" aria-label="Slide 2"></button>
+      </div>
+
     </div>
   </section>
 
@@ -1217,6 +1286,12 @@
         'hero-btn1':  'Istražite Crowntec',
         'hero-btn2':  'Pogledajte kliničke slučajeve',
         'hero-badge': 'MDR, CE, FDA 510(k) i TGA certifikati',
+        'hero2-label': 'Mikrohibridni kompozit – bez alergena',
+        'hero2-h1':   'Kompozit <span>bez TEGDMA i HEMA</span>',
+        'hero2-p':    'saremco ELS isporučuje iznimno nisko polimerizacijsko skupljanje, produljeno radno vrijeme i izvrsnu polirabilnost — bez TEGDMA i HEMA koji mogu izazvati kontaktne alergije. 22 nijanse za sve klase kaviteta.',
+        'hero2-btn1': 'Istražite ELS',
+        'hero2-btn2': 'ELS Flow →',
+        'hero2-badge': 'REF 7103 – bez TEGDMA, HEMA',
 
         /* STATS */
         'stat1':      'Savojna čvrstoća',
@@ -1339,6 +1414,12 @@
         'hero-p':     'GWT Medical delivers advanced ceramic composite resins for chairside and laboratory 3D printing — enabling same-day permanent crowns, inlays, onlays, veneers, and full-arch prosthetics.',
         'hero-btn1':  'Explore Crowntec',
         'hero-btn2':  'See Clinical Cases',
+        'hero2-label': 'Microhybrid Composite – Allergen-Free',
+        'hero2-h1':   'Composite <span>Without TEGDMA & HEMA</span>',
+        'hero2-p':    'saremco ELS delivers extremely low polymerisation shrinkage, extended working time and outstanding polishability — free from TEGDMA and HEMA monomers that may cause contact allergies. 22 shades for all cavity classes.',
+        'hero2-btn1': 'Explore ELS',
+        'hero2-btn2': 'ELS Flow →',
+        'hero2-badge': 'REF 7103 – TEGDMA & HEMA-free',
         'hero-badge': 'MDR, CE, FDA 510(k) and TGA Certified',
 
         /* STATS */
@@ -1462,6 +1543,36 @@
     }
 
     applyLang('hr');
+
+    // Carousel
+    (function() {
+      const slides = document.querySelectorAll('.carousel-slide');
+      const dots   = document.querySelectorAll('.carousel-dot');
+      let current  = 0;
+      let timer;
+
+      function goTo(n) {
+        slides[current].classList.remove('active');
+        dots[current].classList.remove('active');
+        current = ((n % slides.length) + slides.length) % slides.length;
+        slides[current].classList.add('active');
+        dots[current].classList.add('active');
+      }
+
+      function startTimer() {
+        timer = setInterval(function() { goTo(current + 1); }, 5000);
+      }
+
+      dots.forEach(function(dot, i) {
+        dot.addEventListener('click', function() {
+          clearInterval(timer);
+          goTo(i);
+          startTimer();
+        });
+      });
+
+      startTimer();
+    })();
 
   </script>
 
