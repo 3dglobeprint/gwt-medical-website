@@ -533,6 +533,17 @@
       font-size: 0.75rem;
       color: var(--grey-600);
       margin-top: 0.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+    .avail-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #22c55e;
+      flex-shrink: 0;
     }
 
     /* ── APPLICATIONS ── */
@@ -1405,7 +1416,7 @@
         'shades-title':   'Dostupne VITA nijanse',
         'shades-desc':    'Standardne zalihe boja pokrivaju cijeli raspon kliničkih potreba. Dodatne nijanse dostupne na upit.',
         'shade-bleach':   'Bijela nijansa',
-        'shade-stock':    'Standardna zaliha',
+        'shade-stock':    '<span class="avail-dot"></span>Dostupno',
         'shade-request':  'Na upit',
 
         /* APPLICATIONS */
@@ -1537,7 +1548,7 @@
         'shades-title':   'Available VITA Shades',
         'shades-desc':    'Standard stock shades covering the full range of clinical needs. Additional shades available upon request.',
         'shade-bleach':   'Bleach Shade',
-        'shade-stock':    'Standard stock',
+        'shade-stock':    '<span class="avail-dot"></span>Available',
         'shade-request':  'On request',
 
         /* APPLICATIONS */
