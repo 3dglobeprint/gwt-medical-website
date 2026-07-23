@@ -781,11 +781,11 @@
       font-size: clamp(1.36rem, 2.55vw, 2.04rem);
     }
     .clients-logos {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
       align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 3rem 4rem;
+      justify-items: center;
+      gap: 3rem 2rem;
     }
     .clients-logos img {
       height: 66px;
