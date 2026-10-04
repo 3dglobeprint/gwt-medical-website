@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png" />
   <link rel="shortcut icon" href="brand_assets/favicon-32.png" />
-  <title>Rayshape Edge Mini – GWT Medical</title>
+  <title>MASH P16L – GWT Medical</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -48,12 +48,16 @@
 
     /* HERO */
     .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 72px; }
-    .hero-bg { position: absolute; inset: 0; background-image: url('brand_assets/Rayshape Edge Mini - Banner.png'); background-size: cover; background-position: center; }
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,36,84,0.82) 0%, rgba(0,74,173,0.60) 55%, rgba(0,74,173,0.15) 100%); }
-    .hero-content { position: relative; z-index: 2; padding: 5% 5% 6%; max-width: 640px; }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(120deg, #001f5c 0%, #003580 40%, #004AAD 75%, #1A6DD4 100%); }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(26,109,212,0.35) 0%, transparent 65%); }
+    .hero-content { position: relative; z-index: 2; padding: 5% 5% 6%; max-width: 660px; }
     .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.9); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.4rem; }
     .hero-content h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
-    .hero-content p { color: rgba(255,255,255,0.78); font-size: 1.1rem; margin-bottom: 2rem; max-width: 480px; line-height: 1.7; }
+    .hero-content p { color: rgba(255,255,255,0.78); font-size: 1.1rem; margin-bottom: 2rem; max-width: 520px; line-height: 1.7; }
+    .hero-stat-row { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; }
+    .hero-stat { }
+    .hero-stat-val { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: #fff; line-height: 1; }
+    .hero-stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.65); margin-top: 0.25rem; letter-spacing: 0.02em; }
     .hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; color: var(--blue); font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
     .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
 
@@ -74,10 +78,14 @@
 
     /* INTRO */
     .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
-    .intro-text { }
     .intro-text p { color: var(--grey-600); margin-top: 1.5rem; line-height: 1.8; font-size: 1.02rem; }
-    .intro-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); }
-    .intro-image img { width: 100%; display: block; }
+    .intro-visual { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); display: flex; align-items: center; justify-content: center; min-height: 380px; }
+    .intro-visual-inner { text-align: center; padding: 3rem 2rem; }
+    .intro-visual-name { font-family: 'Poppins', sans-serif; font-size: 2.6rem; font-weight: 800; color: #fff; line-height: 1; letter-spacing: -0.02em; }
+    .intro-visual-sub { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; }
+    .intro-visual-specs { display: flex; gap: 2rem; justify-content: center; margin-top: 2rem; }
+    .intro-visual-spec-val { font-family: 'Poppins', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; }
+    .intro-visual-spec-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); margin-top: 0.2rem; }
 
     /* SPECS TABLE */
     .specs-wrap { max-width: 780px; margin: 3rem auto 0; }
@@ -88,17 +96,20 @@
     .specs-table td:first-child { font-weight: 600; color: var(--blue); width: 44%; }
     .specs-table tr:last-child td { border-bottom: none; }
 
+    /* FEATURE CARDS */
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .feature-card { background: var(--white); border: 1.5px solid var(--grey-200); border-radius: var(--radius); padding: 1.8rem; transition: border-color 0.2s, box-shadow 0.2s; }
+    .feature-card:hover { border-color: var(--blue); box-shadow: var(--shadow); }
+    .feature-card-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+    .feature-card h3 { font-size: 1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+    .feature-card p { font-size: 0.88rem; color: var(--grey-600); line-height: 1.6; }
+
     /* APPLICATIONS */
     .apps-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
     .app-pill { background: var(--white); border: 1.5px solid var(--grey-200); color: var(--text); font-size: 0.88rem; font-weight: 500; padding: 0.55rem 1.1rem; border-radius: 30px; transition: border-color 0.2s, color 0.2s, background 0.2s; }
     .app-pill:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-pale); }
 
-    /* RESULTS */
-    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
-    .results-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); }
-    .results-image img { width: 100%; display: block; }
-    .results-text h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--text); }
-    .results-text p { color: var(--grey-600); line-height: 1.8; margin-bottom: 1.5rem; font-size: 0.98rem; }
+    /* COMPAT */
     .compat-badges { display: flex; flex-direction: column; gap: 0.6rem; }
     .compat-badge { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--blue-pale); border-radius: 10px; border-left: 4px solid var(--blue); }
     .compat-badge-dot { width: 10px; height: 10px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
@@ -122,10 +133,14 @@
 
     @media (max-width: 900px) {
       .highlights-grid { grid-template-columns: repeat(2, 1fr); }
-      .intro-grid, .results-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .intro-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .features-grid { grid-template-columns: 1fr 1fr; }
+      .hero-stat-row { gap: 1.5rem; }
     }
     @media (max-width: 600px) {
       .highlights-grid { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .hero-stat-row { flex-wrap: wrap; gap: 1.2rem; }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -213,9 +228,23 @@
     <div class="hero-bg"></div>
     <div class="hero-content">
       <span class="hero-badge" data-i18n="hero-badge"></span>
-      <h1>Rayshape<br>Edge Mini</h1>
+      <h1>MASH P16L</h1>
       <p data-i18n="hero-desc"></p>
-      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20Rayshape%20Edge%20Mini" class="hero-cta" data-i18n="hero-cta"></a>
+      <div class="hero-stat-row">
+        <div class="hero-stat">
+          <div class="hero-stat-val">14 µm</div>
+          <div class="hero-stat-label" data-i18n="stat1-label"></div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">16K</div>
+          <div class="hero-stat-label" data-i18n="stat2-label"></div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-val">250</div>
+          <div class="hero-stat-label" data-i18n="stat3-label"></div>
+        </div>
+      </div>
+      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20MASH%20P16L" class="hero-cta" data-i18n="hero-cta"></a>
     </div>
   </section>
 
@@ -228,12 +257,12 @@
         <p data-i18n="hl1-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">📱</span>
+        <span class="highlight-icon">⚡</span>
         <h3 data-i18n="hl2-title"></h3>
         <p data-i18n="hl2-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">🔄</span>
+        <span class="highlight-icon">🔬</span>
         <h3 data-i18n="hl3-title"></h3>
         <p data-i18n="hl3-desc"></p>
       </div>
@@ -254,8 +283,25 @@
         <p data-i18n="intro-p1"></p>
         <p data-i18n="intro-p2"></p>
       </div>
-      <div class="intro-image">
-        <img src="brand_assets/Rayshape Edge Mini - Banner.png" alt="Rayshape Edge Mini" />
+      <div class="intro-visual">
+        <div class="intro-visual-inner">
+          <div class="intro-visual-name">P16L</div>
+          <div class="intro-visual-sub">3MASH Dental</div>
+          <div class="intro-visual-specs">
+            <div>
+              <div class="intro-visual-spec-val">14 µm</div>
+              <div class="intro-visual-spec-label" data-i18n="spec-xy-label"></div>
+            </div>
+            <div>
+              <div class="intro-visual-spec-val">385 nm</div>
+              <div class="intro-visual-spec-label" data-i18n="spec-light-label"></div>
+            </div>
+            <div>
+              <div class="intro-visual-spec-val">16K</div>
+              <div class="intro-visual-spec-label">LCD</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -269,26 +315,62 @@
     <div class="specs-wrap">
       <table class="specs-table">
         <tbody>
-          <tr><td data-i18n="spec-buildvol-label"></td><td data-i18n="spec-buildvol-val"></td></tr>
-          <tr><td data-i18n="spec-pixel-label"></td><td data-i18n="spec-pixel-val"></td></tr>
-          <tr><td data-i18n="spec-layer-label"></td><td data-i18n="spec-layer-val"></td></tr>
-          <tr><td data-i18n="spec-speed-label"></td><td data-i18n="spec-speed-val"></td></tr>
+          <tr><td data-i18n="spec-xy-label"></td><td>14 × 19 µm</td></tr>
           <tr><td data-i18n="spec-lcd-label"></td><td data-i18n="spec-lcd-val"></td></tr>
-          <tr><td data-i18n="spec-res-label"></td><td data-i18n="spec-res-val"></td></tr>
-          <tr><td data-i18n="spec-light-label"></td><td data-i18n="spec-light-val"></td></tr>
-          <tr><td data-i18n="spec-touch-label"></td><td data-i18n="spec-touch-val"></td></tr>
-          <tr><td data-i18n="spec-conn-label"></td><td data-i18n="spec-conn-val"></td></tr>
-          <tr><td data-i18n="spec-power-label"></td><td data-i18n="spec-power-val"></td></tr>
-          <tr><td data-i18n="spec-dims-label"></td><td data-i18n="spec-dims-val"></td></tr>
-          <tr><td data-i18n="spec-weight-label"></td><td data-i18n="spec-weight-val"></td></tr>
+          <tr><td data-i18n="spec-light-label"></td><td>385 nm UV LED</td></tr>
+          <tr><td data-i18n="spec-capacity-label"></td><td data-i18n="spec-capacity-val"></td></tr>
+          <tr><td data-i18n="spec-platforms-label"></td><td data-i18n="spec-platforms-val"></td></tr>
+          <tr><td data-i18n="spec-tank-label"></td><td data-i18n="spec-tank-val"></td></tr>
+          <tr><td data-i18n="spec-heating-label"></td><td data-i18n="spec-heating-val"></td></tr>
+          <tr><td data-i18n="spec-calib-label"></td><td data-i18n="spec-calib-val"></td></tr>
+          <tr><td data-i18n="spec-rails-label"></td><td data-i18n="spec-rails-val"></td></tr>
           <tr><td data-i18n="spec-software-label"></td><td data-i18n="spec-software-val"></td></tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <!-- APPLICATIONS -->
+  <!-- KEY FEATURES -->
   <section class="section">
+    <p class="section-label" data-i18n="features-label"></p>
+    <h2 class="section-title" data-i18n="features-title"></h2>
+    <p class="section-subtitle" data-i18n="features-subtitle"></p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-card-icon">📐</span>
+        <h3 data-i18n="feat1-title"></h3>
+        <p data-i18n="feat1-desc"></p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">🌡️</span>
+        <h3 data-i18n="feat2-title"></h3>
+        <p data-i18n="feat2-desc"></p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">⚙️</span>
+        <h3 data-i18n="feat3-title"></h3>
+        <p data-i18n="feat3-desc"></p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">💧</span>
+        <h3 data-i18n="feat4-title"></h3>
+        <p data-i18n="feat4-desc"></p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">🏭</span>
+        <h3 data-i18n="feat5-title"></h3>
+        <p data-i18n="feat5-desc"></p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-card-icon">🔓</span>
+        <h3 data-i18n="feat6-title"></h3>
+        <p data-i18n="feat6-desc"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section class="section section-alt">
     <p class="section-label" data-i18n="apps-label"></p>
     <h2 class="section-title" data-i18n="apps-title"></h2>
     <p class="section-subtitle" data-i18n="apps-subtitle"></p>
@@ -300,30 +382,12 @@
       <span class="app-pill" data-i18n="app5"></span>
       <span class="app-pill" data-i18n="app6"></span>
       <span class="app-pill" data-i18n="app7"></span>
-      <span class="app-pill" data-i18n="app8"></span>
-      <span class="app-pill" data-i18n="app9"></span>
-      <span class="app-pill" data-i18n="app10"></span>
-      <span class="app-pill" data-i18n="app11"></span>
-      <span class="app-pill" data-i18n="app12"></span>
     </div>
-  </section>
-
-  <!-- RESULTS -->
-  <section class="section section-alt">
-    <p class="section-label" data-i18n="results-label"></p>
-    <h2 class="section-title" data-i18n="results-title"></h2>
-    <div class="results-grid">
-      <div class="results-image">
-        <img src="brand_assets/Rayshape Edge Mini - printed crowns.png" alt="Printed dental crowns" />
-      </div>
-      <div class="results-text">
-        <h3 data-i18n="results-h3"></h3>
-        <p data-i18n="results-p"></p>
-        <div class="compat-badges">
-          <div class="compat-badge"><div class="compat-badge-dot"></div><span>saremco CROWNTEC</span></div>
-          <div class="compat-badge"><div class="compat-badge-dot"></div><span>saremco DENTURETEC</span></div>
-          <div class="compat-badge"><div class="compat-badge-dot"></div><span data-i18n="compat-third"></span></div>
-        </div>
+    <div style="margin-top: 2.5rem;">
+      <div class="compat-badges" style="max-width: 520px;">
+        <div class="compat-badge"><div class="compat-badge-dot"></div><span>saremco CROWNTEC</span></div>
+        <div class="compat-badge"><div class="compat-badge-dot"></div><span>saremco DENTURETEC</span></div>
+        <div class="compat-badge"><div class="compat-badge-dot"></div><span data-i18n="compat-third"></span></div>
       </div>
     </div>
   </section>
@@ -332,7 +396,7 @@
   <section class="cta-section">
     <h2 data-i18n="cta-title"></h2>
     <p data-i18n="cta-desc"></p>
-    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20Rayshape%20Edge%20Mini" class="cta-btn" data-i18n="cta-btn"></a>
+    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20MASH%20P16L" class="cta-btn" data-i18n="cta-btn"></a>
     <p class="cta-note" data-i18n="cta-note"></p>
   </section>
 
@@ -355,43 +419,50 @@
         'nav-cements':'Cementi','nav-primers':'Primeri','nav-characterization':'Karakterizacija',
         'nav-models-resin':'Smole za modele','nav-surgical-resin':'Smole za kirurške vodilice',
         'nav-services':'Usluge','nav-education':'Edukacija','nav-support':'Podrška','nav-contact':'Kontakt',
-        'hero-badge':'Dentalni LCD 3D printer',
-        'hero-desc':'Visoka preciznost, brza izrada i otvoreni materijalni sustav za zahtjevnu dentalnu produkciju.',
+
+        'hero-badge':'Profesionalni dentalni 3D printer',
+        'hero-desc':'Vrhunska preciznost od 14 µm s 16K mono LCD zaslonom i 385 nm UV tehnologijom za maksimalnu kvalitetu dentalnih nadomjestaka.',
+        'stat1-label':'XY preciznost','stat2-label':'Mono LCD zaslon','stat3-label':'Krunica po runu',
         'hero-cta':'Zatražite ponudu →',
-        'hl1-title':'Visoka preciznost','hl1-desc':'Piksel veličine 50 µm za iznimnu razinu detalja.',
-        'hl2-title':'Intuitivan rad','hl2-desc':'5″ osjetljivi zaslon i jednostavno sučelje.',
-        'hl3-title':'Dvije platforme','hl3-desc':'Prilagodljive platforme za veće ili manje serije.',
-        'hl4-title':'Otvoreni sustav','hl4-desc':'Kompatibilan sa saremco i trećim materijalima.',
+
+        'hl1-title':'14 µm preciznost','hl1-desc':'16K mono LCD s XY rezolucijom 14 × 19 µm za oštre rubove i savršeno rubno zatvaranje.',
+        'hl2-title':'250 krunica odjednom','hl2-desc':'Jedna serija ispisa = do 250 kruničnih jedinica bez kompromisa u kvaliteti.',
+        'hl3-title':'385 nm tehnologija','hl3-desc':'Optimizirana valna duljina za preciznu polimerizaciju i izvrsnu biokompatibilnost materijala.',
+        'hl4-title':'Otvoreni sustav','hl4-desc':'Kompatibilan sa saremco smolama i materijalima trećih strana putem Chitubox slicera.',
+
         'intro-label':'O printeru',
-        'intro-title':'Preciznost u svakom detalju',
-        'intro-p1':'Rayshape Edge Mini dentalni je 3D printer razvijen za zahtjevna klinička i laboratorijska okruženja. Kombinira mono LCD tehnologiju visoke razlučivosti s naprednom UV LED matricom kako bi svaki otisak bio precizan, ponovljiv i spreman za direktnu kliničku primjenu.',
-        'intro-p2':'Kompaktnog oblika, a impresivnih mogućnosti – Edge Mini idealan je za ordinacije i laboratorije koji žele pouzdanu produkciju krunskih radova, kirurških vodilica, udlaga i ostalih dentalnih aplikacija bez kompromisa u kvaliteti.',
+        'intro-title':'Industrijska preciznost za dentalnu produkciju',
+        'intro-p1':'MASH P16L profesionalni je dentalni 3D printer koji kombinira 16K monokromatski LCD zaslon s 385 nm UV tehnologijom kako bi postigao iznimnu razinu detalja od svega 14 µm. Razvijen za visoku proizvodnost, printer podržava ispis do 250 kruničnih jedinica u jednom runu.',
+        'intro-p2':'Zahvaljujući 8-točkastom kalibracijskom sustavu, integriranom grijanju posude za smolu, automatskom sustavu punjenja od 1200 ml te industrijskim Hiwin linearnim vodilicama, P16L nudi pouzdanost i konzistentnost kakvu zahtijevaju zahtjevni dentalni laboratoriji i klinike.',
+
         'specs-label':'Specifikacije','specs-title':'Tehnički podaci',
-        'spec-buildvol-label':'Volumen gradnje','spec-buildvol-val':'192 × 120 × 200 mm',
-        'spec-pixel-label':'Veličina piksela','spec-pixel-val':'50 µm',
-        'spec-layer-label':'Debljina sloja','spec-layer-val':'0,025 – 0,2 mm',
-        'spec-speed-label':'Brzina ispisa','spec-speed-val':'do 50 mm/h',
-        'spec-lcd-label':'LCD zaslon','spec-lcd-val':'10″ Mono LCD, 8K',
-        'spec-res-label':'Razlučivost','spec-res-val':'7680 × 4320 px',
-        'spec-light-label':'Izvor svjetla','spec-light-val':'UV LED matrica, 405 nm',
-        'spec-touch-label':'Upravljanje','spec-touch-val':'5″ osjetljivi zaslon u boji',
-        'spec-conn-label':'Povezivost','spec-conn-val':'USB, Wi-Fi, Ethernet',
-        'spec-power-label':'Napajanje','spec-power-val':'100 – 240 V AC, 50/60 Hz',
-        'spec-dims-label':'Dimenzije uređaja','spec-dims-val':'330 × 330 × 590 mm',
-        'spec-weight-label':'Masa','spec-weight-val':'~18 kg',
-        'spec-software-label':'Softver za rezanje','spec-software-val':'Rayshape Slicer',
+        'spec-xy-label':'XY preciznost','spec-lcd-label':'LCD zaslon','spec-lcd-val':'16K Mono LCD',
+        'spec-light-label':'Izvor svjetla',
+        'spec-capacity-label':'Kapacitet ispisa','spec-capacity-val':'Do 250 kruničnih jedinica po runu',
+        'spec-platforms-label':'Platforme gradnje','spec-platforms-val':'Dual – velika površina i brzi ispis',
+        'spec-tank-label':'Posuda za smolu','spec-tank-val':'1200 ml, automatsko punjenje sa senzorom razine',
+        'spec-heating-label':'Sustav grijanja','spec-heating-val':'Integriran, 25 °C ili 30 °C',
+        'spec-calib-label':'Kalibracija','spec-calib-val':'8-točkasta vertikalna kalibracija',
+        'spec-rails-label':'Mehanika','spec-rails-val':'Hiwin linearne vodilice s kuglično-vijčanim sustavom',
+        'spec-software-label':'Softver za rezanje','spec-software-val':'Chitubox i kompatibilni sliceri',
+
+        'features-label':'Ključne prednosti','features-title':'Dizajnirano za zahtjevne laboratorije',
+        'features-subtitle':'Svaka komponenta P16L uređaja osmišljena je s jednim ciljem – pouzdanom, visoko preciznom dentalnom produkcijom.',
+        'feat1-title':'8-točkasta kalibracija','feat1-desc':'Napredno kalibracijsko rješenje koje jednom postavljeno ostaje stabilno tjednima bez potrebe za ponovnom kalibracijom.',
+        'feat2-title':'Integrirana toplinska stabilizacija','feat2-desc':'Grijanje posude za smolu na 25 °C ili 30 °C osigurava konzistentna svojstva materijala neovisno o temperaturi okoline.',
+        'feat3-title':'Hiwin industrijska mehanika','feat3-desc':'Precizne linearne vodilice i kuglično-vijčani sustav koji garantiraju ponovljivost i dugovječnost uređaja.',
+        'feat4-title':'Automatsko punjenje smole','feat4-desc':'Posuda kapaciteta 1200 ml s automatskim senzorom razine eliminira potrebu za ručnim punjenjem tijekom dugih serija ispisa.',
+        'feat5-title':'Visoka produktivnost','feat5-desc':'Dual platformski sustav i optimizirana brzina ispisa omogućuju izvanrednu produktivnost po satu rada uređaja.',
+        'feat6-title':'Otvoreni materijalni sustav','feat6-desc':'Sloboda odabira smola – koristite saremco materijale ili validirane smole trećih strana putem Chitubox sučelja.',
+
         'apps-label':'Primjena','apps-title':'Za svaku dentalnu indikaciju',
-        'apps-subtitle':'Edge Mini podržava širok raspon dentalnih aplikacija – od protetike do ortodoncije.',
-        'app1':'Kirurške vodilice','app2':'Udlage (splints)','app3':'Gingivalne maske',
-        'app4':'Try-in proteze','app5':'Individualne žlice','app6':'Zubi za proteze',
-        'app7':'Studijski modeli','app8':'Aligneri','app9':'Privremene restauracije',
-        'app10':'Indirektno lijepljenje','app11':'Definitavne restauracije','app12':'Kalupni radovi',
-        'results-label':'Rezultati','results-title':'Besprijekorna estetika, verificirana kvaliteta',
-        'results-h3':'Optimizirano za saremco materijale',
-        'results-p':'U suradnji s tvrtkom Saremco, Rayshape Edge Mini optimiziran je za postizanje vrhunskih rezultata s materijalima poput CROWNTEC i DENTURETEC smola. Svaki print prolazi kalibriranim profilima koji osiguravaju konzistentnost boje, rubnog zatvaranja i mehaničkih svojstava.',
-        'compat-third':'Otvoreni sustav – kompatibilan s trećim smolama',
-        'cta-title':'Zainteresirani za Edge Mini?',
-        'cta-desc':'Javite nam se za ponudu, demonstraciju ili više tehničkih informacija. Odgovaramo u roku 24 sata.',
+        'apps-subtitle':'MASH P16L podržava kompletan spektar dentalnih aplikacija, od protetike do ortodoncije.',
+        'app1':'Privremene i trajne restauracije','app2':'Precizni dijagnostički modeli','app3':'Implantološki modeli',
+        'app4':'Noćne udlage i splintovi','app5':'Estetski mock-up i wax-up','app6':'Ortodontski modeli','app7':'Digitalni workflow za proteze',
+        'compat-third':'Otvoreni sustav – kompatibilan s materijalima trećih strana',
+
+        'cta-title':'Zainteresirani za MASH P16L?',
+        'cta-desc':'Kontaktirajte nas za ponudu, demonstraciju ili više tehničkih informacija. Odgovaramo u roku 24 sata.',
         'cta-btn':'Pošaljite upit',
         'cta-note':'ili nas kontaktirajte na medical@gwt.hr',
         'footer-copy':'© 2026 GWT Medical. Sva prava pridržana.',
@@ -403,42 +474,49 @@
         'nav-cements':'Cements','nav-primers':'Primers','nav-characterization':'Characterization',
         'nav-models-resin':'Model Resins','nav-surgical-resin':'Surgical Guide Resins',
         'nav-services':'Services','nav-education':'Education','nav-support':'Support','nav-contact':'Contact',
-        'hero-badge':'Dental LCD 3D Printer',
-        'hero-desc':'High precision, fast throughput and an open material system for demanding dental production.',
+
+        'hero-badge':'Professional Dental 3D Printer',
+        'hero-desc':'Ultimate 14 µm precision with a 16K mono LCD screen and 385 nm UV technology for maximum dental restoration quality.',
+        'stat1-label':'XY precision','stat2-label':'Mono LCD screen','stat3-label':'Crowns per run',
         'hero-cta':'Request a Quote →',
-        'hl1-title':'High Precision','hl1-desc':'50 µm pixel size for exceptional detail.',
-        'hl2-title':'Intuitive Operation','hl2-desc':'5″ touchscreen and simple interface.',
-        'hl3-title':'Two Platforms','hl3-desc':'Flexible build platforms for larger or smaller batches.',
-        'hl4-title':'Open System','hl4-desc':'Compatible with saremco and third-party resins.',
+
+        'hl1-title':'14 µm Precision','hl1-desc':'16K mono LCD with 14 × 19 µm XY resolution for sharp margins and a perfect fit.',
+        'hl2-title':'250 Crowns at Once','hl2-desc':'One print run = up to 250 crown units without any compromise in quality.',
+        'hl3-title':'385 nm Technology','hl3-desc':'Optimized wavelength for precise polymerization and excellent material biocompatibility.',
+        'hl4-title':'Open System','hl4-desc':'Compatible with saremco resins and third-party materials via Chitubox slicer.',
+
         'intro-label':'About the Printer',
-        'intro-title':'Precision in Every Detail',
-        'intro-p1':'The Rayshape Edge Mini is a dental 3D printer developed for demanding clinical and laboratory environments. It combines high-resolution mono LCD technology with an advanced UV LED array to ensure every print is precise, repeatable, and ready for direct clinical use.',
-        'intro-p2':'Compact in form but impressive in capability – the Edge Mini is ideal for practices and labs that want reliable production of crowns, surgical guides, splints, and other dental applications without compromising on quality.',
+        'intro-title':'Industrial Precision for Dental Production',
+        'intro-p1':'The MASH P16L is a professional dental 3D printer that combines a 16K monochrome LCD screen with 385 nm UV technology to achieve an exceptional resolution of just 14 µm. Built for high throughput, the printer supports printing up to 250 crown units in a single run.',
+        'intro-p2':'Thanks to an 8-point calibration system, integrated resin tank heating, a 1200 ml automatic filling system, and industrial-grade Hiwin linear rails, the P16L delivers the reliability and consistency demanded by high-volume dental labs and clinics.',
+
         'specs-label':'Specifications','specs-title':'Technical Data',
-        'spec-buildvol-label':'Build Volume','spec-buildvol-val':'192 × 120 × 200 mm',
-        'spec-pixel-label':'Pixel Size','spec-pixel-val':'50 µm',
-        'spec-layer-label':'Layer Thickness','spec-layer-val':'0.025 – 0.2 mm',
-        'spec-speed-label':'Print Speed','spec-speed-val':'up to 50 mm/h',
-        'spec-lcd-label':'LCD Screen','spec-lcd-val':'10″ Mono LCD, 8K',
-        'spec-res-label':'Resolution','spec-res-val':'7680 × 4320 px',
-        'spec-light-label':'Light Source','spec-light-val':'UV LED Array, 405 nm',
-        'spec-touch-label':'Control','spec-touch-val':'5″ color touchscreen',
-        'spec-conn-label':'Connectivity','spec-conn-val':'USB, Wi-Fi, Ethernet',
-        'spec-power-label':'Power Supply','spec-power-val':'100 – 240 V AC, 50/60 Hz',
-        'spec-dims-label':'Machine Dimensions','spec-dims-val':'330 × 330 × 590 mm',
-        'spec-weight-label':'Weight','spec-weight-val':'~18 kg',
-        'spec-software-label':'Slicing Software','spec-software-val':'Rayshape Slicer',
+        'spec-xy-label':'XY Precision','spec-lcd-label':'LCD Screen','spec-lcd-val':'16K Mono LCD',
+        'spec-light-label':'Light Source',
+        'spec-capacity-label':'Print Capacity','spec-capacity-val':'Up to 250 crown units per run',
+        'spec-platforms-label':'Build Platforms','spec-platforms-val':'Dual – large-area and fast-print',
+        'spec-tank-label':'Resin Tank','spec-tank-val':'1200 ml, automatic filling with level sensor',
+        'spec-heating-label':'Heating System','spec-heating-val':'Integrated, 25 °C or 30 °C',
+        'spec-calib-label':'Calibration','spec-calib-val':'8-point vertical calibration system',
+        'spec-rails-label':'Mechanics','spec-rails-val':'Hiwin linear rails with ball screw system',
+        'spec-software-label':'Slicing Software','spec-software-val':'Chitubox and compatible slicers',
+
+        'features-label':'Key Advantages','features-title':'Designed for Demanding Laboratories',
+        'features-subtitle':'Every component of the P16L is engineered with one goal in mind: reliable, high-precision dental production.',
+        'feat1-title':'8-Point Calibration','feat1-desc':'Advanced calibration that stays stable for weeks once set, eliminating the need for frequent recalibration.',
+        'feat2-title':'Integrated Thermal Stability','feat2-desc':'Resin tank heating at 25 °C or 30 °C ensures consistent material properties regardless of ambient temperature.',
+        'feat3-title':'Hiwin Industrial Mechanics','feat3-desc':'Precision linear rails and ball screw system that guarantee repeatability and long-term durability.',
+        'feat4-title':'Automatic Resin Feeding','feat4-desc':'1200 ml tank with automatic level sensor eliminates manual refilling during long print runs.',
+        'feat5-title':'High Productivity','feat5-desc':'Dual platform system and optimized print speed deliver outstanding output per hour of machine operation.',
+        'feat6-title':'Open Material System','feat6-desc':'Freedom to choose your resin — use saremco materials or validated third-party resins via the Chitubox interface.',
+
         'apps-label':'Applications','apps-title':'For Every Dental Indication',
-        'apps-subtitle':'The Edge Mini supports a wide range of dental applications – from prosthetics to orthodontics.',
-        'app1':'Surgical Guides','app2':'Splints','app3':'Gingiva Masks',
-        'app4':'Try-in Dentures','app5':'Custom Trays','app6':'Denture Teeth',
-        'app7':'Study Models','app8':'Aligners','app9':'Temporary Restorations',
-        'app10':'Indirect Bonding','app11':'Definitive Restorations','app12':'Cast Work',
-        'results-label':'Results','results-title':'Flawless Aesthetics, Verified Quality',
-        'results-h3':'Optimized for saremco Materials',
-        'results-p':'In collaboration with Saremco, the Rayshape Edge Mini has been optimized to achieve outstanding results with materials such as CROWNTEC and DENTURETEC resins. Every print runs through calibrated profiles that ensure consistency in shade, marginal fit, and mechanical properties.',
+        'apps-subtitle':'The MASH P16L supports the full spectrum of dental applications, from prosthetics to orthodontics.',
+        'app1':'Temporary & permanent restorations','app2':'Precision die models','app3':'Implant models',
+        'app4':'Night guards & splints','app5':'Aesthetic mock-ups & wax-ups','app6':'Orthodontic models','app7':'Digital denture workflows',
         'compat-third':'Open system – compatible with third-party resins',
-        'cta-title':'Interested in the Edge Mini?',
+
+        'cta-title':'Interested in the MASH P16L?',
         'cta-desc':'Contact us for a quote, demonstration, or more technical information. We respond within 24 hours.',
         'cta-btn':'Send an Inquiry',
         'cta-note':'or reach us at medical@gwt.hr',
