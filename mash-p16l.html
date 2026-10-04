@@ -48,8 +48,8 @@
 
     /* HERO */
     .hero { position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden; padding-top: 72px; }
-    .hero-bg { position: absolute; inset: 0; background: linear-gradient(120deg, #001f5c 0%, #003580 40%, #004AAD 75%, #1A6DD4 100%); }
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(26,109,212,0.35) 0%, transparent 65%); }
+    .hero-bg { position: absolute; inset: 0; background-image: url('brand_assets/mash-p16l.webp'); background-size: contain; background-position: right center; background-repeat: no-repeat; background-color: #001f5c; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(105deg, rgba(0,28,80,0.92) 0%, rgba(0,53,128,0.80) 50%, rgba(0,74,173,0.25) 100%); }
     .hero-content { position: relative; z-index: 2; padding: 5% 5% 6%; max-width: 660px; }
     .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.9); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.4rem; }
     .hero-content h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 1rem; }
@@ -79,13 +79,8 @@
     /* INTRO */
     .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .intro-text p { color: var(--grey-600); margin-top: 1.5rem; line-height: 1.8; font-size: 1.02rem; }
-    .intro-visual { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); display: flex; align-items: center; justify-content: center; min-height: 380px; }
-    .intro-visual-inner { text-align: center; padding: 3rem 2rem; }
-    .intro-visual-name { font-family: 'Poppins', sans-serif; font-size: 2.6rem; font-weight: 800; color: #fff; line-height: 1; letter-spacing: -0.02em; }
-    .intro-visual-sub { font-size: 0.9rem; color: rgba(255,255,255,0.6); margin-top: 0.5rem; letter-spacing: 0.12em; text-transform: uppercase; }
-    .intro-visual-specs { display: flex; gap: 2rem; justify-content: center; margin-top: 2rem; }
-    .intro-visual-spec-val { font-family: 'Poppins', sans-serif; font-size: 1.6rem; font-weight: 700; color: #fff; }
-    .intro-visual-spec-label { font-size: 0.72rem; color: rgba(255,255,255,0.55); margin-top: 0.2rem; }
+    .intro-visual { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: var(--grey-100); }
+    .intro-visual img { width: 100%; display: block; object-fit: contain; }
 
     /* SPECS TABLE */
     .specs-wrap { max-width: 780px; margin: 3rem auto 0; }
@@ -284,24 +279,7 @@
         <p data-i18n="intro-p2"></p>
       </div>
       <div class="intro-visual">
-        <div class="intro-visual-inner">
-          <div class="intro-visual-name">P16L</div>
-          <div class="intro-visual-sub">3MASH Dental</div>
-          <div class="intro-visual-specs">
-            <div>
-              <div class="intro-visual-spec-val">14 µm</div>
-              <div class="intro-visual-spec-label" data-i18n="spec-xy-label"></div>
-            </div>
-            <div>
-              <div class="intro-visual-spec-val">385 nm</div>
-              <div class="intro-visual-spec-label" data-i18n="spec-light-label"></div>
-            </div>
-            <div>
-              <div class="intro-visual-spec-val">16K</div>
-              <div class="intro-visual-spec-label">LCD</div>
-            </div>
-          </div>
-        </div>
+        <img src="brand_assets/mash-p16l.webp" alt="MASH P16L dental 3D printer" />
       </div>
     </div>
   </section>
