@@ -792,21 +792,34 @@
     /* ── CLIENTS ── */
     .clients-section {
       background: #fff;
-      padding: 72px 5%;
+      padding: 72px 0;
       text-align: center;
       border-top: 1px solid var(--grey-200);
+      overflow: hidden;
     }
     .clients-section .section-title {
       margin-bottom: 3rem;
       color: var(--text);
       font-size: clamp(1.36rem, 2.55vw, 2.04rem);
     }
+    .clients-marquee-wrap {
+      overflow: hidden;
+      width: 100%;
+      mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+    }
     .clients-logos {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
+      display: flex;
       align-items: center;
-      justify-items: center;
-      gap: 3rem 2rem;
+      width: max-content;
+      animation: marquee-scroll 32s linear infinite;
+    }
+    .clients-logos:hover {
+      animation-play-state: paused;
+    }
+    @keyframes marquee-scroll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
     }
     .clients-logos img {
       height: 66px;
@@ -815,19 +828,22 @@
       filter: grayscale(100%);
       opacity: 0.65;
       transition: filter 0.25s, opacity 0.25s;
+      margin: 0 3rem;
+      flex-shrink: 0;
     }
     .clients-logos img:hover {
       filter: grayscale(0%);
       opacity: 1;
     }
-    .clients-logos img:nth-child(4)  { height: 88px;  } /* APEX – squarish */
-    .clients-logos img:nth-child(5)  { height: 42px;  } /* Identalia – very wide */
-    .clients-logos img:nth-child(8)  { height: 36px;  } /* Breyer – slightly reduced */
-    .clients-logos img:nth-child(9)  { height: 106px; } /* Manola – square with heavy padding */
-    .clients-logos img:nth-child(10) { height: 80px;  } /* EDC – needs more height */
-    .clients-logos img:nth-child(11) { height: 72px;  } /* Bakovic – reduced */
-    .clients-logos img:nth-child(12) { height: 36px;  } /* Slivar – very wide, reduced */
-    .clients-logos img:nth-child(14) { height: 88px;  } /* Erak – square */
+    /* Per-logo height overrides — applied to both original + duplicate set via nth-child pattern */
+    .clients-logos img[alt="APEX"]      { height: 88px;  }
+    .clients-logos img[alt="Identalia"] { height: 42px;  }
+    .clients-logos img[alt="Breyer"]    { height: 36px;  }
+    .clients-logos img[alt="Manola"]    { height: 106px; }
+    .clients-logos img[alt="EDC"]       { height: 80px;  }
+    .clients-logos img[alt="Baković"]   { height: 72px;  }
+    .clients-logos img[alt="Slivar"]    { height: 36px;  }
+    .clients-logos img[alt="Erak"]      { height: 88px;  }
 
     /* ── CTA ── */
     .cta-section {
@@ -1329,21 +1345,39 @@
   <!-- CLIENTS -->
   <section class="clients-section">
     <h2 class="section-title" data-i18n="clients-title"></h2>
-    <div class="clients-logos">
-      <img src="brand_assets/matkovic.png" alt="Matković" />
-      <img src="brand_assets/Nova Med.png" alt="Nova Med" />
-      <img src="brand_assets/SFZG.png" alt="SFZG" />
-      <img src="brand_assets/APEX.png" alt="APEX" />
-      <img src="brand_assets/Identalia.webp" alt="Identalia" />
-      <img src="brand_assets/Maras.png" alt="Maras" />
-      <img src="brand_assets/Gnathos.png" alt="Gnathos" />
-      <img src="brand_assets/Breyer.png" alt="Breyer" />
-      <img src="brand_assets/manola.png" alt="Manola" />
-      <img src="brand_assets/EDC.png" alt="EDC" />
-      <img src="brand_assets/Bakovic.png" alt="Baković" />
-      <img src="brand_assets/slivar.png" alt="Slivar" />
-      <img src="brand_assets/Horvat.png" alt="Horvat" />
-      <img src="brand_assets/Erak.png" alt="Erak" />
+    <div class="clients-marquee-wrap">
+      <div class="clients-logos">
+        <!-- Original set -->
+        <img src="brand_assets/matkovic.png" alt="Matković" />
+        <img src="brand_assets/Nova Med.png" alt="Nova Med" />
+        <img src="brand_assets/SFZG.png" alt="SFZG" />
+        <img src="brand_assets/APEX.png" alt="APEX" />
+        <img src="brand_assets/Identalia.webp" alt="Identalia" />
+        <img src="brand_assets/Maras.png" alt="Maras" />
+        <img src="brand_assets/Gnathos.png" alt="Gnathos" />
+        <img src="brand_assets/Breyer.png" alt="Breyer" />
+        <img src="brand_assets/manola.png" alt="Manola" />
+        <img src="brand_assets/EDC.png" alt="EDC" />
+        <img src="brand_assets/Bakovic.png" alt="Baković" />
+        <img src="brand_assets/slivar.png" alt="Slivar" />
+        <img src="brand_assets/Horvat.png" alt="Horvat" />
+        <img src="brand_assets/Erak.png" alt="Erak" />
+        <!-- Duplicate set for seamless loop -->
+        <img src="brand_assets/matkovic.png" alt="Matković" aria-hidden="true" />
+        <img src="brand_assets/Nova Med.png" alt="Nova Med" aria-hidden="true" />
+        <img src="brand_assets/SFZG.png" alt="SFZG" aria-hidden="true" />
+        <img src="brand_assets/APEX.png" alt="APEX" aria-hidden="true" />
+        <img src="brand_assets/Identalia.webp" alt="Identalia" aria-hidden="true" />
+        <img src="brand_assets/Maras.png" alt="Maras" aria-hidden="true" />
+        <img src="brand_assets/Gnathos.png" alt="Gnathos" aria-hidden="true" />
+        <img src="brand_assets/Breyer.png" alt="Breyer" aria-hidden="true" />
+        <img src="brand_assets/manola.png" alt="Manola" aria-hidden="true" />
+        <img src="brand_assets/EDC.png" alt="EDC" aria-hidden="true" />
+        <img src="brand_assets/Bakovic.png" alt="Baković" aria-hidden="true" />
+        <img src="brand_assets/slivar.png" alt="Slivar" aria-hidden="true" />
+        <img src="brand_assets/Horvat.png" alt="Horvat" aria-hidden="true" />
+        <img src="brand_assets/Erak.png" alt="Erak" aria-hidden="true" />
+      </div>
     </div>
   </section>
 
