@@ -598,14 +598,17 @@
 
   function renderPdfPage(num) {
     _pdfDoc.getPage(num).then(function(page){
+      var dpr = window.devicePixelRatio || 1;
       var desiredWidth = Math.min(window.innerWidth * 0.37, 460);
       var vp = page.getViewport({ scale: 1 });
-      var scale = desiredWidth / vp.width;
+      var scale = (desiredWidth / vp.width) * dpr;
       var scaledVp = page.getViewport({ scale: scale });
       var canvas = document.getElementById('pdf-canvas');
       var ctx = canvas.getContext('2d');
       canvas.width = scaledVp.width;
       canvas.height = scaledVp.height;
+      canvas.style.width = (scaledVp.width / dpr) + 'px';
+      canvas.style.height = (scaledVp.height / dpr) + 'px';
       page.render({ canvasContext: ctx, viewport: scaledVp }).promise.then(function(){
         document.getElementById('pdf-page-info').textContent = num + ' / ' + _pdfTotal;
         document.getElementById('pdf-prev').disabled = num <= 1;
