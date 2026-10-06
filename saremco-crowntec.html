@@ -542,9 +542,9 @@
         'cta-note':'ili nas kontaktirajte na medical@gwt.hr',
         'sample-title':'Zatražite uzorak','sample-name':'Ime i prezime','sample-email':'E-mail',
         'sample-type':'Vrsta restauracije','sample-type-ph':'Odaberite…','sample-opt-crown':'Krunica','sample-opt-bridge':'Most',
-        'sample-file':'STL datoteka','sample-file-hint':'Samo .stl datoteke, najviše 10 MB.',
-        'sample-submit':'Pošalji zahtjev','sample-sending':'Šaljem…',
-        'sample-err-ext':'Molimo odaberite datoteku u .stl formatu.','sample-err-size':'Datoteka je veća od 10 MB.',
+        'sample-file':'STL datoteka','sample-file-hint':'Samo .stl datoteke. Datoteka se automatski komprimira – prihvaćamo STL do otprilike 15–20 MB.',
+        'sample-submit':'Pošalji zahtjev','sample-sending':'Šaljem…','sample-zipping':'Komprimiram datoteku…',
+        'sample-err-ext':'Molimo odaberite datoteku u .stl formatu.','sample-err-size':'Datoteka je prevelika i nakon kompresije. Molimo pošaljite je na medical@gwt.hr (npr. putem WeTransfera).',
         'sample-success':'<strong>Hvala!</strong>Vaš zahtjev je poslan. Javit ćemo Vam se uskoro.',
         'footer-copy':'© 2026 GWT Medical. Sva prava pridržana.',
         'footer-link1':'Početna','footer-link3':'Kontakt',
@@ -595,9 +595,9 @@
         'cta-note':'or reach us at medical@gwt.hr',
         'sample-title':'Request a Sample','sample-name':'Full name','sample-email':'Email',
         'sample-type':'Restoration type','sample-type-ph':'Select…','sample-opt-crown':'Crown','sample-opt-bridge':'Bridge',
-        'sample-file':'STL file','sample-file-hint':'.stl files only, max 10 MB.',
-        'sample-submit':'Send request','sample-sending':'Sending…',
-        'sample-err-ext':'Please choose a file in .stl format.','sample-err-size':'The file is larger than 10 MB.',
+        'sample-file':'STL file','sample-file-hint':'.stl files only. The file is compressed automatically – STL files up to about 15–20 MB are accepted.',
+        'sample-submit':'Send request','sample-sending':'Sending…','sample-zipping':'Compressing file…',
+        'sample-err-ext':'Please choose a file in .stl format.','sample-err-size':'The file is too large even after compression. Please send it to medical@gwt.hr (e.g. via WeTransfer).',
         'sample-success':'<strong>Thank you!</strong>Your request has been sent. We will get back to you soon.',
         'footer-copy':'© 2026 GWT Medical. All rights reserved.',
         'footer-link1':'Home','footer-link3':'Contact',
@@ -644,6 +644,7 @@
   })();
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
   <script>
   pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
@@ -718,18 +719,50 @@
   }
 
   let _sampleSending = false;
+  const SAMPLE_MAX_UPLOAD = 9.5 * 1024 * 1024;  // FormSubmit caps a submission at 10 MB
+  const SAMPLE_MAX_RAW = 150 * 1024 * 1024;     // refuse anything too big to zip in the browser
+
+  // Validation passed (onsubmit only fires then); zip the STL, swap it into the file input, then post.
   function submitSampleForm(e) {
+    e.preventDefault();
+    if (_sampleSending) return false;
     const t = translations[currentLang];
-    const file = document.getElementById('sample-file').files[0];
+    const form = document.getElementById('sample-form');
+    const input = document.getElementById('sample-file');
+    const file = input.files[0];
     const err = document.getElementById('sample-error');
-    if (!file || !/\.stl$/i.test(file.name)) { err.textContent = t['sample-err-ext']; e.preventDefault(); return false; }
-    if (file.size > 10 * 1024 * 1024) { err.textContent = t['sample-err-size']; e.preventDefault(); return false; }
-    err.textContent = '';
     const btn = document.getElementById('sample-submit');
+    if (!file || !/\.stl$/i.test(file.name)) { err.textContent = t['sample-err-ext']; return false; }
+    if (file.size > SAMPLE_MAX_RAW) { err.textContent = t['sample-err-size']; return false; }
+    err.textContent = '';
     btn.disabled = true;
-    btn.textContent = t['sample-sending'];
+    btn.textContent = t['sample-zipping'];
     _sampleSending = true;
-    return true;
+
+    const fail = function(){
+      _sampleSending = false;
+      btn.disabled = false;
+      btn.textContent = t['sample-submit'];
+      err.textContent = t['sample-err-size'];
+    };
+    const send = function(){ btn.textContent = t['sample-sending']; form.submit(); };
+
+    const zip = new JSZip();
+    zip.file(file.name, file);
+    zip.generateAsync({ type: 'blob', compression: 'DEFLATE', compressionOptions: { level: 9 } })
+      .then(function(blob){
+        if (blob.size > SAMPLE_MAX_UPLOAD) return fail();
+        const dt = new DataTransfer();
+        dt.items.add(new File([blob], file.name.replace(/\.stl$/i, '') + '.zip', { type: 'application/zip' }));
+        input.files = dt.files;
+        send();
+      })
+      .catch(function(){
+        // Zipping unavailable: fall back to sending the raw STL if it fits.
+        if (file.size > SAMPLE_MAX_UPLOAD) return fail();
+        send();
+      });
+    return false;
   }
 
   // The form posts into a hidden iframe; its load event means FormSubmit has responded.
