@@ -152,7 +152,7 @@
 
     /* PDF MODAL */
     .pdf-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.72); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 2rem; }
-    .pdf-modal-box { background: #fff; border-radius: 16px; box-shadow: 0 24px 80px rgba(0,0,0,0.4); max-width: 880px; width: 100%; position: relative; overflow: hidden; }
+    .pdf-modal-box { background: #fff; border-radius: 16px; box-shadow: 0 24px 80px rgba(0,0,0,0.4); max-width: 440px; width: 100%; position: relative; overflow: hidden; }
     .pdf-modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.07); border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 1rem; cursor: pointer; z-index: 10; transition: background 0.2s; display: flex; align-items: center; justify-content: center; }
     .pdf-modal-close:hover { background: rgba(0,0,0,0.16); }
     .pdf-modal-header { padding: 1.1rem 3.5rem 0.8rem 1.5rem; border-bottom: 1px solid var(--grey-200); display: flex; justify-content: space-between; align-items: center; }
@@ -596,7 +596,7 @@
 
   function renderPdfPage(num) {
     _pdfDoc.getPage(num).then(function(page){
-      var desiredWidth = Math.min(window.innerWidth * 0.74, 800);
+      var desiredWidth = Math.min(window.innerWidth * 0.37, 400);
       var vp = page.getViewport({ scale: 1 });
       var scale = desiredWidth / vp.width;
       var scaledVp = page.getViewport({ scale: scale });
