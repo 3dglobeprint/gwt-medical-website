@@ -159,10 +159,12 @@
     .pdf-modal-title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.98rem; color: var(--text); }
     .pdf-page-info { font-size: 0.82rem; color: var(--grey-600); background: var(--grey-100); padding: 0.2rem 0.7rem; border-radius: 20px; }
     .pdf-canvas-wrap { position: relative; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: #dde3ea; min-height: 220px; }
-    #pdf-canvas { max-width: 100%; border-radius: 3px; box-shadow: 0 4px 20px rgba(0,0,0,0.22); display: block; }
-    .pdf-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; background: rgba(255,255,255,0.92); border: 1px solid rgba(0,0,0,0.1); border-radius: 50%; width: 36px; height: 36px; font-size: 1.4rem; cursor: pointer; transition: background 0.2s, box-shadow 0.2s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.18); line-height: 1; color: var(--text); }
+    #pdf-canvas { max-width: 100%; height: auto; border-radius: 3px; box-shadow: 0 4px 20px rgba(0,0,0,0.22); display: block; }
+    .pdf-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; background: rgba(255,255,255,0.92); border: 1px solid rgba(0,0,0,0.1); border-radius: 50%; width: 36px; height: 36px; cursor: pointer; transition: background 0.2s, box-shadow 0.2s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.18); color: var(--text); }
     #pdf-prev { left: 0.5rem; }
     #pdf-next { right: 0.5rem; }
+    #pdf-prev::before { content: ''; display: block; width: 9px; height: 9px; border-top: 2.5px solid currentColor; border-left: 2.5px solid currentColor; transform: rotate(-45deg) translate(2px, -2px); }
+    #pdf-next::before { content: ''; display: block; width: 9px; height: 9px; border-top: 2.5px solid currentColor; border-right: 2.5px solid currentColor; transform: rotate(45deg) translate(-2px, -2px); }
     .pdf-nav:hover:not(:disabled) { background: var(--blue); color: #fff; box-shadow: 0 4px 16px rgba(0,74,173,0.35); }
     .pdf-nav:disabled { opacity: 0.22; cursor: default; }
     .pdf-loading-msg { color: var(--grey-600); font-size: 0.9rem; padding: 3rem; text-align: center; }
@@ -425,9 +427,9 @@
         <span class="pdf-page-info" id="pdf-page-info"></span>
       </div>
       <div class="pdf-canvas-wrap" id="pdf-canvas-wrap">
-        <button class="pdf-nav" id="pdf-prev" onclick="changePdfPage(-1)" disabled>‹</button>
+        <button class="pdf-nav" id="pdf-prev" onclick="changePdfPage(-1)" disabled></button>
         <canvas id="pdf-canvas"></canvas>
-        <button class="pdf-nav" id="pdf-next" onclick="changePdfPage(1)" disabled>›</button>
+        <button class="pdf-nav" id="pdf-next" onclick="changePdfPage(1)" disabled></button>
       </div>
     </div>
   </div>
@@ -608,7 +610,7 @@
       canvas.width = scaledVp.width;
       canvas.height = scaledVp.height;
       canvas.style.width = (scaledVp.width / dpr) + 'px';
-      canvas.style.height = (scaledVp.height / dpr) + 'px';
+      canvas.style.height = 'auto';
       page.render({ canvasContext: ctx, viewport: scaledVp }).promise.then(function(){
         document.getElementById('pdf-page-info').textContent = num + ' / ' + _pdfTotal;
         document.getElementById('pdf-prev').disabled = num <= 1;
