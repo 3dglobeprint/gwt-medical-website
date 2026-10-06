@@ -152,16 +152,18 @@
 
     /* PDF MODAL */
     .pdf-modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.72); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 2rem; }
-    .pdf-modal-box { background: #fff; border-radius: 16px; box-shadow: 0 24px 80px rgba(0,0,0,0.4); max-width: 440px; width: 100%; position: relative; overflow: hidden; }
+    .pdf-modal-box { background: #fff; border-radius: 16px; box-shadow: 0 24px 80px rgba(0,0,0,0.4); max-width: 506px; width: 100%; position: relative; overflow: hidden; }
     .pdf-modal-close { position: absolute; top: 1rem; right: 1rem; background: rgba(0,0,0,0.07); border: none; border-radius: 50%; width: 36px; height: 36px; font-size: 1rem; cursor: pointer; z-index: 10; transition: background 0.2s; display: flex; align-items: center; justify-content: center; }
     .pdf-modal-close:hover { background: rgba(0,0,0,0.16); }
     .pdf-modal-header { padding: 1.1rem 3.5rem 0.8rem 1.5rem; border-bottom: 1px solid var(--grey-200); display: flex; justify-content: space-between; align-items: center; }
     .pdf-modal-title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.98rem; color: var(--text); }
     .pdf-page-info { font-size: 0.82rem; color: var(--grey-600); background: var(--grey-100); padding: 0.2rem 0.7rem; border-radius: 20px; }
-    .pdf-canvas-wrap { display: flex; align-items: center; justify-content: center; gap: 1rem; padding: 1.5rem; background: #dde3ea; min-height: 220px; }
+    .pdf-canvas-wrap { position: relative; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: #dde3ea; min-height: 220px; }
     #pdf-canvas { max-width: 100%; border-radius: 3px; box-shadow: 0 4px 20px rgba(0,0,0,0.22); display: block; }
-    .pdf-nav { background: rgba(255,255,255,0.9); border: 1px solid rgba(0,0,0,0.1); border-radius: 50%; width: 44px; height: 44px; font-size: 1.6rem; cursor: pointer; flex-shrink: 0; transition: background 0.2s, box-shadow 0.2s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.12); line-height: 1; color: var(--text); }
-    .pdf-nav:hover:not(:disabled) { background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.18); }
+    .pdf-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; background: rgba(255,255,255,0.92); border: 1px solid rgba(0,0,0,0.1); border-radius: 50%; width: 36px; height: 36px; font-size: 1.4rem; cursor: pointer; transition: background 0.2s, box-shadow 0.2s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.18); line-height: 1; color: var(--text); }
+    #pdf-prev { left: 0.5rem; }
+    #pdf-next { right: 0.5rem; }
+    .pdf-nav:hover:not(:disabled) { background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.22); }
     .pdf-nav:disabled { opacity: 0.22; cursor: default; }
     .pdf-loading-msg { color: var(--grey-600); font-size: 0.9rem; padding: 3rem; text-align: center; }
   </style>
@@ -596,7 +598,7 @@
 
   function renderPdfPage(num) {
     _pdfDoc.getPage(num).then(function(page){
-      var desiredWidth = Math.min(window.innerWidth * 0.37, 400);
+      var desiredWidth = Math.min(window.innerWidth * 0.37, 460);
       var vp = page.getViewport({ scale: 1 });
       var scale = desiredWidth / vp.width;
       var scaledVp = page.getViewport({ scale: scale });
