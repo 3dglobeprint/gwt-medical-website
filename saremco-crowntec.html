@@ -163,7 +163,7 @@
     .pdf-nav { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; background: rgba(255,255,255,0.92); border: 1px solid rgba(0,0,0,0.1); border-radius: 50%; width: 36px; height: 36px; font-size: 1.4rem; cursor: pointer; transition: background 0.2s, box-shadow 0.2s; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.18); line-height: 1; color: var(--text); }
     #pdf-prev { left: 0.5rem; }
     #pdf-next { right: 0.5rem; }
-    .pdf-nav:hover:not(:disabled) { background: #fff; box-shadow: 0 4px 16px rgba(0,0,0,0.22); }
+    .pdf-nav:hover:not(:disabled) { background: var(--blue); color: #fff; box-shadow: 0 4px 16px rgba(0,74,173,0.35); }
     .pdf-nav:disabled { opacity: 0.22; cursor: default; }
     .pdf-loading-msg { color: var(--grey-600); font-size: 0.9rem; padding: 3rem; text-align: center; }
   </style>
@@ -599,7 +599,7 @@
   function renderPdfPage(num) {
     _pdfDoc.getPage(num).then(function(page){
       var dpr = window.devicePixelRatio || 1;
-      var desiredWidth = Math.min(window.innerWidth * 0.37, 460);
+      var desiredWidth = Math.min(window.innerWidth * 0.8, 900);
       var vp = page.getViewport({ scale: 1 });
       var scale = (desiredWidth / vp.width) * dpr;
       var scaledVp = page.getViewport({ scale: scale });
