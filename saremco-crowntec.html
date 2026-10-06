@@ -168,6 +168,23 @@
     .pdf-nav:hover:not(:disabled) { background: var(--blue); color: #fff; box-shadow: 0 4px 16px rgba(0,74,173,0.35); }
     .pdf-nav:disabled { opacity: 0.22; cursor: default; }
     .pdf-loading-msg { color: var(--grey-600); font-size: 0.9rem; padding: 3rem; text-align: center; }
+
+    /* SAMPLE REQUEST MODAL */
+    .sample-modal-box { max-width: 460px; max-height: calc(100vh - 2rem); overflow-y: auto; }
+    .sample-form { padding: 1.4rem 1.5rem 1.6rem; display: flex; flex-direction: column; gap: 1rem; }
+    .sample-field { display: flex; flex-direction: column; gap: 0.35rem; }
+    .sample-field label { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+    .sample-field input[type="text"], .sample-field input[type="email"], .sample-field select { font: inherit; font-size: 0.92rem; padding: 0.65rem 0.8rem; border: 1px solid var(--grey-200); border-radius: 8px; background: #fff; color: var(--text); transition: border-color 0.2s, box-shadow 0.2s; width: 100%; }
+    .sample-field input:focus, .sample-field select:focus { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgba(0,74,173,0.12); }
+    .sample-field input[type="file"] { font: inherit; font-size: 0.85rem; padding: 0.6rem; border: 1px dashed var(--grey-200); border-radius: 8px; background: var(--grey-100); width: 100%; cursor: pointer; }
+    .sample-hint { font-size: 0.76rem; color: var(--grey-600); }
+    .sample-error { font-size: 0.8rem; color: #C62828; }
+    .sample-error:empty { display: none; }
+    .sample-submit { font: inherit; font-weight: 700; font-size: 0.95rem; background: var(--blue); color: #fff; border: none; border-radius: 8px; padding: 0.85rem; cursor: pointer; transition: background 0.2s; }
+    .sample-submit:hover:not(:disabled) { background: var(--blue-dark); }
+    .sample-submit:disabled { opacity: 0.6; cursor: default; }
+    .sample-success { padding: 2.5rem 1.5rem; text-align: center; color: var(--text); font-size: 0.95rem; }
+    .sample-success strong { display: block; font-family: 'Poppins', sans-serif; font-size: 1.1rem; margin-bottom: 0.4rem; color: var(--blue); }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -267,7 +284,7 @@
       <p class="hero-brand">saremco print</p>
       <h1>CROWNTEC</h1>
       <p data-i18n="hero-desc"></p>
-      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20saremco%20CROWNTEC" class="hero-cta" data-i18n="hero-cta"></a>
+      <a href="#" onclick="openSampleForm(); return false;" class="hero-cta" data-i18n="hero-cta"></a>
       <p class="hero-ref">REF 8066 · 500 g</p>
     </div>
     <img class="hero-product-img" src="brand_assets/crowntec.webp" alt="saremco print CROWNTEC" />
@@ -403,7 +420,7 @@
   <section class="cta-section">
     <h2 data-i18n="cta-title"></h2>
     <p data-i18n="cta-desc"></p>
-    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20saremco%20CROWNTEC" class="cta-btn" data-i18n="cta-btn"></a>
+    <a href="#" onclick="openSampleForm(); return false;" class="cta-btn" data-i18n="cta-btn"></a>
     <p class="cta-note" data-i18n="cta-note"></p>
   </section>
 
@@ -431,6 +448,49 @@
         <canvas id="pdf-canvas"></canvas>
         <button class="pdf-nav" id="pdf-next" onclick="changePdfPage(1)" disabled></button>
       </div>
+    </div>
+  </div>
+
+  <!-- SAMPLE REQUEST MODAL -->
+  <div id="sample-modal" class="pdf-modal-overlay" style="display:none;" onclick="if(event.target===this)closeSampleForm()">
+    <div class="pdf-modal-box sample-modal-box">
+      <button class="pdf-modal-close" onclick="closeSampleForm()">✕</button>
+      <div class="pdf-modal-header">
+        <span class="pdf-modal-title" data-i18n="sample-title"></span>
+      </div>
+      <form id="sample-form" class="sample-form" action="https://formsubmit.co/medical@gwt.hr" method="POST" enctype="multipart/form-data" target="sample-frame" onsubmit="return submitSampleForm(event)">
+        <input type="hidden" name="_subject" value="Zahtjev za uzorak – saremco CROWNTEC" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+        <div class="sample-field">
+          <label for="sample-name" data-i18n="sample-name"></label>
+          <input type="text" id="sample-name" name="Ime" required autocomplete="name" />
+        </div>
+        <div class="sample-field">
+          <label for="sample-email" data-i18n="sample-email"></label>
+          <input type="email" id="sample-email" name="email" required autocomplete="email" />
+        </div>
+        <div class="sample-field">
+          <label for="sample-type" data-i18n="sample-type"></label>
+          <select id="sample-type" name="Vrsta restauracije" required>
+            <option value="" data-i18n="sample-type-ph"></option>
+            <option value="Krunica" data-i18n="sample-opt-crown"></option>
+            <option value="Most" data-i18n="sample-opt-bridge"></option>
+            <option value="All-on-X">All-on-X</option>
+            <option value="Inlay/onlay">Inlay/onlay</option>
+          </select>
+        </div>
+        <div class="sample-field">
+          <label for="sample-file" data-i18n="sample-file"></label>
+          <input type="file" id="sample-file" name="attachment" accept=".stl" required />
+          <span class="sample-hint" data-i18n="sample-file-hint"></span>
+        </div>
+        <div class="sample-error" id="sample-error"></div>
+        <button type="submit" class="sample-submit" id="sample-submit" data-i18n="sample-submit"></button>
+      </form>
+      <div class="sample-success" id="sample-success" style="display:none;" data-i18n="sample-success"></div>
+      <iframe name="sample-frame" id="sample-frame" style="display:none;" title="form submission"></iframe>
     </div>
   </div>
 
@@ -480,6 +540,12 @@
         'cta-desc':'Zatražite uzorke ili kontaktirajte nas za više informacija o integraciji u vaš radni proces.',
         'cta-btn':'Zatražite uzorak',
         'cta-note':'ili nas kontaktirajte na medical@gwt.hr',
+        'sample-title':'Zatražite uzorak','sample-name':'Ime i prezime','sample-email':'E-mail',
+        'sample-type':'Vrsta restauracije','sample-type-ph':'Odaberite…','sample-opt-crown':'Krunica','sample-opt-bridge':'Most',
+        'sample-file':'STL datoteka','sample-file-hint':'Samo .stl datoteke, najviše 10 MB.',
+        'sample-submit':'Pošalji zahtjev','sample-sending':'Šaljem…',
+        'sample-err-ext':'Molimo odaberite datoteku u .stl formatu.','sample-err-size':'Datoteka je veća od 10 MB.',
+        'sample-success':'<strong>Hvala!</strong>Vaš zahtjev je poslan. Javit ćemo Vam se uskoro.',
         'footer-copy':'© 2026 GWT Medical. Sva prava pridržana.',
         'footer-link1':'Početna','footer-link3':'Kontakt',
       },
@@ -527,6 +593,12 @@
         'cta-desc':'Request samples or contact us for more information about integrating it into your workflow.',
         'cta-btn':'Request a Sample',
         'cta-note':'or reach us at medical@gwt.hr',
+        'sample-title':'Request a Sample','sample-name':'Full name','sample-email':'Email',
+        'sample-type':'Restoration type','sample-type-ph':'Select…','sample-opt-crown':'Crown','sample-opt-bridge':'Bridge',
+        'sample-file':'STL file','sample-file-hint':'.stl files only, max 10 MB.',
+        'sample-submit':'Send request','sample-sending':'Sending…',
+        'sample-err-ext':'Please choose a file in .stl format.','sample-err-size':'The file is larger than 10 MB.',
+        'sample-success':'<strong>Thank you!</strong>Your request has been sent. We will get back to you soon.',
         'footer-copy':'© 2026 GWT Medical. All rights reserved.',
         'footer-link1':'Home','footer-link3':'Contact',
       }
@@ -631,7 +703,50 @@
     _pdfDoc = null;
   }
 
+  function openSampleForm() {
+    document.getElementById('sample-form').style.display = '';
+    document.getElementById('sample-success').style.display = 'none';
+    document.getElementById('sample-error').textContent = '';
+    document.getElementById('sample-modal').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    document.getElementById('sample-name').focus();
+  }
+
+  function closeSampleForm() {
+    document.getElementById('sample-modal').style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  let _sampleSending = false;
+  function submitSampleForm(e) {
+    const t = translations[currentLang];
+    const file = document.getElementById('sample-file').files[0];
+    const err = document.getElementById('sample-error');
+    if (!file || !/\.stl$/i.test(file.name)) { err.textContent = t['sample-err-ext']; e.preventDefault(); return false; }
+    if (file.size > 10 * 1024 * 1024) { err.textContent = t['sample-err-size']; e.preventDefault(); return false; }
+    err.textContent = '';
+    const btn = document.getElementById('sample-submit');
+    btn.disabled = true;
+    btn.textContent = t['sample-sending'];
+    _sampleSending = true;
+    return true;
+  }
+
+  // The form posts into a hidden iframe; its load event means FormSubmit has responded.
+  document.getElementById('sample-frame').addEventListener('load', function(){
+    if (!_sampleSending) return;
+    _sampleSending = false;
+    const form = document.getElementById('sample-form');
+    const btn = document.getElementById('sample-submit');
+    form.reset();
+    btn.disabled = false;
+    btn.textContent = translations[currentLang]['sample-submit'];
+    form.style.display = 'none';
+    document.getElementById('sample-success').style.display = '';
+  });
+
   document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && document.getElementById('sample-modal').style.display !== 'none') closeSampleForm();
     if (document.getElementById('pdf-modal').style.display !== 'none') {
       if (e.key === 'Escape') closePdfViewer();
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePdfPage(1);
