@@ -144,7 +144,7 @@
     }
 
     /* PILL PDF BUTTON */
-    .app-pill.has-pdf { display: inline-flex; align-items: center; gap: 0; }
+    .app-pill.has-pdf { display: inline-flex; align-items: center; gap: 0; padding-left: calc(1.1rem + 0.5rem + 20px); }
     .pill-pdf-btn { opacity: 0; background: var(--blue); border: none; border-radius: 50%; color: #fff; width: 20px; height: 20px; font-size: 0.75rem; cursor: pointer; transition: opacity 0.18s, background 0.18s; margin-left: 0.5rem; display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; line-height: 1; }
     .app-pill.has-pdf:hover .pill-pdf-btn { opacity: 1; }
     .app-pill.has-pdf:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-pale); }
@@ -354,7 +354,7 @@
     <h2 class="section-title" data-i18n="apps-title"></h2>
     <p class="section-subtitle" data-i18n="apps-subtitle"></p>
     <div class="apps-grid">
-      <span class="app-pill has-pdf" data-pdf="brand_assets/Illeš - crowns.pdf">
+      <span class="app-pill has-pdf" data-pdf="Illeš - crowns.pdf">
         <span class="pill-label" data-i18n="app1"></span>
         <button class="pill-pdf-btn" onclick="openPdfViewer(this)" aria-label="Pregledaj PDF">▾</button>
       </span>
@@ -569,12 +569,7 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
   <script>
-  (function(){
-    if(window.pdfjsLib) pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-    document.querySelector('script[src*="pdf.min.js"]').addEventListener('load', function(){
-      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
-    });
-  })();
+  pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
   var _pdfDoc = null, _pdfPage = 1, _pdfTotal = 0;
 
