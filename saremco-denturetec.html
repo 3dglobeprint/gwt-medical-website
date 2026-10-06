@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png" />
   <link rel="shortcut icon" href="brand_assets/favicon-32.png" />
-  <title>saremco CROWNTEC – GWT Medical</title>
+  <title>saremco DENTURETEC – GWT Medical</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -51,17 +51,17 @@
 
     /* HERO */
     .hero { position: relative; min-height: 88vh; display: flex; align-items: center; overflow: hidden; padding-top: 72px; }
-    .hero-bg { position: absolute; inset: 0; background: linear-gradient(120deg, #1a0a0f 0%, #3d1020 45%, #6b1d35 100%); }
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 75% 50%, rgba(107,29,53,0.4) 0%, transparent 65%); }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(120deg, #1a1020 0%, #2e1a48 45%, #4a2878 100%); }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 72% 50%, rgba(100,60,160,0.35) 0%, transparent 65%); }
     .hero-content { position: relative; z-index: 2; padding: 5% 5% 6%; max-width: 600px; }
     .hero-badge { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.88); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.4rem; }
     .hero-brand { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
-    .hero-content h1 { font-size: clamp(2.8rem, 5.5vw, 4.4rem); font-weight: 800; color: #fff; line-height: 1.05; margin-bottom: 1.2rem; }
+    .hero-content h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; color: #fff; line-height: 1.05; margin-bottom: 1.2rem; }
     .hero-content p { color: rgba(255,255,255,0.75); font-size: 1.08rem; margin-bottom: 2.2rem; max-width: 480px; line-height: 1.75; }
     .hero-ref { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-top: 1rem; letter-spacing: 0.05em; }
     .hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; color: var(--blue); font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
     .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
-    .hero-product-img { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); height: 78vh; max-height: 660px; object-fit: contain; z-index: 2; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5)); }
+    .hero-product-img { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); height: 78vh; max-height: 640px; object-fit: contain; z-index: 2; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5)); }
 
     /* HIGHLIGHTS */
     .highlights { background: var(--blue); padding: 3rem 5%; }
@@ -81,19 +81,16 @@
     /* INTRO */
     .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .intro-text p { color: var(--grey-600); margin-top: 1.5rem; line-height: 1.8; font-size: 1.02rem; }
-    .intro-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: var(--grey-100); display: flex; align-items: center; justify-content: center; padding: 2rem; }
-    .intro-image img { width: 100%; max-width: 440px; display: block; object-fit: contain; }
+    .intro-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: #1a1020; display: flex; align-items: center; justify-content: center; padding: 2.5rem; min-height: 360px; }
+    .intro-image img { width: 100%; max-width: 320px; display: block; object-fit: contain; filter: drop-shadow(0 12px 32px rgba(0,0,0,0.4)); }
 
-    /* SHADES */
-    .shades-section { padding: 6rem 5%; background: var(--grey-100); }
-    .shades-grid { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.5rem; }
-    .shade-chip { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; }
-    .shade-swatch { width: 64px; height: 64px; border-radius: 50%; border: 3px solid #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.12); }
-    .shade-label { font-size: 0.82rem; font-weight: 700; color: var(--text); }
-    .shade-sublabel { font-size: 0.7rem; color: var(--grey-600); margin-top: -0.4rem; }
-    .shades-on-request { margin-top: 2rem; padding: 1.2rem 1.6rem; background: #fff; border-radius: var(--radius); border: 1.5px solid var(--grey-200); display: inline-flex; align-items: center; gap: 1rem; }
-    .shades-on-request span:first-child { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--grey-600); }
-    .shades-on-request span:last-child { font-size: 0.9rem; font-weight: 500; color: var(--text); }
+    /* PROPERTIES */
+    .props-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .prop-card { background: var(--white); border: 1.5px solid var(--grey-200); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; transition: border-color 0.2s, box-shadow 0.2s; }
+    .prop-card:hover { border-color: var(--blue); box-shadow: var(--shadow); }
+    .prop-val { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.5rem; }
+    .prop-label { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; }
+    .prop-desc { font-size: 0.8rem; color: var(--grey-600); line-height: 1.5; }
 
     /* APPLICATIONS */
     .apps-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
@@ -102,8 +99,8 @@
 
     /* RESULTS */
     .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
-    .results-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); }
-    .results-image img { width: 100%; display: block; }
+    .results-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: #111; }
+    .results-image img { width: 100%; display: block; object-fit: cover; }
     .results-text h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--text); }
     .results-text p { color: var(--grey-600); line-height: 1.8; margin-bottom: 1.5rem; font-size: 0.98rem; }
     .feature-list { display: flex; flex-direction: column; gap: 0.75rem; }
@@ -111,8 +108,6 @@
     .feature-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 0.45rem; }
     .feature-row span { font-size: 0.92rem; color: var(--grey-600); line-height: 1.6; }
     .feature-row strong { color: var(--text); }
-
-    /* COMPAT BADGES */
     .compat-badges { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; }
     .compat-badge { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--blue-pale); border-radius: 10px; border-left: 4px solid var(--blue); }
     .compat-badge-dot { width: 10px; height: 10px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
@@ -137,10 +132,11 @@
     @media (max-width: 900px) {
       .highlights-grid { grid-template-columns: repeat(2, 1fr); }
       .intro-grid, .results-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .props-grid { grid-template-columns: 1fr 1fr; }
       .hero-product-img { display: none; }
     }
     @media (max-width: 600px) {
-      .highlights-grid { grid-template-columns: 1fr; }
+      .highlights-grid, .props-grid { grid-template-columns: 1fr; }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -239,19 +235,19 @@
     <div class="hero-content">
       <span class="hero-badge" data-i18n="hero-badge"></span>
       <p class="hero-brand">saremco print</p>
-      <h1>CROWNTEC</h1>
+      <h1>DENTURETEC</h1>
       <p data-i18n="hero-desc"></p>
-      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20saremco%20CROWNTEC" class="hero-cta" data-i18n="hero-cta"></a>
-      <p class="hero-ref">REF 8066 · 500 g</p>
+      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20saremco%20DENTURETEC" class="hero-cta" data-i18n="hero-cta"></a>
+      <p class="hero-ref">REF 8062 · 500 g</p>
     </div>
-    <img class="hero-product-img" src="brand_assets/crowntec.webp" alt="saremco print CROWNTEC" />
+    <img class="hero-product-img" src="brand_assets/denturetec.png" alt="saremco print DENTURETEC" />
   </section>
 
   <!-- HIGHLIGHTS -->
   <div class="highlights">
     <div class="highlights-grid">
       <div class="highlight-item">
-        <span class="highlight-icon">🦷</span>
+        <span class="highlight-icon">💪</span>
         <h3 data-i18n="hl1-title"></h3>
         <p data-i18n="hl1-desc"></p>
       </div>
@@ -261,7 +257,7 @@
         <p data-i18n="hl2-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">🎨</span>
+        <span class="highlight-icon">⚡</span>
         <h3 data-i18n="hl3-title"></h3>
         <p data-i18n="hl3-desc"></p>
       </div>
@@ -283,46 +279,32 @@
         <p data-i18n="intro-p2"></p>
       </div>
       <div class="intro-image">
-        <img src="brand_assets/crowntec.webp" alt="saremco print CROWNTEC" />
+        <img src="brand_assets/denturetec.png" alt="saremco print DENTURETEC" />
       </div>
     </div>
   </section>
 
-  <!-- SHADES -->
-  <section class="shades-section">
-    <p class="section-label" data-i18n="shades-label"></p>
-    <h2 class="section-title" data-i18n="shades-title"></h2>
-    <p class="section-subtitle" data-i18n="shades-subtitle"></p>
-    <div class="shades-grid">
-      <div class="shade-chip">
-        <div class="shade-swatch" style="background: #f5f0e8;"></div>
-        <span class="shade-label">Snow White</span>
-        <span class="shade-sublabel" data-i18n="shade-bleach"></span>
+  <!-- MATERIAL PROPERTIES -->
+  <section class="section section-alt">
+    <p class="section-label" data-i18n="props-label"></p>
+    <h2 class="section-title" data-i18n="props-title"></h2>
+    <p class="section-subtitle" data-i18n="props-subtitle"></p>
+    <div class="props-grid">
+      <div class="prop-card">
+        <div class="prop-val">&gt;100 MPa</div>
+        <div class="prop-label" data-i18n="prop1-label"></div>
+        <div class="prop-desc" data-i18n="prop1-desc"></div>
       </div>
-      <div class="shade-chip">
-        <div class="shade-swatch" style="background: #f0e8d0;"></div>
-        <span class="shade-label">B1</span>
+      <div class="prop-card">
+        <div class="prop-val">&gt;1000 MPa</div>
+        <div class="prop-label" data-i18n="prop2-label"></div>
+        <div class="prop-desc" data-i18n="prop2-desc"></div>
       </div>
-      <div class="shade-chip">
-        <div class="shade-swatch" style="background: #ede0c0;"></div>
-        <span class="shade-label">A1</span>
+      <div class="prop-card">
+        <div class="prop-val" data-i18n="prop3-val"></div>
+        <div class="prop-label" data-i18n="prop3-label"></div>
+        <div class="prop-desc" data-i18n="prop3-desc"></div>
       </div>
-      <div class="shade-chip">
-        <div class="shade-swatch" style="background: #e8d8a8;"></div>
-        <span class="shade-label">A2</span>
-      </div>
-      <div class="shade-chip">
-        <div class="shade-swatch" style="background: #dfc890;"></div>
-        <span class="shade-label">A3</span>
-      </div>
-      <div class="shade-chip">
-        <div class="shade-swatch" style="background: #d4b878;"></div>
-        <span class="shade-label">A3.5</span>
-      </div>
-    </div>
-    <div class="shades-on-request">
-      <span data-i18n="shades-request-label"></span>
-      <span>A4 · B2 · C3 · C4 · D3</span>
     </div>
   </section>
 
@@ -347,7 +329,7 @@
     <h2 class="section-title" data-i18n="results-title"></h2>
     <div class="results-grid">
       <div class="results-image">
-        <img src="brand_assets/[AFTER] Crowns.JPG" alt="Krunice izrađene CROWNTEC smolom" />
+        <img src="brand_assets/Denture.png" alt="Totalna proteza izrađena DENTURETEC smolom" />
       </div>
       <div class="results-text">
         <h3 data-i18n="results-h3"></h3>
@@ -371,7 +353,7 @@
   <section class="cta-section">
     <h2 data-i18n="cta-title"></h2>
     <p data-i18n="cta-desc"></p>
-    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20saremco%20CROWNTEC" class="cta-btn" data-i18n="cta-btn"></a>
+    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20saremco%20DENTURETEC" class="cta-btn" data-i18n="cta-btn"></a>
     <p class="cta-note" data-i18n="cta-note"></p>
   </section>
 
@@ -395,41 +377,42 @@
         'nav-models-resin':'Smole za modele','nav-surgical-resin':'Smole za kirurške vodilice',
         'nav-services':'Usluge','nav-education':'Edukacija','nav-support':'Podrška','nav-contact':'Kontakt',
 
-        'hero-badge':'3D print smola za trajne restauracije',
-        'hero-desc':'Svjetlošću stvrdnjavajući materijal vrhunske kvalitete za izradu visoko biokompatibilnih trajnih stomatoloških nadomjestaka. Razvijeno i proizvedeno u Švicarskoj.',
+        'hero-badge':'3D print smola za baze proteza',
+        'hero-desc':'Svjetlošću stvrdnjavajući materijal vrhunske kvalitete za izradu visoko biokompatibilnih baza svih vrsta zubnih proteza. Bez MMA. Razvijeno i proizvedeno u Švicarskoj.',
         'hero-cta':'Zatražite uzorak →',
 
-        'hl1-title':'Trajne restauracije','hl1-desc':'Formulirano za krunice, inlaye, onlaye, ljuske i zube za proteze koji traju.',
-        'hl2-title':'Visoka biokompatibilnost','hl2-desc':'Bez elucija u vodenom okruženju – sigurno za direktnu kliničku primjenu.',
-        'hl3-title':'6 nijansi na zalihi','hl3-desc':'Snow White, B1, A1, A2, A3, A3.5 – odmah dostupno. Više nijansi na upit.',
-        'hl4-title':'Višeplatformski','hl4-desc':'Validirano na brojnim 3D printerima. Kompatibilno s Rayshape i MASH sustavima.',
+        'hl1-title':'Čvrstoća &gt;100 MPa','hl1-desc':'Visoka savitna čvrstoća koja osigurava dugotrajnost i integritet protetskog rada.',
+        'hl2-title':'MMA-free formula','hl2-desc':'Bez metil-metakrilata i rezidualnih monomera – potvrđena biokompatibilnost za dugotrajno nošenje.',
+        'hl3-title':'Odmah gotovo','hl3-desc':'Bez dugog miješanja i separacije komponenti – materijal je odmah spreman za ispis.',
+        'hl4-title':'Sve vrste proteza','hl4-desc':'Jedna smola za totalne, parcijalne i implantološke proteze svih tipova.',
 
         'intro-label':'O proizvodu',
-        'intro-title':'Preciznost i estetika u jednoj smoli',
-        'intro-p1':'saremco print CROWNTEC profesionalni je 3D print materijal razvijen u Švicarskoj za izradu trajnih stomatoloških nadomjestaka. Monofazna formulacija precizno balansiranog opaciteta osigurava izvrsnu estetiku bez dodatne obrade nakon ispisa.',
-        'intro-p2':'Materijal je odmah spreman za upotrebu po završetku ispisa i polimerizacije, a po potrebi može se dodatno oplemeniti sustavom saremco els paintart za personaliziranu karakterizaciju. Dostupan u klasičnim VITA® nijansama s uključenom bleach nijansom Snow White.',
+        'intro-title':'Snaga i elastičnost u jednoj smoli',
+        'intro-p1':'saremco print DENTURETEC profesionalni je 3D print materijal razvijen u Švicarskoj za izradu baza svih vrsta zubnih proteza. Kombinira visoku savitnu čvrstoću iznad 100 MPa s elastičnim svojstvima, osiguravajući protezi istovremeno snagu i udobnost nošenja.',
+        'intro-p2':'Formulacija bez MMA i bez rezidualnih monomera jamči izvrsnu biokompatibilnost i sigurnost za pacijenta. Materijal ne zahtijeva dugotrajne pripreme – spreman je za ispis odmah, bez separacije komponenti i dugog miješanja, što značajno ubrzava digitalni workflow u laboratoriju.',
 
-        'shades-label':'Dostupne nijanse','shades-title':'VITA® klasične nijanse',
-        'shades-subtitle':'Šest nijansi dostupno odmah iz zalihe. Dodatne nijanse dostupne na upit.',
-        'shade-bleach':'Bleach nijansa',
-        'shades-request-label':'Na upit',
+        'props-label':'Mehanička svojstva','props-title':'Verificirane mehaničke karakteristike',
+        'props-subtitle':'Izmjerene vrijednosti koje osiguravaju dugotrajnost i udobnost svakog protetskog rada.',
+        'prop1-label':'Savitna čvrstoća','prop1-desc':'Otpornost na savijanje koja sprječava pucanje i deformaciju baze proteze u svakodnevnom korištenju.',
+        'prop2-label':'E-modul','prop2-desc':'Visoka krutost materijala koja osigurava stabilnost oblika i precizno nalijeganje proteze.',
+        'prop3-val':'MMA-free','prop3-label':'Biokompatibilnost','prop3-desc':'Bez metil-metakrilata i rezidualnih monomera. Sigurno za dugoročno oralno nošenje.',
 
-        'apps-label':'Indikacije','apps-title':'Sve trajne restauracije',
-        'apps-subtitle':'CROWNTEC pokriva cijeli spektar trajnih i privremenih protetskih radova.',
-        'app1':'Trajne krunice','app2':'Inlayi i onlayi','app3':'Ljuske (veneers)',
-        'app4':'Zubi za proteze','app5':'Privremene krunice','app6':'Privremeni mostovi',
+        'apps-label':'Indikacije','apps-title':'Za sve vrste proteza',
+        'apps-subtitle':'DENTURETEC pokriva kompletan spektar indikacija u digitalnoj protetici.',
+        'app1':'Totalne proteze','app2':'Parcijalne proteze','app3':'Proteze na implantatima (All-on-4/6)',
+        'app4':'Privremene proteze','app5':'Try-in proteze','app6':'Individualne baze žlica',
 
-        'results-label':'Klinički rezultati','results-title':'Verificirana estetika i kvaliteta',
-        'results-h3':'Besprijekorno rubno zatvaranje',
-        'results-p':'CROWNTEC smola optimizirana je za postizanje preciznih rubnih zatvaranja i prirodne estetike. Svaki otisak prolazi kalibriranim profilima koji osiguravaju konzistentnost boje i mehaničkih svojstava serija do serije.',
-        'feat1':'<strong>Monofazna formulacija</strong> – uravnoteženi opacitet za prirodan izgled',
-        'feat2':'<strong>Bez elucija</strong> – potvrđena biokompatibilnost u vodenom okruženju',
-        'feat3':'<strong>Odmah primjenjivo</strong> – bez dodatne obrade nakon ispisa',
-        'feat4':'<strong>Nadogradivo</strong> – karakterizacija saremco els paintart sustavom',
+        'results-label':'Klinički rezultati','results-title':'Preciznost i estetika koja traje',
+        'results-h3':'Digitalni workflow bez kompromisa',
+        'results-p':'DENTURETEC smola optimizirana je za precizno rubno nalijeganje i prirodan izgled gingivalnog tkiva. Svaki ispis prolazi kalibriranim profilima koji osiguravaju konzistentnu boju, oblik i mehanička svojstva od serije do serije.',
+        'feat1':'<strong>Snaga i elastičnost</strong> – savitna čvrstoća &gt;100 MPa uz ugodnu fleksibilnost',
+        'feat2':'<strong>MMA-free</strong> – bez rezidualnih monomera, visoka biokompatibilnost',
+        'feat3':'<strong>Odmah spreman</strong> – bez pripreme i separacije komponenti',
+        'feat4':'<strong>Dugotrajna udobnost</strong> – visoka otpornost na habanje i deformaciju',
         'compat-other':'Kompatibilno s ostalim validiranim 3D printerima',
 
-        'cta-title':'Zainteresirani za CROWNTEC?',
-        'cta-desc':'Zatražite uzorke ili kontaktirajte nas za više informacija o integraciji u vaš radni proces.',
+        'cta-title':'Zainteresirani za DENTURETEC?',
+        'cta-desc':'Zatražite uzorke ili kontaktirajte nas za više informacija o integraciji u vaš laboratorijski workflow.',
         'cta-btn':'Zatražite uzorak',
         'cta-note':'ili nas kontaktirajte na medical@gwt.hr',
         'footer-copy':'© 2026 GWT Medical. Sva prava pridržana.',
@@ -442,41 +425,42 @@
         'nav-models-resin':'Model Resins','nav-surgical-resin':'Surgical Guide Resins',
         'nav-services':'Services','nav-education':'Education','nav-support':'Support','nav-contact':'Contact',
 
-        'hero-badge':'3D print resin for permanent restorations',
-        'hero-desc':'An excellent-quality light-curing material for manufacturing highly biocompatible permanent dental restorations. Developed and manufactured in Switzerland.',
+        'hero-badge':'3D print resin for denture bases',
+        'hero-desc':'An excellent-quality light-curing material for manufacturing highly biocompatible bases for all types of dental prostheses. MMA-free. Developed and manufactured in Switzerland.',
         'hero-cta':'Request a Sample →',
 
-        'hl1-title':'Permanent Restorations','hl1-desc':'Formulated for long-lasting crowns, inlays, onlays, veneers and denture teeth.',
-        'hl2-title':'High Biocompatibility','hl2-desc':'No eluates in aqueous environment — safe for direct clinical use.',
-        'hl3-title':'6 Shades in Stock','hl3-desc':'Snow White, B1, A1, A2, A3, A3.5 — immediately available. More shades on request.',
-        'hl4-title':'Multi-Platform','hl4-desc':'Validated on numerous 3D printers. Compatible with Rayshape and MASH systems.',
+        'hl1-title':'Strength &gt;100 MPa','hl1-desc':'High flexural strength ensuring long-term durability and integrity of the prosthetic work.',
+        'hl2-title':'MMA-free formula','hl2-desc':'Free of methyl methacrylate and residual monomers — confirmed biocompatibility for long-term wear.',
+        'hl3-title':'Immediately ready','hl3-desc':'No lengthy mixing or component separation — the material is ready for printing right away.',
+        'hl4-title':'All prosthesis types','hl4-desc':'One resin for complete, partial and implant-supported prostheses of all types.',
 
         'intro-label':'About the Product',
-        'intro-title':'Precision and Aesthetics in One Resin',
-        'intro-p1':'saremco print CROWNTEC is a professional 3D printing material developed in Switzerland for the fabrication of permanent dental restorations. Its monophase formulation with precisely balanced opacity ensures excellent aesthetics without any additional post-processing after printing.',
-        'intro-p2':'The material is immediately ready for use after printing and polymerization, and can optionally be enhanced with the saremco els paintart system for personalized characterization. Available in classic VITA® shades including the bleach shade Snow White.',
+        'intro-title':'Strength and Elasticity in One Resin',
+        'intro-p1':'saremco print DENTURETEC is a professional 3D printing material developed in Switzerland for fabricating denture bases of all types. It combines high flexural strength above 100 MPa with elastic properties, giving the prosthesis both structural integrity and wearing comfort.',
+        'intro-p2':'The MMA-free, residual-monomer-free formulation guarantees excellent biocompatibility and patient safety. The material requires no lengthy preparation — it is ready for printing immediately, without component separation or mixing, significantly accelerating the digital lab workflow.',
 
-        'shades-label':'Available Shades','shades-title':'VITA® Classic Shades',
-        'shades-subtitle':'Six shades available immediately from stock. Additional shades available on request.',
-        'shade-bleach':'Bleach shade',
-        'shades-request-label':'On request',
+        'props-label':'Material Properties','props-title':'Verified Mechanical Characteristics',
+        'props-subtitle':'Measured values that ensure durability and comfort for every prosthetic restoration.',
+        'prop1-label':'Flexural Strength','prop1-desc':'Bending resistance that prevents cracking and deformation of the denture base in everyday use.',
+        'prop2-label':'E-Modulus','prop2-desc':'High material rigidity ensuring dimensional stability and precise denture fit.',
+        'prop3-val':'MMA-free','prop3-label':'Biocompatibility','prop3-desc':'Free of methyl methacrylate and residual monomers. Safe for long-term oral wear.',
 
-        'apps-label':'Indications','apps-title':'All Permanent Restorations',
-        'apps-subtitle':'CROWNTEC covers the full spectrum of permanent and temporary prosthetic work.',
-        'app1':'Permanent crowns','app2':'Inlays & onlays','app3':'Veneers',
-        'app4':'Denture teeth','app5':'Temporary crowns','app6':'Temporary bridges',
+        'apps-label':'Indications','apps-title':'For All Prosthesis Types',
+        'apps-subtitle':'DENTURETEC covers the full spectrum of indications in digital prosthetics.',
+        'app1':'Complete dentures','app2':'Partial dentures','app3':'Implant-supported prostheses (All-on-4/6)',
+        'app4':'Temporary prostheses','app5':'Try-in dentures','app6':'Individual impression trays',
 
-        'results-label':'Clinical Results','results-title':'Verified Aesthetics and Quality',
-        'results-h3':'Flawless Marginal Fit',
-        'results-p':'CROWNTEC resin is optimized for precise marginal fit and natural aesthetics. Every print runs through calibrated profiles that ensure consistency of shade and mechanical properties batch to batch.',
-        'feat1':'<strong>Monophase formulation</strong> — balanced opacity for a natural look',
-        'feat2':'<strong>No eluates</strong> — confirmed biocompatibility in aqueous environments',
-        'feat3':'<strong>Immediately ready</strong> — no additional processing after printing',
-        'feat4':'<strong>Upgradeable</strong> — characterization with saremco els paintart system',
+        'results-label':'Clinical Results','results-title':'Precision and Aesthetics That Last',
+        'results-h3':'Digital Workflow Without Compromise',
+        'results-p':'DENTURETEC resin is optimized for precise marginal fit and natural-looking gingival tissue. Every print runs through calibrated profiles that ensure consistent colour, form, and mechanical properties from batch to batch.',
+        'feat1':'<strong>Strength and elasticity</strong> — flexural strength &gt;100 MPa with comfortable flexibility',
+        'feat2':'<strong>MMA-free</strong> — no residual monomers, high biocompatibility',
+        'feat3':'<strong>Immediately ready</strong> — no preparation or component separation required',
+        'feat4':'<strong>Long-term comfort</strong> — high resistance to wear and deformation',
         'compat-other':'Compatible with other validated 3D printers',
 
-        'cta-title':'Interested in CROWNTEC?',
-        'cta-desc':'Request samples or contact us for more information about integrating it into your workflow.',
+        'cta-title':'Interested in DENTURETEC?',
+        'cta-desc':'Request samples or contact us for more information about integrating it into your lab workflow.',
         'cta-btn':'Request a Sample',
         'cta-note':'or reach us at medical@gwt.hr',
         'footer-copy':'© 2026 GWT Medical. All rights reserved.',
