@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png" />
   <link rel="shortcut icon" href="brand_assets/favicon-32.png" />
-  <title>CRS Denture – GWT Medical</title>
+  <title>CRS Flexit – GWT Medical</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -85,7 +85,7 @@
     .intro-image img { width: 100%; max-width: 420px; display: block; object-fit: contain; filter: drop-shadow(0 12px 32px rgba(0,0,0,0.4)); }
 
     /* PROPERTIES */
-    .props-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .props-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
     .prop-card { background: var(--white); border: 1.5px solid var(--grey-200); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; transition: border-color 0.2s, box-shadow 0.2s; }
     .prop-card:hover { border-color: var(--blue); box-shadow: var(--shadow); }
     .prop-val { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.5rem; }
@@ -118,6 +118,26 @@
     .bio-item { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: var(--white); border: 1.5px solid var(--grey-200); border-radius: 10px; padding: 0.85rem 1.1rem; font-size: 0.9rem; font-weight: 500; }
     .bio-ok { font-size: 0.75rem; font-weight: 700; color: #1B7F4B; background: #E6F6EE; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap; }
 
+    /* FLEX CALLOUT */
+    .flex-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .flex-card { background: var(--white); border-radius: var(--radius); padding: 2rem 1.6rem; border-top: 4px solid var(--blue); box-shadow: var(--shadow); }
+    .flex-card .flex-icon { font-size: 1.8rem; display: block; margin-bottom: 0.8rem; }
+    .flex-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
+    .flex-card p { font-size: 0.9rem; color: var(--grey-600); line-height: 1.65; }
+    .flex-note { margin-top: 2rem; padding: 1.2rem 1.4rem; background: var(--blue-pale); border-left: 4px solid var(--blue); border-radius: 10px; font-size: 0.92rem; color: var(--blue-dark); line-height: 1.65; }
+    .flex-note a { color: var(--blue); font-weight: 600; }
+
+    /* CERTIFICATIONS */
+    .cert-grid { display: grid; grid-template-columns: 280px 1fr; gap: 4rem; align-items: center; margin-top: 2.5rem; }
+    .cert-logo { background: var(--white); border-radius: 16px; box-shadow: var(--shadow-lg); padding: 2.5rem; display: flex; flex-direction: column; align-items: center; gap: 1rem; text-align: center; }
+    .cert-logo img { width: 100%; max-width: 190px; display: block; }
+    .cert-logo span { font-family: 'Poppins', sans-serif; font-weight: 700; color: #003399; font-size: 0.95rem; line-height: 1.3; }
+    .cert-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .cert-row { display: flex; align-items: flex-start; gap: 1rem; background: var(--white); border: 1.5px solid var(--grey-200); border-radius: 12px; padding: 1rem 1.2rem; }
+    .cert-check { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: #E6F6EE; color: #1B7F4B; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; }
+    .cert-row strong { display: block; font-size: 0.95rem; color: var(--text); }
+    .cert-row span { font-size: 0.85rem; color: var(--grey-600); line-height: 1.55; }
+
     /* VIDEO */
     .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
     .video-frame { justify-self: center; width: 100%; max-width: 400px; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: #fff; }
@@ -143,6 +163,8 @@
       .highlights-grid { grid-template-columns: repeat(2, 1fr); }
       .intro-grid, .results-grid, .video-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .bio-grid { grid-template-columns: 1fr 1fr; }
+      .flex-grid, .cert-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .cert-logo { max-width: 320px; }
       .props-grid { grid-template-columns: 1fr 1fr; }
       .hero-product-img { display: none; }
     }
@@ -253,34 +275,34 @@
     <div class="hero-content">
       <span class="hero-badge" data-i18n="hero-badge"></span>
       <p class="hero-brand">Custom Resin Solutions</p>
-      <h1>CRS Denture</h1>
+      <h1>CRS Flexit</h1>
       <p data-i18n="hero-desc"></p>
-      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Denture" class="hero-cta" data-i18n="hero-cta"></a>
+      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Flexit" class="hero-cta" data-i18n="hero-cta"></a>
       <p class="hero-ref" data-i18n="hero-ref"></p>
     </div>
-    <img class="hero-product-img" src="brand_assets/crs/crs-denture-bottle-set.webp" alt="CRS Denture Resin – boca i ispisana proteza" />
+    <img class="hero-product-img" src="brand_assets/crs/crs-flexit-bottle-set.webp" alt="CRS Flexit Resin – boca i ispisana parcijalna proteza" />
   </section>
 
   <!-- HIGHLIGHTS -->
   <div class="highlights">
     <div class="highlights-grid">
       <div class="highlight-item">
-        <span class="highlight-icon">🛡️</span>
+        <span class="highlight-icon">🦷</span>
         <h3 data-i18n="hl1-title"></h3>
         <p data-i18n="hl1-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">✨</span>
+        <span class="highlight-icon">🌡️</span>
         <h3 data-i18n="hl2-title"></h3>
         <p data-i18n="hl2-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">🎯</span>
+        <span class="highlight-icon">🇪🇺</span>
         <h3 data-i18n="hl3-title"></h3>
         <p data-i18n="hl3-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">💎</span>
+        <span class="highlight-icon">✨</span>
         <h3 data-i18n="hl4-title"></h3>
         <p data-i18n="hl4-desc"></p>
       </div>
@@ -297,7 +319,52 @@
         <p data-i18n="intro-p2"></p>
       </div>
       <div class="intro-image">
-        <img src="brand_assets/crs/crs-denture.webp" alt="Baza proteze ispisana CRS Denture smolom" />
+        <img src="brand_assets/crs/crs-flexit-partial.webp" alt="Parcijalna proteza ispisana CRS Flexit smolom" />
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY FLEXIT -->
+  <section class="section section-alt">
+    <p class="section-label" data-i18n="flex-label"></p>
+    <h2 class="section-title" data-i18n="flex-title"></h2>
+    <p class="section-subtitle" data-i18n="flex-subtitle"></p>
+    <div class="flex-grid">
+      <div class="flex-card">
+        <span class="flex-icon">🌡️</span>
+        <h3 data-i18n="flex1-title"></h3>
+        <p data-i18n="flex1-desc"></p>
+      </div>
+      <div class="flex-card">
+        <span class="flex-icon">🦷</span>
+        <h3 data-i18n="flex2-title"></h3>
+        <p data-i18n="flex2-desc"></p>
+      </div>
+      <div class="flex-card">
+        <span class="flex-icon">↔️</span>
+        <h3 data-i18n="flex3-title"></h3>
+        <p data-i18n="flex3-desc"></p>
+      </div>
+    </div>
+    <p class="flex-note" data-i18n="flex-note"></p>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section class="section">
+    <p class="section-label" data-i18n="cert-label"></p>
+    <h2 class="section-title" data-i18n="cert-title"></h2>
+    <p class="section-subtitle" data-i18n="cert-subtitle"></p>
+    <div class="cert-grid">
+      <div class="cert-logo">
+        <img src="brand_assets/crs/eu-ce-mdr.webp" alt="CE oznaka – EU MDR" />
+        <span data-i18n="cert-logo-caption"></span>
+      </div>
+      <div class="cert-list">
+          <div class="cert-row"><div class="cert-check">✓</div><div><strong data-i18n="cert1-t"></strong><span data-i18n="cert1-d"></span></div></div>
+          <div class="cert-row"><div class="cert-check">✓</div><div><strong data-i18n="cert2-t"></strong><span data-i18n="cert2-d"></span></div></div>
+          <div class="cert-row"><div class="cert-check">✓</div><div><strong data-i18n="cert3-t"></strong><span data-i18n="cert3-d"></span></div></div>
+          <div class="cert-row"><div class="cert-check">✓</div><div><strong data-i18n="cert4-t"></strong><span data-i18n="cert4-d"></span></div></div>
+          <div class="cert-row"><div class="cert-check">✓</div><div><strong data-i18n="cert5-t"></strong><span data-i18n="cert5-d"></span></div></div>
       </div>
     </div>
   </section>
@@ -309,48 +376,25 @@
     <p class="section-subtitle" data-i18n="props-subtitle"></p>
     <div class="props-grid">
       <div class="prop-card">
-        <div class="prop-val">145 MPa</div>
+        <div class="prop-val">&gt;55 MPa</div>
         <div class="prop-label" data-i18n="prop1-label"></div>
         <div class="prop-desc" data-i18n="prop1-desc"></div>
       </div>
       <div class="prop-card">
-        <div class="prop-val">3547 MPa</div>
+        <div class="prop-val">&gt;40 MPa</div>
         <div class="prop-label" data-i18n="prop2-label"></div>
         <div class="prop-desc" data-i18n="prop2-desc"></div>
       </div>
       <div class="prop-card">
-        <div class="prop-val">30 MPa</div>
+        <div class="prop-val">385 / 405 nm</div>
         <div class="prop-label" data-i18n="prop3-label"></div>
         <div class="prop-desc" data-i18n="prop3-desc"></div>
       </div>
-      <div class="prop-card">
-        <div class="prop-val">80 D</div>
-        <div class="prop-label" data-i18n="prop4-label"></div>
-        <div class="prop-desc" data-i18n="prop4-desc"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BIOCOMPATIBILITY -->
-  <section class="section">
-    <p class="section-label" data-i18n="bio-label"></p>
-    <h2 class="section-title" data-i18n="bio-title"></h2>
-    <p class="section-subtitle" data-i18n="bio-subtitle"></p>
-    <div class="bio-grid">
-      <div class="bio-item"><span data-i18n="bio1"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
-      <div class="bio-item"><span data-i18n="bio2"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
-      <div class="bio-item"><span data-i18n="bio3"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
-      <div class="bio-item"><span data-i18n="bio4"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
-      <div class="bio-item"><span data-i18n="bio5"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
-      <div class="bio-item"><span data-i18n="bio6"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
-      <div class="bio-item"><span data-i18n="bio7"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
-      <div class="bio-item"><span data-i18n="bio8"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
-      <div class="bio-item"><span data-i18n="bio9"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
     </div>
   </section>
 
   <!-- APPLICATIONS -->
-  <section class="section section-alt">
+  <section class="section">
     <p class="section-label" data-i18n="apps-label"></p>
     <h2 class="section-title" data-i18n="apps-title"></h2>
     <p class="section-subtitle" data-i18n="apps-subtitle"></p>
@@ -358,16 +402,18 @@
       <span class="app-pill" data-i18n="app1"></span>
       <span class="app-pill" data-i18n="app2"></span>
       <span class="app-pill" data-i18n="app3"></span>
+      <span class="app-pill" data-i18n="app4"></span>
+      <span class="app-pill" data-i18n="app5"></span>
     </div>
   </section>
 
   <!-- VIDEO -->
-  <section class="section">
+  <section class="section section-alt">
     <p class="section-label" data-i18n="video-label"></p>
     <h2 class="section-title" data-i18n="video-title"></h2>
     <div class="video-grid">
       <div class="video-frame">
-        <iframe src="https://www.instagram.com/reel/Dak0jH4IqWH/embed/" title="CRS Denture – Instagram video" loading="lazy" allowtransparency="true" allowfullscreen scrolling="no"></iframe>
+        <iframe src="https://www.instagram.com/reel/DHN6OQwNasP/embed/" title="CRS Flexit – Instagram video" loading="lazy" allowtransparency="true" allowfullscreen scrolling="no"></iframe>
       </div>
       <div class="results-text">
         <h3 data-i18n="results-h3"></h3>
@@ -386,7 +432,7 @@
   <section class="cta-section">
     <h2 data-i18n="cta-title"></h2>
     <p data-i18n="cta-desc"></p>
-    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Denture" class="cta-btn" data-i18n="cta-btn"></a>
+    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Flexit" class="cta-btn" data-i18n="cta-btn"></a>
     <p class="cta-note" data-i18n="cta-note"></p>
   </section>
 
@@ -410,48 +456,56 @@
         'nav-models-resin':'Smole za modele','nav-surgical-resin':'Smole za kirurške vodilice',
         'nav-services':'Usluge','nav-education':'Edukacija','nav-support':'Podrška','nav-contact':'Kontakt',
 
-        'hero-badge':'3D print smola za baze proteza',
-        'hero-desc':'Biokompatibilna smola CE klase IIa za baze mobilnih proteza. Prirodna prozirnost, dugotrajnost i manja kontrakcija od standardnog PMMA – za proteze koje savršeno naliježu.',
+        'hero-badge':'Fleksibilna 3D print smola za proteze',
+        'hero-desc':'Fleksibilna smola CE klase IIa, usklađena s EU MDR uredbom, idealna za parcijalne proteze. Kruta na sobnoj temperaturi, a na tjelesnoj temperaturi postaje savitljiva – za udobnost i bolje prilagođavanje pokretima u ustima.',
         'hero-cta':'Zatražite ponudu →',
-        'hero-ref':'1000 g · 30–35 proteza po boci',
+        'hero-ref':'500 g · 1000 g',
 
-        'hl1-title':'CE klasa IIa','hl1-desc':'Biokompatibilna, netoksična formulacija sigurna za uporabu u ustima.',
-        'hl2-title':'Prirodna prozirnost','hl2-desc':'Posebna formulacija daje protezama prirodan izgled i dugotrajnost.',
-        'hl3-title':'Niska kontrakcija','hl3-desc':'Manje skupljanje od standardnih PMMA materijala za precizno nalijeganje.',
-        'hl4-title':'Lako poliranje','hl4-desc':'Za mehaničko poliranje i optiglaze, sa sredstvima bilo kojeg proizvođača.',
+        'hl1-title':'Idealno za parcijalne proteze','hl1-desc':'Fleksibilnost olakšava umetanje i prilagodbu parcijalnih proteza preostalim zubima.',
+        'hl2-title':'Savitljiva na 37 °C','hl2-desc':'Kruta na sobnoj temperaturi, savitljiva na tjelesnoj – stabilna pri obradi, udobna u ustima.',
+        'hl3-title':'CE klasa IIa · EU MDR','hl3-desc':'Certificirani medicinski proizvod usklađen s Uredbom (EU) 2017/745.',
+        'hl4-title':'Prirodan izgled','hl4-desc':'Estetika koja oponaša prirodnu gingivu, uz prirodnu prozirnost.',
 
         'intro-label':'O proizvodu',
-        'intro-title':'Proteze koje izgledaju prirodno i savršeno naliježu',
-        'intro-p1':'CRS Denture Resin biokompatibilni je materijal CE klase IIa razvijen za izradu baza mobilnih proteza. Zahvaljujući vlastitoj tehnologiji formulacije tvrtke Custom Resin Solutions, nudi prirodnu prozirnost, izdržljivost i dugotrajnost.',
-        'intro-p2':'U usporedbi sa standardnim PMMA materijalima za baze proteza ima nisku stopu kontrakcije, što rezultira bazama koje izvrsno naliježu. Kompatibilna je s mehaničkim poliranjem i optiglaze postupkom te radi sa svim sredstvima za poliranje, neovisno o proizvođaču. Iz jedne boce od 1 kg može se izraditi 30–35 proteza.',
+        'intro-title':'Čvrstoća i udobnost u fleksibilnoj protezi',
+        'intro-p1':'CRS Flexit Resin svjetlosno stvrdnjavajuća je, fleksibilna 3D print smola za izradu mobilnih totalnih i parcijalnih proteza. Biokompatibilni je materijal CE klase IIa, razvijen za slučajeve u kojima je potrebna fleksibilnost, a pruža prirodnu prozirnost, izdržljivost i dugotrajnost – slično kao CRS Denture.',
+        'intro-p2':'Zahvaljujući svojstvu „pametne elastičnosti” materijal zadržava stabilan oblik na sobnoj temperaturi, a pri nošenju se ponaša fleksibilno. Proteza se tako bolje prilagođava pokretima u ustima, što povećava udobnost pacijenta, dok čvrsta struktura smanjuje rizik od loma i deformacija tijekom dugotrajne uporabe.',
+
+        'flex-label':'Zašto Flexit','flex-title':'Fleksibilnost koja radi za pacijenta',
+        'flex-subtitle':'Flexit je naš izbor za parcijalne proteze i sve slučajeve u kojima kruta baza nije idealna.',
+        'flex1-title':'Pametna elastičnost','flex1-desc':'Na sobnoj temperaturi materijal je krut, pa se proteza lako obrađuje i polira. Na tjelesnoj temperaturi postaje savitljiv i ugodan za nošenje.',
+        'flex2-title':'Bolji izbor za parcijalne proteze','flex2-desc':'Fleksibilna baza lakše prelazi preko preostalih zuba pri umetanju i vađenju te se prilagođava njihovom obliku – bez osjećaja krutosti.',
+        'flex3-title':'Otporna na pokrete','flex3-desc':'Vrlo otporna na protruzijske i lateralne kretnje čeljusti, uz manji rizik od loma i trajne deformacije.',
+        'flex-note':'Za totalne proteze kod kojih je potrebna maksimalna krutost preporučujemo <a href="crs-denture.html">CRS Denture</a>. Za parcijalne proteze i slučajeve koji traže fleksibilnost, odaberite CRS Flexit.',
+
+        'cert-label':'Certifikati','cert-title':'Usklađeno s EU MDR',
+        'cert-subtitle':'CRS Flexit certificiran je kao medicinski proizvod CE klase IIa prema europskoj Uredbi o medicinskim proizvodima (MDR).',
+        'cert-logo-caption':'CE klasa IIa<br>EU MDR 2017/745',
+        'cert1-t':'CE klasa IIa','cert1-d':'Certificirani medicinski proizvod klase IIa s CE oznakom.',
+        'cert2-t':'EU MDR – Uredba (EU) 2017/745','cert2-d':'Usklađeno s važećom europskom Uredbom o medicinskim proizvodima.',
+        'cert3-t':'Citotoksičnost – netoksično','cert3-d':'Ispitivanje biokompatibilnosti prema seriji normi ISO 10993.',
+        'cert4-t':'Iritacija – netoksično','cert4-d':'Ispitivanje biokompatibilnosti prema seriji normi ISO 10993.',
+        'cert5-t':'Sistemska toksičnost – netoksično','cert5-d':'Ispitivanje biokompatibilnosti prema seriji normi ISO 10993.',
 
         'props-label':'Mehanička svojstva','props-title':'Tehnički podaci',
         'props-subtitle':'Vrijednosti prema podacima proizvođača Custom Resin Solutions.',
-        'prop1-label':'Savojna čvrstoća','prop1-desc':'ISO 20795. Otpornost na savijanje i lom baze proteze u svakodnevnoj uporabi.',
-        'prop2-label':'Savojni modul','prop2-desc':'ISO 20795. Krutost koja osigurava stabilan oblik i precizno nalijeganje.',
-        'prop3-label':'Vlačna čvrstoća','prop3-desc':'ASTM D638. Otpornost materijala na vlačna opterećenja.',
-        'prop4-label':'Tvrdoća (Shore D)','prop4-desc':'ASTM D2240. Tvrda površina otporna na trošenje.',
+        'prop1-label':'Savojna čvrstoća','prop1-desc':'ASTM D790. Otpornost baze na savijanje i lom.',
+        'prop2-label':'Vlačna čvrstoća','prop2-desc':'ASTM D638. Otpornost materijala na vlačna opterećenja.',
+        'prop3-label':'Valna duljina printera','prop3-desc':'Kompatibilno s LCD i DLP 3D printerima koji rade na 385 nm i 405 nm.',
 
-        'bio-label':'Biokompatibilnost','bio-title':'Ispitano prema ISO 10993',
-        'bio-subtitle':'CRS Denture prošao je kompletan niz ispitivanja biokompatibilnosti – u svim testovima materijal je netoksičan.',
-        'bio1':'Citotoksičnost','bio2':'Senzibilizacija','bio3':'Iritacija',
-        'bio4':'Akutna sistemska toksičnost','bio5':'Subakutna sistemska toksičnost','bio6':'Implantacija',
-        'bio7':'Subkronična toksičnost','bio8':'Kronična toksičnost','bio9':'Genotoksičnost',
-        'bio-ok':'Netoksično',
+        'apps-label':'Indikacije','apps-title':'Za fleksibilne proteze',
+        'apps-subtitle':'CRS Flexit namijenjen je mobilnoj protetici u kojoj su važni udobnost i prilagodljivost.',
+        'app1':'Parcijalne proteze','app2':'Totalne proteze','app3':'Baze proteza','app4':'Popravci i restauracije proteza','app5':'Fleksibilne dentalne primjene',
 
-        'apps-label':'Indikacije','apps-title':'Za baze mobilnih proteza',
-        'apps-subtitle':'CRS Denture namijenjen je izradi baza mobilnih proteza u digitalnom workflowu.',
-        'app1':'Totalne proteze','app2':'Parcijalne proteze','app3':'Proteze na implantatima',
+        'video-label':'Video','video-title':'CRS Flexit u praksi',
+        'results-h3':'Fleksibilno i izdržljivo',
+        'results-p':'CRS Flexit kombinira fleksibilnost i otpornost u jednom materijalu – za mobilne proteze koje pacijenti rado nose.',
+        'feat1':'<strong>Fleksibilnost</strong> – savitljiv na tjelesnoj temperaturi',
+        'feat2':'<strong>Izdržljivost</strong> – zadržava oblik tijekom dugotrajne uporabe',
+        'feat3':'<strong>Prirodna estetika</strong> – izgled prirodne gingive',
+        'feat4':'<strong>Sigurnost</strong> – CE klasa IIa, EU MDR',
 
-        'video-label':'Video','video-title':'Test pada: izdrži li proteza udarac?',
-        'results-h3':'Svaka proteza može pasti',
-        'results-p':'U svakodnevnoj uporabi proteza pacijentu lako isklizne iz ruku tijekom čišćenja – i taj trenutak može biti presudan. Custom Resin Solutions testirao je CRS Denture u stvarnom scenariju pada kako bi pokazao što izdržljivost znači u praksi.',
-        'feat1':'<strong>Izdržljivost</strong> – savojna čvrstoća 145 MPa (ISO 20795)',
-        'feat2':'<strong>Prirodan izgled</strong> – prirodna prozirnost baze proteze',
-        'feat3':'<strong>Jednostavna obrada</strong> – mehaničko poliranje ili optiglaze',
-        'feat4':'<strong>Sigurno za pacijenta</strong> – CE klasa IIa, netoksično prema ISO 10993',
-
-        'cta-title':'Zainteresirani za CRS Denture?',
+        'cta-title':'Zainteresirani za CRS Flexit?',
         'cta-desc':'Kontaktirajte nas za ponudu, uzorke ili pomoć s parametrima ispisa za vaš printer.',
         'cta-btn':'Kontaktirajte nas',
         'cta-note':'ili nas kontaktirajte na medical@gwt.hr',
@@ -465,48 +519,56 @@
         'nav-models-resin':'Model Resins','nav-surgical-resin':'Surgical Guide Resins',
         'nav-services':'Services','nav-education':'Education','nav-support':'Support','nav-contact':'Contact',
 
-        'hero-badge':'3D print resin for denture bases',
-        'hero-desc':'A biocompatible CE Class IIa resin for removable denture bases. Natural transparency, durability and lower shrinkage than standard PMMA – for dentures that fit perfectly.',
+        'hero-badge':'Flexible 3D print denture resin',
+        'hero-desc':'A flexible CE Class IIa resin, compliant with the EU MDR, ideal for partial dentures. Rigid at room temperature, it becomes pliable at body temperature – for comfort and better adaptation to intraoral movements.',
         'hero-cta':'Request a Quote →',
-        'hero-ref':'1000 g · 30–35 dentures per bottle',
+        'hero-ref':'500 g · 1000 g',
 
-        'hl1-title':'CE Class IIa','hl1-desc':'A biocompatible, non-toxic formulation that is safe for use in the mouth.',
-        'hl2-title':'Natural transparency','hl2-desc':'The special formulation gives dentures a natural look and long life.',
-        'hl3-title':'Low shrinkage','hl3-desc':'Shrinks less than standard PMMA materials for a precise fit.',
-        'hl4-title':'Easy to polish','hl4-desc':'Mechanical polishing or optiglaze, with polishing products of any brand.',
+        'hl1-title':'Ideal for partial dentures','hl1-desc':'Flexibility makes partial dentures easier to insert and adapt to the remaining teeth.',
+        'hl2-title':'Pliable at 37 °C','hl2-desc':'Rigid at room temperature, pliable at body temperature – stable when finishing, comfortable in the mouth.',
+        'hl3-title':'CE Class IIa · EU MDR','hl3-desc':'A certified medical device compliant with Regulation (EU) 2017/745.',
+        'hl4-title':'Natural look','hl4-desc':'Aesthetics that mimic natural gingiva, with natural transparency.',
 
         'intro-label':'About the Product',
-        'intro-title':'Dentures That Look Natural and Fit Perfectly',
-        'intro-p1':'CRS Denture Resin is a biocompatible CE Class IIa material developed for removable denture bases. Thanks to the proprietary formulation by Custom Resin Solutions, it offers natural transparency, durability and longevity.',
-        'intro-p2':'Compared to standard PMMA denture base materials it has a low shrinkage rate, resulting in excellently fitting denture bases. It is compatible with both mechanical polishing and the optiglaze process, and works with all polishing products regardless of brand. One 1 kg bottle produces 30–35 dentures.',
+        'intro-title':'Strength and Comfort in a Flexible Denture',
+        'intro-p1':'CRS Flexit Resin is a light-curing, flexible 3D printing resin for removable complete and partial dentures. It is a biocompatible CE Class IIa material developed for cases that require flexibility, offering natural transparency, durability and longevity – similar to CRS Denture.',
+        'intro-p2':'Thanks to its “smart elasticity”, the material keeps a stable form at room temperature and behaves flexibly in use. The denture adapts better to intraoral movements for greater patient comfort, while its strong structure reduces the risk of breakage and deformation over long-term use.',
+
+        'flex-label':'Why Flexit','flex-title':'Flexibility That Works for the Patient',
+        'flex-subtitle':'Flexit is our choice for partial dentures and any case where a rigid base is not ideal.',
+        'flex1-title':'Smart elasticity','flex1-desc':'At room temperature the material is rigid, so the denture is easy to finish and polish. At body temperature it becomes pliable and comfortable to wear.',
+        'flex2-title':'Better for partial dentures','flex2-desc':'A flexible base passes over the remaining teeth more easily when inserted and removed, and adapts to their shape – without feeling rigid.',
+        'flex3-title':'Resists jaw movements','flex3-desc':'Highly resistant to protrusive and lateral movements, with a lower risk of fracture and permanent deformation.',
+        'flex-note':'For complete dentures that need maximum rigidity we recommend <a href="crs-denture.html">CRS Denture</a>. For partial dentures and cases that call for flexibility, choose CRS Flexit.',
+
+        'cert-label':'Certifications','cert-title':'EU MDR Compliant',
+        'cert-subtitle':'CRS Flexit is certified as a CE Class IIa medical device under the European Medical Device Regulation (MDR).',
+        'cert-logo-caption':'CE Class IIa<br>EU MDR 2017/745',
+        'cert1-t':'CE Class IIa','cert1-d':'A certified Class IIa medical device bearing the CE mark.',
+        'cert2-t':'EU MDR – Regulation (EU) 2017/745','cert2-d':'Compliant with the current European Medical Device Regulation.',
+        'cert3-t':'Cytotoxicity – non-toxic','cert3-d':'Biocompatibility testing per the ISO 10993 series.',
+        'cert4-t':'Irritation – non-toxic','cert4-d':'Biocompatibility testing per the ISO 10993 series.',
+        'cert5-t':'Systemic toxicity – non-toxic','cert5-d':'Biocompatibility testing per the ISO 10993 series.',
 
         'props-label':'Material Properties','props-title':'Technical Data',
         'props-subtitle':'Values as published by the manufacturer, Custom Resin Solutions.',
-        'prop1-label':'Flexural strength','prop1-desc':'ISO 20795. Resistance to bending and fracture of the denture base in daily use.',
-        'prop2-label':'Flexural modulus','prop2-desc':'ISO 20795. Stiffness that keeps the shape stable and the fit precise.',
-        'prop3-label':'Tensile strength','prop3-desc':'ASTM D638. Resistance of the material to tensile loads.',
-        'prop4-label':'Hardness (Shore D)','prop4-desc':'ASTM D2240. A hard surface that resists wear.',
+        'prop1-label':'Flexural strength','prop1-desc':'ASTM D790. Resistance of the base to bending and fracture.',
+        'prop2-label':'Tensile strength','prop2-desc':'ASTM D638. Resistance of the material to tensile loads.',
+        'prop3-label':'Printer wavelength','prop3-desc':'Compatible with LCD and DLP 3D printers operating at 385 nm and 405 nm.',
 
-        'bio-label':'Biocompatibility','bio-title':'Tested to ISO 10993',
-        'bio-subtitle':'CRS Denture has passed a complete series of biocompatibility tests – non-toxic in every test.',
-        'bio1':'Cytotoxicity','bio2':'Sensitization','bio3':'Irritation',
-        'bio4':'Acute systemic toxicity','bio5':'Subacute systemic toxicity','bio6':'Implantation',
-        'bio7':'Subchronic toxicity','bio8':'Chronic toxicity','bio9':'Genotoxicity',
-        'bio-ok':'Non-toxic',
+        'apps-label':'Indications','apps-title':'For Flexible Dentures',
+        'apps-subtitle':'CRS Flexit is designed for removable prosthetics where comfort and adaptability matter.',
+        'app1':'Partial dentures','app2':'Complete dentures','app3':'Denture bases','app4':'Denture repair and restoration','app5':'Flexible dental applications',
 
-        'apps-label':'Indications','apps-title':'For Removable Denture Bases',
-        'apps-subtitle':'CRS Denture is designed for removable denture bases in a digital workflow.',
-        'app1':'Complete dentures','app2':'Partial dentures','app3':'Implant-supported dentures',
+        'video-label':'Video','video-title':'CRS Flexit in Practice',
+        'results-h3':'Flexible and Durable',
+        'results-p':'CRS Flexit combines flexibility and resilience in one material – for removable dentures that patients are happy to wear.',
+        'feat1':'<strong>Flexibility</strong> – pliable at body temperature',
+        'feat2':'<strong>Durability</strong> – keeps its shape over long-term use',
+        'feat3':'<strong>Natural aesthetics</strong> – mimics natural gingiva',
+        'feat4':'<strong>Safety</strong> – CE Class IIa, EU MDR',
 
-        'video-label':'Video','video-title':'Drop Test: Can a Denture Take the Impact?',
-        'results-h3':'Every Denture Can Fall',
-        'results-p':'In daily use, a denture can easily slip from the patient’s hands during cleaning – and that moment can make all the difference. Custom Resin Solutions tested CRS Denture in a real-life drop scenario to show what durability means in practice.',
-        'feat1':'<strong>Durability</strong> – flexural strength of 145 MPa (ISO 20795)',
-        'feat2':'<strong>Natural look</strong> – natural transparency of the denture base',
-        'feat3':'<strong>Easy finishing</strong> – mechanical polishing or optiglaze',
-        'feat4':'<strong>Safe for patients</strong> – CE Class IIa, non-toxic per ISO 10993',
-
-        'cta-title':'Interested in CRS Denture?',
+        'cta-title':'Interested in CRS Flexit?',
         'cta-desc':'Contact us for a quote, samples or help with print settings for your printer.',
         'cta-btn':'Contact Us',
         'cta-note':'or reach us at medical@gwt.hr',
