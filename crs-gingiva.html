@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png" />
   <link rel="shortcut icon" href="brand_assets/favicon-32.png" />
-  <title>CRS Flexit – GWT Medical</title>
+  <title>CRS Gingiva – GWT Medical</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -159,6 +159,19 @@
     .printers-logos img[alt="Elegoo"]   { height: 34px; }
     .printers-logos img[alt="Ackuretta"]{ height: 46px; }
 
+    /* PROBLEM / SOLUTION */
+    .issue-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .issue-card { background: var(--white); border-radius: var(--radius); padding: 1.8rem 1.6rem; border-top: 4px solid #C62828; box-shadow: var(--shadow); }
+    .issue-card .issue-tag { display: inline-block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #C62828; background: #FDECEC; padding: 0.2rem 0.6rem; border-radius: 20px; margin-bottom: 0.8rem; }
+    .issue-card h3 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text); }
+    .issue-card p { font-size: 0.9rem; color: var(--grey-600); line-height: 1.65; }
+    .issue-card .issue-fix { margin-top: 1rem; padding-top: 1rem; border-top: 1px dashed var(--grey-200); font-size: 0.88rem; color: var(--text); line-height: 1.6; }
+    .issue-card .issue-fix strong { color: #1B7F4B; }
+    .impact-box { display: grid; grid-template-columns: 1fr 320px; gap: 3rem; align-items: center; margin-top: 2.5rem; background: var(--white); border-left: 5px solid var(--blue); border-radius: 14px; padding: 2rem 2.2rem; box-shadow: var(--shadow); }
+    .impact-box h3 { font-size: 1.2rem; font-weight: 800; color: var(--text); margin-bottom: 0.7rem; }
+    .impact-box p { font-size: 0.95rem; color: var(--grey-600); line-height: 1.75; }
+    .impact-box img { width: 100%; display: block; }
+
     /* VIDEO */
     .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
     .video-frame { justify-self: center; width: 100%; max-width: 400px; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: #fff; }
@@ -184,7 +197,7 @@
       .highlights-grid { grid-template-columns: repeat(2, 1fr); }
       .intro-grid, .results-grid, .video-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .bio-grid { grid-template-columns: 1fr 1fr; }
-      .flex-grid, .cert-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .flex-grid, .cert-grid, .issue-grid, .impact-box { grid-template-columns: 1fr; gap: 2rem; }
       .gallery-grid { grid-template-columns: 1fr 1fr; max-width: 100%; }
       .cert-logo { max-width: 320px; }
       .props-grid { grid-template-columns: 1fr 1fr; }
@@ -303,34 +316,33 @@
     <div class="hero-content">
       <span class="hero-badge" data-i18n="hero-badge"></span>
       <p class="hero-brand">Custom Resin Solutions</p>
-      <h1>CRS Flexit</h1>
+      <h1>CRS Gingiva</h1>
       <p data-i18n="hero-desc"></p>
-      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Flexit" class="hero-cta" data-i18n="hero-cta"></a>
-      <p class="hero-ref" data-i18n="hero-ref"></p>
+      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Gingiva" class="hero-cta" data-i18n="hero-cta"></a>
     </div>
-    <img class="hero-product-img" src="brand_assets/crs/crs-flexit-bottle-set.webp" alt="CRS Flexit Resin – boca i ispisana parcijalna proteza" />
+    <img class="hero-product-img" src="brand_assets/crs/crs-gingiva-bottle-set.webp" alt="CRS Gingiva Resin – boca i model s gingivalnom maskom" />
   </section>
 
   <!-- HIGHLIGHTS -->
   <div class="highlights">
     <div class="highlights-grid">
       <div class="highlight-item">
-        <span class="highlight-icon">🦷</span>
+        <span class="highlight-icon">🎯</span>
         <h3 data-i18n="hl1-title"></h3>
         <p data-i18n="hl1-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">🌡️</span>
+        <span class="highlight-icon">📏</span>
         <h3 data-i18n="hl2-title"></h3>
         <p data-i18n="hl2-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">🇪🇺</span>
+        <span class="highlight-icon">💪</span>
         <h3 data-i18n="hl3-title"></h3>
         <p data-i18n="hl3-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">✨</span>
+        <span class="highlight-icon">🛠️</span>
         <h3 data-i18n="hl4-title"></h3>
         <p data-i18n="hl4-desc"></p>
       </div>
@@ -347,74 +359,63 @@
         <p data-i18n="intro-p2"></p>
       </div>
       <div class="intro-image">
-        <img src="brand_assets/crs/crs-flexit-partial.webp" alt="Parcijalna proteza ispisana CRS Flexit smolom" />
+        <img src="brand_assets/crs/crs-gingiva-implant-model.webp" alt="Gingivalna maska s otvorima za implantatne analoge" />
       </div>
     </div>
   </section>
 
-  <!-- WHY FLEXIT -->
+  <!-- COMMON PROBLEMS -->
   <section class="section section-alt">
-    <p class="section-label" data-i18n="flex-label"></p>
-    <h2 class="section-title" data-i18n="flex-title"></h2>
-    <p class="section-subtitle" data-i18n="flex-subtitle"></p>
-    <div class="flex-grid">
-      <div class="flex-card">
-        <span class="flex-icon">🌡️</span>
-        <h3 data-i18n="flex1-title"></h3>
-        <p data-i18n="flex1-desc"></p>
+    <p class="section-label" data-i18n="issue-label"></p>
+    <h2 class="section-title" data-i18n="issue-title"></h2>
+    <p class="section-subtitle" data-i18n="issue-subtitle"></p>
+    <div class="issue-grid">
+      <div class="issue-card">
+        <span class="issue-tag" data-i18n="issue-tag"></span>
+        <h3 data-i18n="issue1-title"></h3>
+        <p data-i18n="issue1-desc"></p>
+        <p class="issue-fix" data-i18n="issue1-fix"></p>
       </div>
-      <div class="flex-card">
-        <span class="flex-icon">🦷</span>
-        <h3 data-i18n="flex2-title"></h3>
-        <p data-i18n="flex2-desc"></p>
+      <div class="issue-card">
+        <span class="issue-tag" data-i18n="issue-tag"></span>
+        <h3 data-i18n="issue2-title"></h3>
+        <p data-i18n="issue2-desc"></p>
+        <p class="issue-fix" data-i18n="issue2-fix"></p>
       </div>
-      <div class="flex-card">
-        <span class="flex-icon">↔️</span>
-        <h3 data-i18n="flex3-title"></h3>
-        <p data-i18n="flex3-desc"></p>
+      <div class="issue-card">
+        <span class="issue-tag" data-i18n="issue-tag"></span>
+        <h3 data-i18n="issue3-title"></h3>
+        <p data-i18n="issue3-desc"></p>
+        <p class="issue-fix" data-i18n="issue3-fix"></p>
       </div>
     </div>
-    <p class="flex-note" data-i18n="flex-note"></p>
-  </section>
-
-  <!-- CERTIFICATIONS -->
-  <section class="section">
-    <p class="section-label" data-i18n="cert-label"></p>
-    <h2 class="section-title" data-i18n="cert-title"></h2>
-    <p class="section-subtitle" data-i18n="cert-subtitle"></p>
-    <div class="cert-grid">
-      <div class="cert-logo">
-        <img src="brand_assets/crs/eu-ce-mdr.webp" alt="CE oznaka – EU MDR" />
-        <span data-i18n="cert-logo-caption"></span>
+    <div class="impact-box">
+      <div>
+        <h3 data-i18n="impact-title"></h3>
+        <p data-i18n="impact-p"></p>
       </div>
-      <div class="cert-list">
-          <div class="cert-row"><div class="cert-check">✓</div><div><strong data-i18n="cert1-t"></strong><span data-i18n="cert1-d"></span></div></div>
-          <div class="cert-row"><div class="cert-check">✓</div><div><strong data-i18n="cert2-t"></strong><span data-i18n="cert2-d"></span></div></div>
-          <div class="cert-row"><div class="cert-check">✓</div><div><strong data-i18n="cert3-t"></strong><span data-i18n="cert3-d"></span></div></div>
-          <div class="cert-row"><div class="cert-check">✓</div><div><strong data-i18n="cert4-t"></strong><span data-i18n="cert4-d"></span></div></div>
-          <div class="cert-row"><div class="cert-check">✓</div><div><strong data-i18n="cert5-t"></strong><span data-i18n="cert5-d"></span></div></div>
-      </div>
+      <img src="brand_assets/crs/crs-gingiva-mask.webp" alt="Implantološki model s uklonjivom gingivalnom maskom od CRS Gingiva smole" />
     </div>
   </section>
 
   <!-- MATERIAL PROPERTIES -->
-  <section class="section section-alt">
+  <section class="section">
     <p class="section-label" data-i18n="props-label"></p>
     <h2 class="section-title" data-i18n="props-title"></h2>
     <p class="section-subtitle" data-i18n="props-subtitle"></p>
     <div class="props-grid">
       <div class="prop-card">
-        <div class="prop-val">&gt;55 MPa</div>
+        <div class="prop-val">75 Shore A</div>
         <div class="prop-label" data-i18n="prop1-label"></div>
         <div class="prop-desc" data-i18n="prop1-desc"></div>
       </div>
       <div class="prop-card">
-        <div class="prop-val">&gt;40 MPa</div>
+        <div class="prop-val">1.5 MPa</div>
         <div class="prop-label" data-i18n="prop2-label"></div>
         <div class="prop-desc" data-i18n="prop2-desc"></div>
       </div>
       <div class="prop-card">
-        <div class="prop-val">385 / 405 nm</div>
+        <div class="prop-val" data-i18n="prop3-val"></div>
         <div class="prop-label" data-i18n="prop3-label"></div>
         <div class="prop-desc" data-i18n="prop3-desc"></div>
       </div>
@@ -422,7 +423,7 @@
   </section>
 
   <!-- COMPATIBLE PRINTERS -->
-  <section class="printers-section">
+  <section class="printers-section section-alt">
     <p class="section-label" data-i18n="printers-label"></p>
     <h2 class="section-title" data-i18n="printers-title"></h2>
     <p class="section-subtitle" data-i18n="printers-subtitle"></p>
@@ -448,8 +449,9 @@
     </div>
   </section>
 
+
   <!-- APPLICATIONS -->
-  <section class="section section-alt">
+  <section class="section">
     <p class="section-label" data-i18n="apps-label"></p>
     <h2 class="section-title" data-i18n="apps-title"></h2>
     <p class="section-subtitle" data-i18n="apps-subtitle"></p>
@@ -457,18 +459,16 @@
       <span class="app-pill" data-i18n="app1"></span>
       <span class="app-pill" data-i18n="app2"></span>
       <span class="app-pill" data-i18n="app3"></span>
-      <span class="app-pill" data-i18n="app4"></span>
-      <span class="app-pill" data-i18n="app5"></span>
     </div>
   </section>
 
   <!-- VIDEO -->
-  <section class="section">
+  <section class="section section-alt">
     <p class="section-label" data-i18n="video-label"></p>
     <h2 class="section-title" data-i18n="video-title"></h2>
     <div class="video-grid">
       <div class="video-frame">
-        <iframe src="https://www.instagram.com/reel/DHN6OQwNasP/embed/" title="CRS Flexit – Instagram video" loading="lazy" allowtransparency="true" allowfullscreen scrolling="no"></iframe>
+        <iframe src="https://www.instagram.com/reel/C9Mtvb7NtXW/embed/" title="CRS Gingiva – Instagram video" loading="lazy" allowtransparency="true" allowfullscreen scrolling="no"></iframe>
       </div>
       <div class="results-text">
         <h3 data-i18n="results-h3"></h3>
@@ -478,27 +478,8 @@
           <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat2"></span></div>
           <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat3"></span></div>
           <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat4"></span></div>
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat5"></span></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="section section-alt">
-    <p class="section-label" data-i18n="gallery-label"></p>
-    <h2 class="section-title" data-i18n="gallery-title"></h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="brand_assets/crs/crs-flexit-lab1.jpg" alt="Ispis proteze CRS Flexit smolom na 3D printeru" loading="lazy" />
-        <p data-i18n="gal1"></p>
-      </div>
-      <div class="gallery-item">
-        <img src="brand_assets/crs/crs-flexit-lab2.jpg" alt="Fleksibilna parcijalna proteza ispisana CRS Flexit smolom" loading="lazy" />
-        <p data-i18n="gal2"></p>
-      </div>
-      <div class="gallery-item">
-        <img src="brand_assets/crs/crs-flexit-lab3.jpg" alt="Ispisana proteza na radnoj platformi printera" loading="lazy" />
-        <p data-i18n="gal3"></p>
       </div>
     </div>
   </section>
@@ -507,7 +488,7 @@
   <section class="cta-section">
     <h2 data-i18n="cta-title"></h2>
     <p data-i18n="cta-desc"></p>
-    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Flexit" class="cta-btn" data-i18n="cta-btn"></a>
+    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Gingiva" class="cta-btn" data-i18n="cta-btn"></a>
     <p class="cta-note" data-i18n="cta-note"></p>
   </section>
 
@@ -531,64 +512,55 @@
         'nav-models-resin':'Smole za modele','nav-surgical-resin':'Smole za kirurške vodilice',
         'nav-services':'Usluge','nav-education':'Edukacija','nav-support':'Podrška','nav-contact':'Kontakt',
 
-        'hero-badge':'Fleksibilna 3D print smola za proteze',
-        'hero-desc':'Fleksibilna smola CE klase IIa, usklađena s EU MDR uredbom, idealna za parcijalne proteze. Kruta na sobnoj temperaturi, a na tjelesnoj temperaturi postaje savitljiva – za udobnost i bolje prilagođavanje pokretima u ustima.',
+        'hero-badge':'3D print smola za gingivalne maske',
+        'hero-desc':'Elastična smola otporna na kidanje koja vjerno imitira gingivu. Ne gnječi se, ne vitoperi i precizno naliježe na model – za pouzdano planiranje implantoprotetskih radova.',
         'hero-cta':'Zatražite ponudu →',
-        'hero-ref':'500 g · 1000 g',
 
-        'hl1-title':'Idealno za parcijalne proteze','hl1-desc':'Fleksibilnost olakšava umetanje i prilagodbu parcijalnih proteza preostalim zubima.',
-        'hl2-title':'Savitljiva na 37 °C','hl2-desc':'Kruta na sobnoj temperaturi, savitljiva na tjelesnoj – stabilna pri obradi, udobna u ustima.',
-        'hl3-title':'CE klasa IIa · EU MDR','hl3-desc':'Certificirani medicinski proizvod usklađen s Uredbom (EU) 2017/745.',
-        'hl4-title':'Prirodan izgled','hl4-desc':'Estetika koja oponaša prirodnu gingivu, uz prirodnu prozirnost.',
+        'hl1-title':'Precizno nalijeganje','hl1-desc':'Maska točno sjeda na model i oko implantatnih analoga.',
+        'hl2-title':'Ne vitoperi se','hl2-desc':'Dimenzionalno stabilna tijekom i nakon ispisa.',
+        'hl3-title':'Otporna na kidanje','hl3-desc':'Elastična, ali čvrsta – podnosi opetovano skidanje i vraćanje.',
+        'hl4-title':'Može se glodati','hl4-desc':'Obradiva tijekom izrade rada i ne reagira kemijski s akrilatom.',
 
         'intro-label':'O proizvodu',
-        'intro-title':'Čvrstoća i udobnost u fleksibilnoj protezi',
-        'intro-p1':'CRS Flexit Resin svjetlosno stvrdnjavajuća je, fleksibilna 3D print smola za izradu mobilnih totalnih i parcijalnih proteza. Biokompatibilni je materijal CE klase IIa, razvijen za slučajeve u kojima je potrebna fleksibilnost, a pruža prirodnu prozirnost, izdržljivost i dugotrajnost – slično kao CRS Denture.',
-        'intro-p2':'Zahvaljujući svojstvu „pametne elastičnosti” materijal zadržava stabilan oblik na sobnoj temperaturi, a pri nošenju se ponaša fleksibilno. Proteza se tako bolje prilagođava pokretima u ustima, što povećava udobnost pacijenta, dok čvrsta struktura smanjuje rizik od loma i deformacija tijekom dugotrajne uporabe.',
+        'intro-title':'Gingivalna maska koja se ponaša kao prava gingiva',
+        'intro-p1':'CRS Gingiva Resin elastična je smola visoke otpornosti na kidanje koja vjerno imitira gingivu bojom, teksturom i osjetom na dodir. Namijenjena je ispisu dijelova modela kojima je potrebna određena fleksibilnost – prije svega gingivalnih maski na implantološkim modelima, gdje simulira meko tkivo na mjestu implantata i određuje razinu gingive.',
+        'intro-p2':'Zadržava dimenzionalnu stabilnost tijekom i nakon ispisa te nakon obrade ne ostavlja mrlje. Posebno razvijena formulacija omogućuje glodanje tijekom izrade protetskog rada, a u dodiru s akrilatom ne dolazi do kemijske reakcije.',
 
-        'flex-label':'Zašto Flexit','flex-title':'Fleksibilnost koja radi za pacijenta',
-        'flex-subtitle':'Flexit je naš izbor za parcijalne proteze i sve slučajeve u kojima kruta baza nije idealna.',
-        'flex1-title':'Pametna elastičnost','flex1-desc':'Na sobnoj temperaturi materijal je krut, pa se proteza lako obrađuje i polira. Na tjelesnoj temperaturi postaje savitljiv i ugodan za nošenje.',
-        'flex2-title':'Bolji izbor za parcijalne proteze','flex2-desc':'Fleksibilna baza lakše prelazi preko preostalih zuba pri umetanju i vađenju te se prilagođava njihovom obliku – bez osjećaja krutosti.',
-        'flex3-title':'Otporna na pokrete','flex3-desc':'Vrlo otporna na protruzijske i lateralne kretnje čeljusti, uz manji rizik od loma i trajne deformacije.',
-        'flex-note':'Za totalne proteze kod kojih je potrebna maksimalna krutost preporučujemo <a href="crs-denture.html">CRS Denture</a>. Za parcijalne proteze i slučajeve koji traže fleksibilnost, odaberite CRS Flexit.',
+        'issue-label':'Česti problemi','issue-title':'Zašto mnoge gingiva smole ne zadovoljavaju',
+        'issue-subtitle':'Gingivalne maske ispisane smolama drugih proizvođača često imaju tri ključna nedostatka. Svaki od njih izravno utječe na točnost radnog modela.',
+        'issue-tag':'Čest problem',
+        'issue1-title':'Previše mekana („gnjecava”)','issue1-desc':'Maska se pod blagim pritiskom ugiba i gnječi, pa ne drži oblik pri provjeri suprastrukture ni pri skidanju i vraćanju na model.',
+        'issue1-fix':'<strong>CRS Gingiva:</strong> tvrdoća 75 Shore A – elastična kao gingiva, ali dovoljno čvrsta da zadrži oblik.',
+        'issue2-title':'Vitoperenje','issue2-desc':'Skupljanje i unutarnja naprezanja nakon ispisa i polimerizacije iskrive masku – rubovi se odižu, a oblik se mijenja s vremenom.',
+        'issue2-fix':'<strong>CRS Gingiva:</strong> niska kontrakcija i dimenzionalna stabilnost tijekom i nakon ispisa.',
+        'issue3-title':'Neprecizno nalijeganje','issue3-desc':'Maska ne sjeda točno na model i oko implantatnih analoga – između maske i modela ostaju zazori ili se maska ne može potpuno vratiti na mjesto.',
+        'issue3-fix':'<strong>CRS Gingiva:</strong> precizan ispis koji točno naliježe na model i analoge.',
+        'impact-title':'Zašto je to važno u implantologiji',
+        'impact-p':'Gingivalna maska na radnom modelu prikazuje točnu razinu i konturu mekog tkiva oko implantata. Ako je maska premekana, iskrivljena ili ne naliježe precizno, model daje pogrešnu sliku emergence profila i položaja rubova. Planiranje i izrada implantoprotetskog rada tada postaju teži i nepouzdaniji – a pogreška se otkrije tek u ustima pacijenta.',
 
-        'cert-label':'Certifikati','cert-title':'Usklađeno s EU MDR',
-        'cert-subtitle':'CRS Flexit certificiran je kao medicinski proizvod CE klase IIa prema europskoj Uredbi o medicinskim proizvodima (MDR).',
-        'cert-logo-caption':'CE klasa IIa<br>EU MDR 2017/745',
-        'cert1-t':'CE klasa IIa','cert1-d':'Certificirani medicinski proizvod klase IIa s CE oznakom.',
-        'cert2-t':'EU MDR – Uredba (EU) 2017/745','cert2-d':'Usklađeno s važećom europskom Uredbom o medicinskim proizvodima.',
-        'cert3-t':'Citotoksičnost – netoksično','cert3-d':'Ispitivanje biokompatibilnosti prema seriji normi ISO 10993.',
-        'cert4-t':'Iritacija – netoksično','cert4-d':'Ispitivanje biokompatibilnosti prema seriji normi ISO 10993.',
-        'cert5-t':'Sistemska toksičnost – netoksično','cert5-d':'Ispitivanje biokompatibilnosti prema seriji normi ISO 10993.',
-
-        'props-label':'Mehanička svojstva','props-title':'Tehnički podaci',
+        'props-label':'Svojstva materijala','props-title':'Tehnički podaci',
         'props-subtitle':'Vrijednosti prema podacima proizvođača Custom Resin Solutions.',
-        'prop1-label':'Savojna čvrstoća','prop1-desc':'ASTM D790. Otpornost baze na savijanje i lom.',
-        'prop2-label':'Vlačna čvrstoća','prop2-desc':'ASTM D638. Otpornost materijala na vlačna opterećenja.',
-        'prop3-label':'Valna duljina printera','prop3-desc':'Kompatibilno s LCD i DLP 3D printerima koji rade na 385 nm i 405 nm.',
+        'prop1-label':'Tvrdoća','prop1-desc':'ISO 10139-2. Elastična kao prirodna gingiva, a dovoljno čvrsta da zadrži oblik.',
+        'prop2-label':'Vlačna čvrstoća','prop2-desc':'ASTM D638. Visoka otpornost na kidanje pri skidanju i vraćanju maske.',
+        'prop3-val':'Glodljiva','prop3-label':'Kompatibilnost s akrilatom','prop3-desc':'Može se glodati i ne reagira kemijski s akrilatom u dodiru.',
 
         'printers-label':'Kompatibilnost','printers-title':'Kompatibilni 3D printeri',
-        'printers-subtitle':'CRS Flexit radi na LCD i DLP printerima valne duljine 385 nm i 405 nm renomiranih proizvođača. Ukoliko na popisu ne vidite proizvođača Vašeg printera, javite nam se, podesiti ćemo Vam postavke.',
+        'printers-subtitle':'CRS Gingiva radi na LCD i DLP printerima renomiranih proizvođača. Ukoliko na popisu ne vidite proizvođača Vašeg printera, javite nam se, podesiti ćemo Vam postavke.',
 
-        'apps-label':'Indikacije','apps-title':'Za fleksibilne proteze',
-        'apps-subtitle':'CRS Flexit namijenjen je mobilnoj protetici u kojoj su važni udobnost i prilagodljivost.',
-        'app1':'Parcijalne proteze','app2':'Totalne proteze','app3':'Baze proteza','app4':'Popravci i restauracije proteza','app5':'Fleksibilne dentalne primjene',
+        'apps-label':'Indikacije','apps-title':'Za meko tkivo na modelu',
+        'apps-subtitle':'CRS Gingiva namijenjen je dijelovima radnog modela koji moraju biti fleksibilni.',
+        'app1':'Gingivalne maske','app2':'Meko tkivo na implantološkim modelima','app3':'Određivanje razine gingive',
 
-        'video-label':'Video','video-title':'CRS Flexit u praksi',
-        'results-h3':'Fleksibilno i izdržljivo',
-        'results-p':'CRS Flexit kombinira fleksibilnost i otpornost u jednom materijalu – za mobilne proteze koje pacijenti rado nose.',
-        'feat1':'<strong>Fleksibilnost</strong> – savitljiv na tjelesnoj temperaturi',
-        'feat2':'<strong>Izdržljivost</strong> – zadržava oblik tijekom dugotrajne uporabe',
-        'feat3':'<strong>Prirodna estetika</strong> – izgled prirodne gingive',
-        'feat4':'<strong>Sigurnost</strong> – CE klasa IIa, EU MDR',
+        'video-label':'Video','video-title':'Što je gingiva smola?',
+        'results-h3':'Objašnjava Gülgün Satıcı, osnivačica CRS-a',
+        'results-p':'Gingiva smola posebna je vrsta smole za određivanje razine gingive, posebno kod implantoloških slučajeva. CRS Gingiva razvijena je tako da se ponaša kao prirodna gingiva.',
+        'feat1':'<strong>Elastičnost</strong> – visoka elastičnost slična prirodnoj gingivi',
+        'feat2':'<strong>Otpornost na kidanje</strong> – maska podnosi opetovano skidanje',
+        'feat3':'<strong>Prirodna boja</strong> – vrlo slična prirodnom mekom tkivu',
+        'feat4':'<strong>Obradivost</strong> – jedan od glavnih razloga zašto je biraju tehničari',
+        'feat5':'<strong>Dimenzionalna stabilnost</strong> – tijekom i nakon ispisa',
 
-        'gallery-label':'Galerija','gallery-title':'CRS Flexit u laboratoriju',
-        'gal1':'Ispis proteze CRS Flexit smolom na 3D printeru.',
-        'gal2':'Ispisana parcijalna proteza – fleksibilna i lagana.',
-        'gal3':'Proteza s potporama na radnoj platformi nakon ispisa.',
-
-        'cta-title':'Zainteresirani za CRS Flexit?',
+        'cta-title':'Zainteresirani za CRS Gingiva?',
         'cta-desc':'Kontaktirajte nas za ponudu, uzorke ili pomoć s parametrima ispisa za vaš printer.',
         'cta-btn':'Kontaktirajte nas',
         'cta-note':'ili nas kontaktirajte na medical@gwt.hr',
@@ -602,64 +574,55 @@
         'nav-models-resin':'Model Resins','nav-surgical-resin':'Surgical Guide Resins',
         'nav-services':'Services','nav-education':'Education','nav-support':'Support','nav-contact':'Contact',
 
-        'hero-badge':'Flexible 3D print denture resin',
-        'hero-desc':'A flexible CE Class IIa resin, compliant with the EU MDR, ideal for partial dentures. Rigid at room temperature, it becomes pliable at body temperature – for comfort and better adaptation to intraoral movements.',
+        'hero-badge':'3D print resin for gingiva masks',
+        'hero-desc':'An elastic, tear-resistant resin that closely imitates gingiva. It doesn’t squish, doesn’t warp and fits the model precisely – for reliable planning of implant restorations.',
         'hero-cta':'Request a Quote →',
-        'hero-ref':'500 g · 1000 g',
 
-        'hl1-title':'Ideal for partial dentures','hl1-desc':'Flexibility makes partial dentures easier to insert and adapt to the remaining teeth.',
-        'hl2-title':'Pliable at 37 °C','hl2-desc':'Rigid at room temperature, pliable at body temperature – stable when finishing, comfortable in the mouth.',
-        'hl3-title':'CE Class IIa · EU MDR','hl3-desc':'A certified medical device compliant with Regulation (EU) 2017/745.',
-        'hl4-title':'Natural look','hl4-desc':'Aesthetics that mimic natural gingiva, with natural transparency.',
+        'hl1-title':'Precise fit','hl1-desc':'The mask seats exactly on the model and around the implant analogs.',
+        'hl2-title':'Doesn’t warp','hl2-desc':'Dimensionally stable during and after printing.',
+        'hl3-title':'Tear-resistant','hl3-desc':'Elastic but strong – withstands repeated removal and reseating.',
+        'hl4-title':'Millable','hl4-desc':'Can be milled during fabrication and does not react with acrylic.',
 
         'intro-label':'About the Product',
-        'intro-title':'Strength and Comfort in a Flexible Denture',
-        'intro-p1':'CRS Flexit Resin is a light-curing, flexible 3D printing resin for removable complete and partial dentures. It is a biocompatible CE Class IIa material developed for cases that require flexibility, offering natural transparency, durability and longevity – similar to CRS Denture.',
-        'intro-p2':'Thanks to its “smart elasticity”, the material keeps a stable form at room temperature and behaves flexibly in use. The denture adapts better to intraoral movements for greater patient comfort, while its strong structure reduces the risk of breakage and deformation over long-term use.',
+        'intro-title':'A Gingiva Mask That Behaves Like Real Gingiva',
+        'intro-p1':'CRS Gingiva Resin is an elastic, highly tear-resistant resin that closely imitates gingiva in colour, texture and feel. It is designed for model parts that need a certain flexibility – above all gingiva masks on implant models, where it simulates the soft tissue at the implant site and defines the gingival level.',
+        'intro-p2':'It stays dimensionally stable during and after printing and is stain-free after processing. Its specially developed formulation can be milled during prosthetic fabrication and does not react chemically with acrylic on contact.',
 
-        'flex-label':'Why Flexit','flex-title':'Flexibility That Works for the Patient',
-        'flex-subtitle':'Flexit is our choice for partial dentures and any case where a rigid base is not ideal.',
-        'flex1-title':'Smart elasticity','flex1-desc':'At room temperature the material is rigid, so the denture is easy to finish and polish. At body temperature it becomes pliable and comfortable to wear.',
-        'flex2-title':'Better for partial dentures','flex2-desc':'A flexible base passes over the remaining teeth more easily when inserted and removed, and adapts to their shape – without feeling rigid.',
-        'flex3-title':'Resists jaw movements','flex3-desc':'Highly resistant to protrusive and lateral movements, with a lower risk of fracture and permanent deformation.',
-        'flex-note':'For complete dentures that need maximum rigidity we recommend <a href="crs-denture.html">CRS Denture</a>. For partial dentures and cases that call for flexibility, choose CRS Flexit.',
-
-        'cert-label':'Certifications','cert-title':'EU MDR Compliant',
-        'cert-subtitle':'CRS Flexit is certified as a CE Class IIa medical device under the European Medical Device Regulation (MDR).',
-        'cert-logo-caption':'CE Class IIa<br>EU MDR 2017/745',
-        'cert1-t':'CE Class IIa','cert1-d':'A certified Class IIa medical device bearing the CE mark.',
-        'cert2-t':'EU MDR – Regulation (EU) 2017/745','cert2-d':'Compliant with the current European Medical Device Regulation.',
-        'cert3-t':'Cytotoxicity – non-toxic','cert3-d':'Biocompatibility testing per the ISO 10993 series.',
-        'cert4-t':'Irritation – non-toxic','cert4-d':'Biocompatibility testing per the ISO 10993 series.',
-        'cert5-t':'Systemic toxicity – non-toxic','cert5-d':'Biocompatibility testing per the ISO 10993 series.',
+        'issue-label':'Common Problems','issue-title':'Why Many Gingiva Resins Fall Short',
+        'issue-subtitle':'Gingiva masks printed with other manufacturers’ resins often share three key weaknesses. Each one directly affects the accuracy of the working model.',
+        'issue-tag':'Common problem',
+        'issue1-title':'Too soft (“squishy”)','issue1-desc':'The mask gives and squishes under light pressure, so it doesn’t hold its shape when checking the superstructure or when removed and reseated.',
+        'issue1-fix':'<strong>CRS Gingiva:</strong> 75 Shore A – elastic like gingiva, yet firm enough to keep its shape.',
+        'issue2-title':'Warping','issue2-desc':'Shrinkage and internal stress after printing and curing distort the mask – edges lift and the shape changes over time.',
+        'issue2-fix':'<strong>CRS Gingiva:</strong> low shrinkage and dimensional stability during and after printing.',
+        'issue3-title':'Imprecise fit','issue3-desc':'The mask doesn’t seat exactly on the model and around the implant analogs – gaps remain, or the mask can’t be fully reseated.',
+        'issue3-fix':'<strong>CRS Gingiva:</strong> an accurate print that fits the model and analogs precisely.',
+        'impact-title':'Why It Matters in Implantology',
+        'impact-p':'The gingiva mask on the working model shows the exact level and contour of the soft tissue around the implants. If the mask is too soft, warped or doesn’t fit precisely, the model gives a false picture of the emergence profile and margin positions. Planning and fabricating the implant restoration then becomes harder and less reliable – and the error only shows up in the patient’s mouth.',
 
         'props-label':'Material Properties','props-title':'Technical Data',
         'props-subtitle':'Values as published by the manufacturer, Custom Resin Solutions.',
-        'prop1-label':'Flexural strength','prop1-desc':'ASTM D790. Resistance of the base to bending and fracture.',
-        'prop2-label':'Tensile strength','prop2-desc':'ASTM D638. Resistance of the material to tensile loads.',
-        'prop3-label':'Printer wavelength','prop3-desc':'Compatible with LCD and DLP 3D printers operating at 385 nm and 405 nm.',
+        'prop1-label':'Hardness','prop1-desc':'ISO 10139-2. Elastic like natural gingiva, yet firm enough to keep its shape.',
+        'prop2-label':'Tensile strength','prop2-desc':'ASTM D638. High tear resistance when removing and reseating the mask.',
+        'prop3-val':'Millable','prop3-label':'Acrylic compatibility','prop3-desc':'Can be milled and does not react chemically with acrylic on contact.',
 
         'printers-label':'Compatibility','printers-title':'Compatible 3D Printers',
-        'printers-subtitle':'CRS Flexit works on 385 nm and 405 nm LCD and DLP printers from leading manufacturers. If you don’t see your printer’s manufacturer on the list, get in touch and we’ll set up the print settings for you.',
+        'printers-subtitle':'CRS Gingiva works on LCD and DLP printers from leading manufacturers. If you don’t see your printer’s manufacturer on the list, get in touch and we’ll set up the print settings for you.',
 
-        'apps-label':'Indications','apps-title':'For Flexible Dentures',
-        'apps-subtitle':'CRS Flexit is designed for removable prosthetics where comfort and adaptability matter.',
-        'app1':'Partial dentures','app2':'Complete dentures','app3':'Denture bases','app4':'Denture repair and restoration','app5':'Flexible dental applications',
+        'apps-label':'Indications','apps-title':'For Soft Tissue on the Model',
+        'apps-subtitle':'CRS Gingiva is designed for parts of the working model that need to be flexible.',
+        'app1':'Gingiva masks','app2':'Soft tissue on implant models','app3':'Defining the gingival level',
 
-        'video-label':'Video','video-title':'CRS Flexit in Practice',
-        'results-h3':'Flexible and Durable',
-        'results-p':'CRS Flexit combines flexibility and resilience in one material – for removable dentures that patients are happy to wear.',
-        'feat1':'<strong>Flexibility</strong> – pliable at body temperature',
-        'feat2':'<strong>Durability</strong> – keeps its shape over long-term use',
-        'feat3':'<strong>Natural aesthetics</strong> – mimics natural gingiva',
-        'feat4':'<strong>Safety</strong> – CE Class IIa, EU MDR',
+        'video-label':'Video','video-title':'What Is Gingiva Resin?',
+        'results-h3':'Explained by Gülgün Satıcı, founder of CRS',
+        'results-p':'Gingiva resin is a special type of resin used to define the gum level, especially in implant cases. CRS Gingiva was developed to behave like natural gums.',
+        'feat1':'<strong>Elasticity</strong> – high elasticity similar to natural gums',
+        'feat2':'<strong>Tear resistance</strong> – the mask withstands repeated removal',
+        'feat3':'<strong>Natural colour</strong> – closely resembles natural gum tissue',
+        'feat4':'<strong>Machinability</strong> – one of the main reasons technicians choose it',
+        'feat5':'<strong>Dimensional stability</strong> – during and after printing',
 
-        'gallery-label':'Gallery','gallery-title':'CRS Flexit in the Lab',
-        'gal1':'Printing a denture with CRS Flexit resin.',
-        'gal2':'A printed partial denture – flexible and lightweight.',
-        'gal3':'The denture with supports on the build platform after printing.',
-
-        'cta-title':'Interested in CRS Flexit?',
+        'cta-title':'Interested in CRS Gingiva?',
         'cta-desc':'Contact us for a quote, samples or help with print settings for your printer.',
         'cta-btn':'Contact Us',
         'cta-note':'or reach us at medical@gwt.hr',
