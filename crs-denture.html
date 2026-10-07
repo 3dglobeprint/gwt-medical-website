@@ -6,7 +6,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png" />
   <link rel="shortcut icon" href="brand_assets/favicon-32.png" />
-  <title>Ultracur3D DM 4505 N – GWT Medical</title>
+  <title>CRS Denture – GWT Medical</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -51,8 +51,8 @@
 
     /* HERO */
     .hero { position: relative; min-height: 88vh; display: flex; align-items: center; overflow: hidden; padding-top: 72px; }
-    .hero-bg { position: absolute; inset: 0; background: url('brand_assets/ultracur3d/dm4505n-post-process.jpg') center center / cover no-repeat; }
-    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,22,48,0.94) 0%, rgba(8,22,48,0.82) 40%, rgba(8,22,48,0.25) 75%, rgba(8,22,48,0.1) 100%); }
+    .hero-bg { position: absolute; inset: 0; background: linear-gradient(120deg, #1c0f1a 0%, #3a1632 45%, #6a2450 100%); }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 72% 50%, rgba(220,110,150,0.28) 0%, transparent 65%); }
     .hero-content { position: relative; z-index: 2; padding: 5% 5% 6%; max-width: 600px; }
     .hero-badge { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.88); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.4rem; }
     .hero-brand { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
@@ -61,7 +61,7 @@
     .hero-ref { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-top: 1rem; letter-spacing: 0.05em; }
     .hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; color: var(--blue); font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
     .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
-    .hero-product-img { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); height: 78vh; max-height: 640px; object-fit: contain; z-index: 2; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5)); }
+    .hero-product-img { position: absolute; right: 5%; top: calc(50% + 36px); transform: translateY(-50%); height: 70vh; max-height: 580px; object-fit: contain; z-index: 2; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5)); }
 
     /* HIGHLIGHTS */
     .highlights { background: var(--blue); padding: 3rem 5%; }
@@ -81,8 +81,8 @@
     /* INTRO */
     .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .intro-text p { color: var(--grey-600); margin-top: 1.5rem; line-height: 1.8; font-size: 1.02rem; }
-    .intro-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: #fff; display: flex; align-items: center; justify-content: center; }
-    .intro-image img { width: 100%; max-width: 460px; display: block; object-fit: contain; }
+    .intro-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: linear-gradient(135deg, #2a1226 0%, #5a1f44 100%); display: flex; align-items: center; justify-content: center; padding: 3rem 2.5rem; min-height: 360px; }
+    .intro-image img { width: 100%; max-width: 420px; display: block; object-fit: contain; filter: drop-shadow(0 12px 32px rgba(0,0,0,0.4)); }
 
     /* PROPERTIES */
     .props-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
@@ -113,13 +113,15 @@
     .compat-badge-dot { width: 10px; height: 10px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
     .compat-badge span { font-size: 0.88rem; font-weight: 600; color: var(--blue-dark); }
 
-    /* GALLERY */
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
-    .gallery-item { border-radius: var(--radius); overflow: hidden; background: var(--white); box-shadow: var(--shadow); }
-    .gallery-item img { width: 100%; aspect-ratio: 1162 / 671; object-fit: cover; display: block; }
-    .gallery-item p { padding: 1rem 1.2rem; font-size: 0.88rem; color: var(--grey-600); line-height: 1.5; }
-    .doc-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.5rem; color: var(--blue); font-weight: 600; font-size: 0.92rem; text-decoration: none; }
-    .doc-link:hover { text-decoration: underline; }
+    /* BIOCOMPATIBILITY */
+    .bio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.75rem; margin-top: 2.5rem; }
+    .bio-item { display: flex; align-items: center; justify-content: space-between; gap: 1rem; background: var(--white); border: 1.5px solid var(--grey-200); border-radius: 10px; padding: 0.85rem 1.1rem; font-size: 0.9rem; font-weight: 500; }
+    .bio-ok { font-size: 0.75rem; font-weight: 700; color: #1B7F4B; background: #E6F6EE; padding: 0.2rem 0.6rem; border-radius: 20px; white-space: nowrap; }
+
+    /* VIDEO */
+    .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .video-frame { justify-self: center; width: 100%; max-width: 400px; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: #fff; }
+    .video-frame iframe { display: block; width: 100%; height: 720px; border: 0; }
 
     /* CTA */
     .cta-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); padding: 6rem 5%; text-align: center; }
@@ -139,12 +141,13 @@
 
     @media (max-width: 900px) {
       .highlights-grid { grid-template-columns: repeat(2, 1fr); }
-      .intro-grid, .results-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .props-grid, .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .intro-grid, .results-grid, .video-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .bio-grid { grid-template-columns: 1fr 1fr; }
+      .props-grid { grid-template-columns: 1fr 1fr; }
       .hero-product-img { display: none; }
     }
     @media (max-width: 600px) {
-      .highlights-grid, .props-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .highlights-grid, .props-grid, .bio-grid { grid-template-columns: 1fr; }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -248,34 +251,35 @@
     <div class="hero-bg"></div>
     <div class="hero-content">
       <span class="hero-badge" data-i18n="hero-badge"></span>
-      <p class="hero-brand">Forward AM · Ultracur3D®</p>
-      <h1>DM 4505 N</h1>
+      <p class="hero-brand">Custom Resin Solutions</p>
+      <h1>CRS Denture</h1>
       <p data-i18n="hero-desc"></p>
-      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20Ultracur3D%20DM%204505%20N" class="hero-cta" data-i18n="hero-cta"></a>
-      <p class="hero-ref">1 kg · Natural</p>
+      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Denture" class="hero-cta" data-i18n="hero-cta"></a>
+      <p class="hero-ref" data-i18n="hero-ref"></p>
     </div>
+    <img class="hero-product-img" src="brand_assets/crs/crs-denture-bottle-set.webp" alt="CRS Denture Resin – boca i ispisana proteza" />
   </section>
 
   <!-- HIGHLIGHTS -->
   <div class="highlights">
     <div class="highlights-grid">
       <div class="highlight-item">
-        <span class="highlight-icon">🎯</span>
+        <span class="highlight-icon">🛡️</span>
         <h3 data-i18n="hl1-title"></h3>
         <p data-i18n="hl1-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">💧</span>
+        <span class="highlight-icon">✨</span>
         <h3 data-i18n="hl2-title"></h3>
         <p data-i18n="hl2-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">🛡️</span>
+        <span class="highlight-icon">🎯</span>
         <h3 data-i18n="hl3-title"></h3>
         <p data-i18n="hl3-desc"></p>
       </div>
       <div class="highlight-item">
-        <span class="highlight-icon">✨</span>
+        <span class="highlight-icon">💎</span>
         <h3 data-i18n="hl4-title"></h3>
         <p data-i18n="hl4-desc"></p>
       </div>
@@ -292,7 +296,7 @@
         <p data-i18n="intro-p2"></p>
       </div>
       <div class="intro-image">
-        <img src="brand_assets/ultracur3d/dm4505n-bottle.webp" alt="Ultracur3D DM 4505 N – boca 1 kg i ispisani model" />
+        <img src="brand_assets/crs/crs-denture.webp" alt="Baza proteze ispisana CRS Denture smolom" />
       </div>
     </div>
   </section>
@@ -304,30 +308,48 @@
     <p class="section-subtitle" data-i18n="props-subtitle"></p>
     <div class="props-grid">
       <div class="prop-card">
-        <div class="prop-val">2500 MPa</div>
+        <div class="prop-val">145 MPa</div>
         <div class="prop-label" data-i18n="prop1-label"></div>
         <div class="prop-desc" data-i18n="prop1-desc"></div>
       </div>
       <div class="prop-card">
-        <div class="prop-val">55 MPa</div>
+        <div class="prop-val">3547 MPa</div>
         <div class="prop-label" data-i18n="prop2-label"></div>
         <div class="prop-desc" data-i18n="prop2-desc"></div>
       </div>
       <div class="prop-card">
-        <div class="prop-val">82 D</div>
+        <div class="prop-val">30 MPa</div>
         <div class="prop-label" data-i18n="prop3-label"></div>
         <div class="prop-desc" data-i18n="prop3-desc"></div>
       </div>
       <div class="prop-card">
-        <div class="prop-val">800 mPa·s</div>
+        <div class="prop-val">80 D</div>
         <div class="prop-label" data-i18n="prop4-label"></div>
         <div class="prop-desc" data-i18n="prop4-desc"></div>
       </div>
     </div>
   </section>
 
-  <!-- APPLICATIONS -->
+  <!-- BIOCOMPATIBILITY -->
   <section class="section">
+    <p class="section-label" data-i18n="bio-label"></p>
+    <h2 class="section-title" data-i18n="bio-title"></h2>
+    <p class="section-subtitle" data-i18n="bio-subtitle"></p>
+    <div class="bio-grid">
+      <div class="bio-item"><span data-i18n="bio1"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
+      <div class="bio-item"><span data-i18n="bio2"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
+      <div class="bio-item"><span data-i18n="bio3"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
+      <div class="bio-item"><span data-i18n="bio4"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
+      <div class="bio-item"><span data-i18n="bio5"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
+      <div class="bio-item"><span data-i18n="bio6"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
+      <div class="bio-item"><span data-i18n="bio7"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
+      <div class="bio-item"><span data-i18n="bio8"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
+      <div class="bio-item"><span data-i18n="bio9"></span><span class="bio-ok" data-i18n="bio-ok"></span></div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section class="section section-alt">
     <p class="section-label" data-i18n="apps-label"></p>
     <h2 class="section-title" data-i18n="apps-title"></h2>
     <p class="section-subtitle" data-i18n="apps-subtitle"></p>
@@ -338,13 +360,13 @@
     </div>
   </section>
 
-  <!-- RESULTS -->
-  <section class="section section-alt">
-    <p class="section-label" data-i18n="results-label"></p>
-    <h2 class="section-title" data-i18n="results-title"></h2>
-    <div class="results-grid">
-      <div class="results-image">
-        <img src="brand_assets/ultracur3d/dm4505n-articulated.jpg" alt="Artikulirani dentalni model ispisan Ultracur3D DM 4505 N smolom" />
+  <!-- VIDEO -->
+  <section class="section">
+    <p class="section-label" data-i18n="video-label"></p>
+    <h2 class="section-title" data-i18n="video-title"></h2>
+    <div class="video-grid">
+      <div class="video-frame">
+        <iframe src="https://www.instagram.com/reel/Dak0jH4IqWH/embed/" title="CRS Denture – Instagram video" loading="lazy" allowtransparency="true" allowfullscreen scrolling="no"></iframe>
       </div>
       <div class="results-text">
         <h3 data-i18n="results-h3"></h3>
@@ -355,27 +377,6 @@
           <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat3"></span></div>
           <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat4"></span></div>
         </div>
-        <a class="doc-link" href="https://forward-am.com/material-portfolio/ultracur3d-photopolymers/dental-line/ultracur3d-dm-4505-n/" target="_blank" rel="noopener" data-i18n="doc-link"></a>
-      </div>
-    </div>
-  </section>
-
-  <!-- GALLERY -->
-  <section class="section">
-    <p class="section-label" data-i18n="gallery-label"></p>
-    <h2 class="section-title" data-i18n="gallery-title"></h2>
-    <div class="gallery-grid">
-      <div class="gallery-item">
-        <img src="brand_assets/ultracur3d/dm4505n-printer.jpg" alt="Ultracur3D DM 4505 N uz 3D printer" loading="lazy" />
-        <p data-i18n="gal1"></p>
-      </div>
-      <div class="gallery-item">
-        <img src="brand_assets/ultracur3d/dm4505n-implant-model.jpg" alt="Dentalni model s implantatima" loading="lazy" />
-        <p data-i18n="gal2"></p>
-      </div>
-      <div class="gallery-item">
-        <img src="brand_assets/ultracur3d/dm4505n-post-process.jpg" alt="Završna obrada ispisanog modela" loading="lazy" />
-        <p data-i18n="gal3"></p>
       </div>
     </div>
   </section>
@@ -384,7 +385,7 @@
   <section class="cta-section">
     <h2 data-i18n="cta-title"></h2>
     <p data-i18n="cta-desc"></p>
-    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20Ultracur3D%20DM%204505%20N" class="cta-btn" data-i18n="cta-btn"></a>
+    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Denture" class="cta-btn" data-i18n="cta-btn"></a>
     <p class="cta-note" data-i18n="cta-note"></p>
   </section>
 
@@ -408,46 +409,48 @@
         'nav-models-resin':'Smole za modele','nav-surgical-resin':'Smole za kirurške vodilice',
         'nav-services':'Usluge','nav-education':'Edukacija','nav-support':'Podrška','nav-contact':'Kontakt',
 
-        'hero-badge':'3D print smola za dentalne modele',
-        'hero-desc':'Precizna i sigurnija smola za dentalne profesionalce. Modeli i kalupi oštrih detalja, mat površine i stabilnih dimenzija – a ispiru se običnom vodom.',
+        'hero-badge':'3D print smola za baze proteza',
+        'hero-desc':'Biokompatibilna smola CE klase IIa za baze mobilnih proteza. Prirodna prozirnost, dugotrajnost i manja kontrakcija od standardnog PMMA – za proteze koje savršeno naliježu.',
         'hero-cta':'Zatražite ponudu →',
+        'hero-ref':'1000 g · 30–35 proteza po boci',
 
-        'hl1-title':'Visoka preciznost','hl1-desc':'Točni i konzistentni modeli i kalupi, sa stabilnom točnošću kroz vrijeme.',
-        'hl2-title':'Ispiranje vodom','hl2-desc':'Bez kemijskih sredstava za čišćenje – jednostavno i sigurno rukovanje.',
-        'hl3-title':'Bez TPO i TMPTA','hl3-desc':'Sigurnija formulacija bez TPO fotoinicijatora i TMPTA monomera.',
-        'hl4-title':'Oštri detalji','hl4-desc':'Izvrsna kvaliteta površine s jasno vidljivim detaljima i mat završnom obradom.',
+        'hl1-title':'CE klasa IIa','hl1-desc':'Biokompatibilna, netoksična formulacija sigurna za uporabu u ustima.',
+        'hl2-title':'Prirodna prozirnost','hl2-desc':'Posebna formulacija daje protezama prirodan izgled i dugotrajnost.',
+        'hl3-title':'Niska kontrakcija','hl3-desc':'Manje skupljanje od standardnih PMMA materijala za precizno nalijeganje.',
+        'hl4-title':'Lako poliranje','hl4-desc':'Za mehaničko poliranje i optiglaze, sa sredstvima bilo kojeg proizvođača.',
 
         'intro-label':'O proizvodu',
-        'intro-title':'Najnovija smola u dentalnoj liniji Forward AM',
-        'intro-p1':'Ultracur3D® DM 4505 N najnoviji je dodatak dentalnom portfelju tvrtke Forward AM. Zahvaljujući visokoj stabilnosti pigmenata nije potrebno često miješanje materijala. U usporedbi s Ultracur3D® DM 2505, ova smola je mat izgleda i pokazuje bolju stabilnost točnosti kroz vrijeme.',
-        'intro-p2':'Za razliku od većine smola na tržištu, DM 4505 N se ispire vodom – rukovanje je jednostavno i sigurno, bez kemijskih sredstava za čišćenje. Uz to, materijal ne sadrži TPO ni TMPTA.',
+        'intro-title':'Proteze koje izgledaju prirodno i savršeno naliježu',
+        'intro-p1':'CRS Denture Resin biokompatibilni je materijal CE klase IIa razvijen za izradu baza mobilnih proteza. Zahvaljujući vlastitoj tehnologiji formulacije tvrtke Custom Resin Solutions, nudi prirodnu prozirnost, izdržljivost i dugotrajnost.',
+        'intro-p2':'U usporedbi sa standardnim PMMA materijalima za baze proteza ima nisku stopu kontrakcije, što rezultira bazama koje izvrsno naliježu. Kompatibilna je s mehaničkim poliranjem i optiglaze postupkom te radi sa svim sredstvima za poliranje, neovisno o proizvođaču. Iz jedne boce od 1 kg može se izraditi 30–35 proteza.',
 
-        'props-label':'Svojstva materijala','props-title':'Tehnički podaci',
-        'props-subtitle':'Vrijednosti prema podacima proizvođača Forward AM.',
-        'prop1-label':'Youngov modul','prop1-desc':'Krutost koja osigurava stabilan oblik modela pri rukovanju i radu u artikulatoru.',
-        'prop2-label':'Vlačna čvrstoća','prop2-desc':'Otpornost na lom pri skidanju radova i svakodnevnoj uporabi modela.',
-        'prop3-label':'Tvrdoća (Shore D)','prop3-desc':'Tvrda površina otporna na trošenje i oštećenja.',
-        'prop4-label':'Viskoznost pri 30 °C','prop4-desc':'Niska viskoznost za brz i pouzdan ispis.',
+        'props-label':'Mehanička svojstva','props-title':'Tehnički podaci',
+        'props-subtitle':'Vrijednosti prema podacima proizvođača Custom Resin Solutions.',
+        'prop1-label':'Savojna čvrstoća','prop1-desc':'ISO 20795. Otpornost na savijanje i lom baze proteze u svakodnevnoj uporabi.',
+        'prop2-label':'Savojni modul','prop2-desc':'ISO 20795. Krutost koja osigurava stabilan oblik i precizno nalijeganje.',
+        'prop3-label':'Vlačna čvrstoća','prop3-desc':'ASTM D638. Otpornost materijala na vlačna opterećenja.',
+        'prop4-label':'Tvrdoća (Shore D)','prop4-desc':'ASTM D2240. Tvrda površina otporna na trošenje.',
 
-        'apps-label':'Indikacije','apps-title':'Za modele i kalupe',
-        'apps-subtitle':'DM 4505 N namijenjen je izradi preciznih dentalnih modela i pomoćnih dijelova u laboratoriju.',
-        'app1':'Dentalni modeli','app2':'Dentalni kalupi','app3':'Gingivalne maske',
+        'bio-label':'Biokompatibilnost','bio-title':'Ispitano prema ISO 10993',
+        'bio-subtitle':'CRS Denture prošao je kompletan niz ispitivanja biokompatibilnosti – u svim testovima materijal je netoksičan.',
+        'bio1':'Citotoksičnost','bio2':'Senzibilizacija','bio3':'Iritacija',
+        'bio4':'Akutna sistemska toksičnost','bio5':'Subakutna sistemska toksičnost','bio6':'Implantacija',
+        'bio7':'Subkronična toksičnost','bio8':'Kronična toksičnost','bio9':'Genotoksičnost',
+        'bio-ok':'Netoksično',
 
-        'results-label':'U praksi','results-title':'Modeli na koje se možete osloniti',
-        'results-h3':'Preciznost koja ostaje stabilna',
-        'results-p':'Mat površina i oštri detalji olakšavaju procjenu rubova i kontakata, a stabilni pigmenti osiguravaju ujednačenu boju od ispisa do ispisa.',
-        'feat1':'<strong>Točnost</strong> – konzistentni modeli i kalupi, stabilni kroz vrijeme',
-        'feat2':'<strong>Ispiranje vodom</strong> – bez IPA i drugih kemijskih sredstava',
-        'feat3':'<strong>Sigurnija formula</strong> – bez TPO i TMPTA',
-        'feat4':'<strong>Stabilni pigmenti</strong> – nije potrebno često miješanje',
-        'doc-link':'Tehnički list i upute za uporabu (Forward AM) →',
+        'apps-label':'Indikacije','apps-title':'Za baze mobilnih proteza',
+        'apps-subtitle':'CRS Denture namijenjen je izradi baza mobilnih proteza u digitalnom workflowu.',
+        'app1':'Totalne proteze','app2':'Parcijalne proteze','app3':'Proteze na implantatima',
 
-        'gallery-label':'Galerija','gallery-title':'DM 4505 N u laboratoriju',
-        'gal1':'Ultracur3D® DM 4505 N, boca od 1 kg, spremna za ispis.',
-        'gal2':'Ispisani model za implantoprotetski rad.',
-        'gal3':'Završna obrada ispisanog modela.',
+        'video-label':'Video','video-title':'Test pada: izdrži li proteza udarac?',
+        'results-h3':'Svaka proteza može pasti',
+        'results-p':'U svakodnevnoj uporabi proteza pacijentu lako isklizne iz ruku tijekom čišćenja – i taj trenutak može biti presudan. Custom Resin Solutions testirao je CRS Denture u stvarnom scenariju pada kako bi pokazao što izdržljivost znači u praksi.',
+        'feat1':'<strong>Izdržljivost</strong> – savojna čvrstoća 145 MPa (ISO 20795)',
+        'feat2':'<strong>Prirodan izgled</strong> – prirodna prozirnost baze proteze',
+        'feat3':'<strong>Jednostavna obrada</strong> – mehaničko poliranje ili optiglaze',
+        'feat4':'<strong>Sigurno za pacijenta</strong> – CE klasa IIa, netoksično prema ISO 10993',
 
-        'cta-title':'Zainteresirani za DM 4505 N?',
+        'cta-title':'Zainteresirani za CRS Denture?',
         'cta-desc':'Kontaktirajte nas za ponudu, uzorke ili pomoć s parametrima ispisa za vaš printer.',
         'cta-btn':'Kontaktirajte nas',
         'cta-note':'ili nas kontaktirajte na medical@gwt.hr',
@@ -461,46 +464,48 @@
         'nav-models-resin':'Model Resins','nav-surgical-resin':'Surgical Guide Resins',
         'nav-services':'Services','nav-education':'Education','nav-support':'Support','nav-contact':'Contact',
 
-        'hero-badge':'3D print resin for dental models',
-        'hero-desc':'A precise and safer resin for dental professionals. Models and molds with crisp details, a matte surface and stable dimensions – washed with plain water.',
+        'hero-badge':'3D print resin for denture bases',
+        'hero-desc':'A biocompatible CE Class IIa resin for removable denture bases. Natural transparency, durability and lower shrinkage than standard PMMA – for dentures that fit perfectly.',
         'hero-cta':'Request a Quote →',
+        'hero-ref':'1000 g · 30–35 dentures per bottle',
 
-        'hl1-title':'High accuracy','hl1-desc':'Accurate and consistent models and molds, with accuracy that stays stable over time.',
-        'hl2-title':'Water-washable','hl2-desc':'No chemical cleaners needed – easy and safe handling.',
-        'hl3-title':'TPO and TMPTA-free','hl3-desc':'A safer formulation without TPO photoinitiator or TMPTA monomer.',
-        'hl4-title':'Crisp details','hl4-desc':'Great surface quality showing crisp details, with a matte finish.',
+        'hl1-title':'CE Class IIa','hl1-desc':'A biocompatible, non-toxic formulation that is safe for use in the mouth.',
+        'hl2-title':'Natural transparency','hl2-desc':'The special formulation gives dentures a natural look and long life.',
+        'hl3-title':'Low shrinkage','hl3-desc':'Shrinks less than standard PMMA materials for a precise fit.',
+        'hl4-title':'Easy to polish','hl4-desc':'Mechanical polishing or optiglaze, with polishing products of any brand.',
 
         'intro-label':'About the Product',
-        'intro-title':'The Latest Resin in the Forward AM Dental Line',
-        'intro-p1':'Ultracur3D® DM 4505 N is the latest addition to the Forward AM dental portfolio. Thanks to the high pigment stability of the material, there is no need for frequent mixing. Compared to Ultracur3D® DM 2505, it is more matte and shows improved accuracy stability over time.',
-        'intro-p2':'Unlike most resins on the market, DM 4505 N is water-washable, making it easy and safe to handle without chemical cleaners. It is also free from TPO and TMPTA.',
+        'intro-title':'Dentures That Look Natural and Fit Perfectly',
+        'intro-p1':'CRS Denture Resin is a biocompatible CE Class IIa material developed for removable denture bases. Thanks to the proprietary formulation by Custom Resin Solutions, it offers natural transparency, durability and longevity.',
+        'intro-p2':'Compared to standard PMMA denture base materials it has a low shrinkage rate, resulting in excellently fitting denture bases. It is compatible with both mechanical polishing and the optiglaze process, and works with all polishing products regardless of brand. One 1 kg bottle produces 30–35 dentures.',
 
         'props-label':'Material Properties','props-title':'Technical Data',
-        'props-subtitle':'Values as published by the manufacturer, Forward AM.',
-        'prop1-label':'Young’s modulus','prop1-desc':'Stiffness that keeps the model dimensionally stable during handling and articulation.',
-        'prop2-label':'Tensile strength','prop2-desc':'Resistance to breakage when removing work and in everyday model use.',
-        'prop3-label':'Hardness (Shore D)','prop3-desc':'A hard surface that resists wear and damage.',
-        'prop4-label':'Viscosity at 30 °C','prop4-desc':'Low viscosity for fast, reliable printing.',
+        'props-subtitle':'Values as published by the manufacturer, Custom Resin Solutions.',
+        'prop1-label':'Flexural strength','prop1-desc':'ISO 20795. Resistance to bending and fracture of the denture base in daily use.',
+        'prop2-label':'Flexural modulus','prop2-desc':'ISO 20795. Stiffness that keeps the shape stable and the fit precise.',
+        'prop3-label':'Tensile strength','prop3-desc':'ASTM D638. Resistance of the material to tensile loads.',
+        'prop4-label':'Hardness (Shore D)','prop4-desc':'ASTM D2240. A hard surface that resists wear.',
 
-        'apps-label':'Indications','apps-title':'For Models and Molds',
-        'apps-subtitle':'DM 4505 N is designed for precise dental models and auxiliary lab parts.',
-        'app1':'Dental models','app2':'Dental molds','app3':'Gingiva masks',
+        'bio-label':'Biocompatibility','bio-title':'Tested to ISO 10993',
+        'bio-subtitle':'CRS Denture has passed a complete series of biocompatibility tests – non-toxic in every test.',
+        'bio1':'Cytotoxicity','bio2':'Sensitization','bio3':'Irritation',
+        'bio4':'Acute systemic toxicity','bio5':'Subacute systemic toxicity','bio6':'Implantation',
+        'bio7':'Subchronic toxicity','bio8':'Chronic toxicity','bio9':'Genotoxicity',
+        'bio-ok':'Non-toxic',
 
-        'results-label':'In Practice','results-title':'Models You Can Rely On',
-        'results-h3':'Accuracy That Stays Stable',
-        'results-p':'The matte surface and crisp details make margins and contacts easy to assess, while stable pigments keep the colour consistent from print to print.',
-        'feat1':'<strong>Accuracy</strong> – consistent models and molds, stable over time',
-        'feat2':'<strong>Water-washable</strong> – no IPA or other chemical cleaners',
-        'feat3':'<strong>Safer formula</strong> – TPO and TMPTA-free',
-        'feat4':'<strong>Stable pigments</strong> – no frequent mixing needed',
-        'doc-link':'Technical data sheet and user guideline (Forward AM) →',
+        'apps-label':'Indications','apps-title':'For Removable Denture Bases',
+        'apps-subtitle':'CRS Denture is designed for removable denture bases in a digital workflow.',
+        'app1':'Complete dentures','app2':'Partial dentures','app3':'Implant-supported dentures',
 
-        'gallery-label':'Gallery','gallery-title':'DM 4505 N in the Lab',
-        'gal1':'Ultracur3D® DM 4505 N, 1 kg bottle, ready to print.',
-        'gal2':'Printed model for implant prosthetics.',
-        'gal3':'Finishing a printed model.',
+        'video-label':'Video','video-title':'Drop Test: Can a Denture Take the Impact?',
+        'results-h3':'Every Denture Can Fall',
+        'results-p':'In daily use, a denture can easily slip from the patient’s hands during cleaning – and that moment can make all the difference. Custom Resin Solutions tested CRS Denture in a real-life drop scenario to show what durability means in practice.',
+        'feat1':'<strong>Durability</strong> – flexural strength of 145 MPa (ISO 20795)',
+        'feat2':'<strong>Natural look</strong> – natural transparency of the denture base',
+        'feat3':'<strong>Easy finishing</strong> – mechanical polishing or optiglaze',
+        'feat4':'<strong>Safe for patients</strong> – CE Class IIa, non-toxic per ISO 10993',
 
-        'cta-title':'Interested in DM 4505 N?',
+        'cta-title':'Interested in CRS Denture?',
         'cta-desc':'Contact us for a quote, samples or help with print settings for your printer.',
         'cta-btn':'Contact Us',
         'cta-note':'or reach us at medical@gwt.hr',
