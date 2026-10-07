@@ -138,6 +138,12 @@
     .cert-row strong { display: block; font-size: 0.95rem; color: var(--text); }
     .cert-row span { font-size: 0.85rem; color: var(--grey-600); line-height: 1.55; }
 
+    /* GALLERY */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .gallery-item { border-radius: var(--radius); overflow: hidden; background: var(--white); box-shadow: var(--shadow); }
+    .gallery-item img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; }
+    .gallery-item p { padding: 1rem 1.2rem; font-size: 0.88rem; color: var(--grey-600); line-height: 1.5; }
+
     /* VIDEO */
     .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
     .video-frame { justify-self: center; width: 100%; max-width: 400px; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: #fff; }
@@ -164,12 +170,13 @@
       .intro-grid, .results-grid, .video-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .bio-grid { grid-template-columns: 1fr 1fr; }
       .flex-grid, .cert-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
       .cert-logo { max-width: 320px; }
       .props-grid { grid-template-columns: 1fr 1fr; }
       .hero-product-img { display: none; }
     }
     @media (max-width: 600px) {
-      .highlights-grid, .props-grid, .bio-grid { grid-template-columns: 1fr; }
+      .highlights-grid, .props-grid, .bio-grid, .gallery-grid { grid-template-columns: 1fr; }
     }
   </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -428,6 +435,26 @@
     </div>
   </section>
 
+  <!-- GALLERY -->
+  <section class="section">
+    <p class="section-label" data-i18n="gallery-label"></p>
+    <h2 class="section-title" data-i18n="gallery-title"></h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="brand_assets/crs/crs-flexit-lab1.jpg" alt="Ispis proteze CRS Flexit smolom na 3D printeru" loading="lazy" />
+        <p data-i18n="gal1"></p>
+      </div>
+      <div class="gallery-item">
+        <img src="brand_assets/crs/crs-flexit-lab2.jpg" alt="Fleksibilna parcijalna proteza ispisana CRS Flexit smolom" loading="lazy" />
+        <p data-i18n="gal2"></p>
+      </div>
+      <div class="gallery-item">
+        <img src="brand_assets/crs/crs-flexit-lab3.jpg" alt="Ispisana proteza na radnoj platformi printera" loading="lazy" />
+        <p data-i18n="gal3"></p>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section">
     <h2 data-i18n="cta-title"></h2>
@@ -505,6 +532,11 @@
         'feat3':'<strong>Prirodna estetika</strong> – izgled prirodne gingive',
         'feat4':'<strong>Sigurnost</strong> – CE klasa IIa, EU MDR',
 
+        'gallery-label':'Galerija','gallery-title':'CRS Flexit u laboratoriju',
+        'gal1':'Ispis proteze CRS Flexit smolom na 3D printeru.',
+        'gal2':'Ispisana parcijalna proteza – fleksibilna i lagana.',
+        'gal3':'Proteza s potporama na radnoj platformi nakon ispisa.',
+
         'cta-title':'Zainteresirani za CRS Flexit?',
         'cta-desc':'Kontaktirajte nas za ponudu, uzorke ili pomoć s parametrima ispisa za vaš printer.',
         'cta-btn':'Kontaktirajte nas',
@@ -567,6 +599,11 @@
         'feat2':'<strong>Durability</strong> – keeps its shape over long-term use',
         'feat3':'<strong>Natural aesthetics</strong> – mimics natural gingiva',
         'feat4':'<strong>Safety</strong> – CE Class IIa, EU MDR',
+
+        'gallery-label':'Gallery','gallery-title':'CRS Flexit in the Lab',
+        'gal1':'Printing a denture with CRS Flexit resin.',
+        'gal2':'A printed partial denture – flexible and lightweight.',
+        'gal3':'The denture with supports on the build platform after printing.',
 
         'cta-title':'Interested in CRS Flexit?',
         'cta-desc':'Contact us for a quote, samples or help with print settings for your printer.',
