@@ -139,10 +139,25 @@
     .cert-row span { font-size: 0.85rem; color: var(--grey-600); line-height: 1.55; }
 
     /* GALLERY */
-    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.05rem; max-width: 70%; margin: 2.5rem auto 0; }
     .gallery-item { border-radius: var(--radius); overflow: hidden; background: var(--white); box-shadow: var(--shadow); }
     .gallery-item img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; }
     .gallery-item p { padding: 1rem 1.2rem; font-size: 0.88rem; color: var(--grey-600); line-height: 1.5; }
+
+    /* COMPATIBLE PRINTERS */
+    .printers-section { padding: 5rem 0; text-align: center; overflow: hidden; }
+    .printers-section .section-label, .printers-section .section-title, .printers-section .section-subtitle { padding: 0 5%; }
+    .printers-section .section-subtitle { margin: 0 auto 3rem; }
+    .printers-marquee-wrap { overflow: hidden; width: 100%; mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); }
+    .printers-logos { display: flex; align-items: center; width: max-content; animation: printers-scroll 28s linear infinite; }
+    .printers-logos:hover { animation-play-state: paused; }
+    @keyframes printers-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .printers-logos img { height: 40px; width: auto; object-fit: contain; filter: grayscale(100%); opacity: 0.65; transition: filter 0.25s, opacity 0.25s; margin: 0 3rem; flex-shrink: 0; }
+    .printers-logos img:hover { filter: grayscale(0%); opacity: 1; }
+    .printers-logos img[alt="Asiga"]    { height: 22px; }
+    .printers-logos img[alt="Anycubic"] { height: 28px; }
+    .printers-logos img[alt="Elegoo"]   { height: 34px; }
+    .printers-logos img[alt="Ackuretta"]{ height: 46px; }
 
     /* VIDEO */
     .video-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
@@ -170,7 +185,7 @@
       .intro-grid, .results-grid, .video-grid { grid-template-columns: 1fr; gap: 2.5rem; }
       .bio-grid { grid-template-columns: 1fr 1fr; }
       .flex-grid, .cert-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; max-width: 100%; }
       .cert-logo { max-width: 320px; }
       .props-grid { grid-template-columns: 1fr 1fr; }
       .hero-product-img { display: none; }
@@ -400,8 +415,35 @@
     </div>
   </section>
 
+  <!-- COMPATIBLE PRINTERS -->
+  <section class="printers-section">
+    <p class="section-label" data-i18n="printers-label"></p>
+    <h2 class="section-title" data-i18n="printers-title"></h2>
+    <p class="section-subtitle" data-i18n="printers-subtitle"></p>
+    <div class="printers-marquee-wrap">
+      <div class="printers-logos">
+        <img src="brand_assets/printer-logos/asiga.svg" alt="Asiga" />
+        <img src="brand_assets/printer-logos/sprintray.png" alt="SprintRay" />
+        <img src="brand_assets/printer-logos/ackuretta.svg" alt="Ackuretta" />
+        <img src="brand_assets/printer-logos/shining3d.png" alt="Shining 3D" />
+        <img src="brand_assets/printer-logos/phrozen.png" alt="Phrozen" />
+        <img src="brand_assets/printer-logos/anycubic.png" alt="Anycubic" />
+        <img src="brand_assets/printer-logos/elegoo.png" alt="Elegoo" />
+        <img src="brand_assets/printer-logos/creality.svg" alt="Creality" />
+        <img src="brand_assets/printer-logos/asiga.svg" alt="Asiga" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/sprintray.png" alt="SprintRay" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/ackuretta.svg" alt="Ackuretta" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/shining3d.png" alt="Shining 3D" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/phrozen.png" alt="Phrozen" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/anycubic.png" alt="Anycubic" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/elegoo.png" alt="Elegoo" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/creality.svg" alt="Creality" aria-hidden="true" />
+      </div>
+    </div>
+  </section>
+
   <!-- APPLICATIONS -->
-  <section class="section">
+  <section class="section section-alt">
     <p class="section-label" data-i18n="apps-label"></p>
     <h2 class="section-title" data-i18n="apps-title"></h2>
     <p class="section-subtitle" data-i18n="apps-subtitle"></p>
@@ -415,7 +457,7 @@
   </section>
 
   <!-- VIDEO -->
-  <section class="section section-alt">
+  <section class="section">
     <p class="section-label" data-i18n="video-label"></p>
     <h2 class="section-title" data-i18n="video-title"></h2>
     <div class="video-grid">
@@ -436,7 +478,7 @@
   </section>
 
   <!-- GALLERY -->
-  <section class="section">
+  <section class="section section-alt">
     <p class="section-label" data-i18n="gallery-label"></p>
     <h2 class="section-title" data-i18n="gallery-title"></h2>
     <div class="gallery-grid">
@@ -520,6 +562,9 @@
         'prop2-label':'Vlačna čvrstoća','prop2-desc':'ASTM D638. Otpornost materijala na vlačna opterećenja.',
         'prop3-label':'Valna duljina printera','prop3-desc':'Kompatibilno s LCD i DLP 3D printerima koji rade na 385 nm i 405 nm.',
 
+        'printers-label':'Kompatibilnost','printers-title':'Kompatibilni 3D printeri',
+        'printers-subtitle':'CRS Flexit radi na LCD i DLP printerima valne duljine 385 nm i 405 nm, uključujući printere ovih proizvođača.',
+
         'apps-label':'Indikacije','apps-title':'Za fleksibilne proteze',
         'apps-subtitle':'CRS Flexit namijenjen je mobilnoj protetici u kojoj su važni udobnost i prilagodljivost.',
         'app1':'Parcijalne proteze','app2':'Totalne proteze','app3':'Baze proteza','app4':'Popravci i restauracije proteza','app5':'Fleksibilne dentalne primjene',
@@ -587,6 +632,9 @@
         'prop1-label':'Flexural strength','prop1-desc':'ASTM D790. Resistance of the base to bending and fracture.',
         'prop2-label':'Tensile strength','prop2-desc':'ASTM D638. Resistance of the material to tensile loads.',
         'prop3-label':'Printer wavelength','prop3-desc':'Compatible with LCD and DLP 3D printers operating at 385 nm and 405 nm.',
+
+        'printers-label':'Compatibility','printers-title':'Compatible 3D Printers',
+        'printers-subtitle':'CRS Flexit works on 385 nm and 405 nm LCD and DLP printers, including printers from these manufacturers.',
 
         'apps-label':'Indications','apps-title':'For Flexible Dentures',
         'apps-subtitle':'CRS Flexit is designed for removable prosthetics where comfort and adaptability matter.',
