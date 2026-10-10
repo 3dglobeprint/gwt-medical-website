@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png" />
+  <link rel="shortcut icon" href="brand_assets/favicon-32.png" />
+  <title>saremco ELS cem – GWT Medical</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #004AAD; --blue-dark: #003580; --blue-light: #1A6DD4;
+      --blue-pale: #EBF2FF; --white: #FFFFFF;
+      --grey-100: #F4F7FB; --grey-200: #E2EAF4; --grey-600: #5A6A7E;
+      --text: #111827; --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,74,173,0.10);
+      --shadow-lg: 0 12px 48px rgba(0,74,173,0.16);
+    }
+    html { scroll-behavior: smooth; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', system-ui, sans-serif; }
+    body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--blue); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 72px; box-shadow: 0 2px 16px rgba(0,0,0,0.18); }
+    .nav-logo { height: 72px; overflow: hidden; display: flex; align-items: center; }
+    .nav-logo img { height: 179px; display: block; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 0.2rem; list-style: none; align-items: center; }
+    .nav-links > li { position: relative; }
+    .nav-links > li > a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; display: flex; align-items: center; gap: 0.3rem; padding: 0.4rem 0.75rem; border-radius: 6px; white-space: nowrap; }
+    .nav-links > li > a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nav-arrow { font-size: 0.6rem; opacity: 0.75; transition: transform 0.2s; flex-shrink: 0; }
+    .nav-links > li:hover .nav-arrow { transform: rotate(180deg); }
+    .nav-dropdown { position: absolute; top: 100%; left: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 32px rgba(0,74,173,0.18); min-width: 210px; opacity: 0; pointer-events: none; transform: translateY(-4px); transition: opacity 0.2s, transform 0.2s; z-index: 200; padding: 0.4rem; padding-top: 0.6rem; border: 1px solid var(--grey-200); }
+    .nav-links > li:hover .nav-dropdown, .nav-links > li:focus-within .nav-dropdown { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .nav-dropdown a { display: block; padding: 0.65rem 1rem; color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; border-radius: 7px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-dropdown a:hover { background: var(--blue-pale); color: var(--blue); }
+    .nav-contact-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #fff !important; padding: 0.4rem 1rem !important; border-radius: 6px; transition: background 0.2s !important; }
+    .nav-contact-btn:hover { background: rgba(255,255,255,0.25) !important; }
+    .lang-dropdown { left: auto !important; right: 0; }
+    .lang-active { color: var(--blue) !important; background: var(--blue-pale) !important; }
+    .nav-dropdown-item { position: relative; }
+    .nav-dropdown-item > a { display: flex; justify-content: space-between; align-items: center; }
+    .sub-arrow { font-size: 1rem; opacity: 0.5; margin-left: 0.5rem; }
+    .nav-subdropdown { position: absolute; left: 100%; top: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 32px rgba(0,74,173,0.18); min-width: 200px; opacity: 0; pointer-events: none; transform: translateX(-6px); transition: opacity 0.2s, transform 0.2s; z-index: 300; padding: 0.4rem; border: 1px solid var(--grey-200); }
+    .has-submenu:hover .nav-subdropdown { opacity: 1; pointer-events: all; transform: translateX(0); }
+    .nav-subdropdown-item { position: relative; }
+    .nav-subdropdown-item > a { display: flex; justify-content: space-between; align-items: center; }
+    .nav-subsubdropdown { position: absolute; left: 100%; top: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 32px rgba(0,74,173,0.18); min-width: 200px; opacity: 0; visibility: hidden; transform: translateX(-6px); transition: opacity 0.15s 0.15s, transform 0.15s 0.15s, visibility 0s 0.3s; z-index: 400; padding: 0.4rem; border: 1px solid var(--grey-200); }
+    .has-subsubmenu:hover .nav-subsubdropdown, .has-subsubmenu.ssm-open .nav-subsubdropdown { opacity: 1; visibility: visible; transform: translateX(0); transition: opacity 0.15s, transform 0.15s, visibility 0s; }
+
+    /* HERO */
+    .hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding-top: 72px; background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); }
+    .hero-text { display: flex; flex-direction: column; justify-content: center; padding: 5% 5% 5% 6%; }
+    .hero-badge { display: inline-block; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: rgba(255,255,255,0.9); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.4rem; width: fit-content; }
+    .hero-ref { font-size: 0.8rem; color: rgba(255,255,255,0.5); font-weight: 600; letter-spacing: 0.08em; margin-bottom: 0.5rem; text-transform: uppercase; }
+    .hero-text h1 { font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 800; color: #fff; line-height: 1.1; margin-bottom: 0.4rem; }
+    .hero-text h1 em { font-style: normal; color: rgba(255,255,255,0.6); font-size: 0.6em; font-weight: 500; display: block; margin-top: 0.3rem; letter-spacing: 0.02em; }
+    .hero-tagline { color: rgba(255,255,255,0.78); font-size: 1.05rem; margin: 1.2rem 0 2rem; max-width: 440px; line-height: 1.7; }
+    .hero-free { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+    .hero-free-badge { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 0.3rem 0.8rem; border-radius: 20px; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; color: var(--blue); font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); width: fit-content; }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+    .hero-image { display: flex; align-items: center; justify-content: center; padding: 4rem 5% 4rem 3%; }
+    .hero-image img { max-width: 100%; max-height: 70vh; object-fit: contain; filter: drop-shadow(0 20px 60px rgba(0,0,0,0.35)); }
+
+    /* HIGHLIGHTS */
+    .highlights { background: var(--blue); padding: 3rem 5%; }
+    .highlights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.15); border-radius: var(--radius); overflow: hidden; }
+    .highlight-item { background: rgba(255,255,255,0.06); padding: 2rem 1.5rem; text-align: center; }
+    .highlight-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .highlight-item h3 { color: #fff; font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .highlight-item p { color: rgba(255,255,255,0.65); font-size: 0.82rem; line-height: 1.5; }
+
+    /* SECTIONS */
+    .section { padding: 6rem 5%; }
+    .section-alt { background: var(--grey-100); }
+    .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.02rem; color: var(--grey-600); max-width: 580px; line-height: 1.75; }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .about-text p { color: var(--grey-600); margin-top: 1.4rem; line-height: 1.8; font-size: 1rem; }
+    .about-features { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .feature-row { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .feature-dot { width: 8px; height: 8px; background: var(--blue); border-radius: 50%; flex-shrink: 0; margin-top: 0.45rem; }
+    .feature-row span { font-size: 0.95rem; color: var(--text); font-weight: 500; }
+    .about-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: var(--grey-100); display: flex; align-items: center; justify-content: center; padding: 2rem; }
+    .about-image img { max-width: 100%; object-fit: contain; }
+
+    /* SHADES */
+    .shades-grid { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2rem; }
+    .shade-pill { background: var(--white); border: 1.5px solid var(--grey-200); color: var(--text); font-size: 0.82rem; font-weight: 600; padding: 0.45rem 1rem; border-radius: 20px; transition: border-color 0.2s, background 0.2s; }
+    .shade-pill:hover { border-color: var(--blue); background: var(--blue-pale); color: var(--blue); }
+
+    /* SPECS */
+    .specs-wrap { max-width: 760px; margin: 3rem auto 0; }
+    .specs-table { width: 100%; border-collapse: collapse; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+    .specs-table tr:nth-child(odd) { background: var(--white); }
+    .specs-table tr:nth-child(even) { background: var(--grey-100); }
+    .specs-table td { padding: 1rem 1.4rem; font-size: 0.95rem; border-bottom: 1px solid var(--grey-200); }
+    .specs-table td:first-child { font-weight: 600; color: var(--blue); width: 40%; }
+    .specs-table tr:last-child td { border-bottom: none; }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); padding: 6rem 5%; text-align: center; }
+    .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: #fff; margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.72); font-size: 1.05rem; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .cta-btn { display: inline-block; background: #fff; color: var(--blue); font-weight: 700; font-size: 1rem; padding: 1rem 2.2rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.28); }
+    .cta-note { margin-top: 1.2rem; color: rgba(255,255,255,0.5); font-size: 0.82rem; }
+
+    /* FOOTER */
+    footer { background: #033F8F; color: rgba(255,255,255,0.7); padding: 48px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-logo img { height: 31px; display: block; }
+    .footer-copy { font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-image { padding: 2rem 5%; max-height: 50vw; }
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .highlights-grid { grid-template-columns: 1fr; }
+    }
+    /* BOND STRENGTH / USE CARDS */
+    .bond-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; margin-top: 2.5rem; max-width: 900px; }
+    .bond-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.8rem 1.8rem 1.4rem; }
+    .bond-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: 1rem; color: var(--text); }
+    .bond-row { display: flex; justify-content: space-between; align-items: baseline; padding: 0.7rem 0; border-top: 1px solid var(--grey-200); font-size: 0.92rem; color: var(--grey-600); }
+    .bond-row strong { font-family: 'Poppins', sans-serif; font-size: 1.35rem; color: var(--blue); font-weight: 800; }
+    .bond-note { margin-top: 1.5rem; font-size: 0.82rem; color: var(--grey-600); }
+    .use-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+    .use-card { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 1.6rem 1.4rem; text-align: center; }
+    .use-card .use-icon { font-size: 1.8rem; display: block; margin-bottom: 0.6rem; }
+    .use-card h3 { font-size: 0.98rem; font-weight: 700; margin-bottom: 0.35rem; }
+    .use-card p { font-size: 0.83rem; color: var(--grey-600); line-height: 1.55; }
+    .pair-box { margin-top: 2.5rem; padding: 1.2rem 1.4rem; background: var(--blue-pale); border-left: 4px solid var(--blue); border-radius: 10px; font-size: 0.93rem; color: var(--blue-dark); line-height: 1.6; max-width: 900px; }
+    .pair-box a { color: var(--blue); font-weight: 700; }
+    @media (max-width: 900px) { .bond-grid { grid-template-columns: 1fr; } .use-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .use-grid { grid-template-columns: 1fr; } }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="brand_assets/GWT Medical logo.png" alt="GWT Medical" />
+    </a>
+    <ul class="nav-links">
+      <li>
+        <a href="#">
+          <span data-i18n="nav-3dprint"></span>
+          <span class="nav-arrow">▼</span>
+        </a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-item has-submenu">
+            <a href="3d-printeri.html">
+              <span data-i18n="nav-printers"></span>
+              <span class="sub-arrow">›</span>
+            </a>
+            <div class="nav-subdropdown">
+              <a href="rayshape-edge-mini.html">Rayshape Edge Mini</a>
+              <a href="mash-p16l.html">MASH P16L</a>
+            </div>
+          </div>
+          <div class="nav-dropdown-item has-submenu">
+            <a href="3d-print-materijali.html">
+              <span data-i18n="nav-materials"></span>
+              <span class="sub-arrow">›</span>
+            </a>
+            <div class="nav-subdropdown">
+              <div class="nav-subdropdown-item has-subsubmenu">
+                <a href="#">za modele <span class="sub-arrow">›</span></a>
+                <div class="nav-subsubdropdown">
+                  <a href="ultracur3d-dm-4505-n.html">Ultracur3D DM 4505 N</a>
+                </div>
+              </div>
+              <div class="nav-subdropdown-item has-subsubmenu">
+                <a href="#">za zube <span class="sub-arrow">›</span></a>
+                <div class="nav-subsubdropdown">
+                  <a href="saremco-crowntec.html">saremco CROWNTEC</a>
+                  <a href="crs-composite.html">CRS Composite</a>
+                </div>
+              </div>
+              <div class="nav-subdropdown-item has-subsubmenu">
+                <a href="#">za proteze <span class="sub-arrow">›</span></a>
+                <div class="nav-subsubdropdown">
+                  <a href="saremco-denturetec.html">saremco DENTURETEC</a>
+                  <a href="crs-denture.html">CRS Denture</a>
+                  <a href="crs-flexit.html">CRS Flexit (fleksibilna)</a>
+                </div>
+              </div>
+              <div class="nav-subdropdown-item has-subsubmenu">
+                <a href="#">za gingivu <span class="sub-arrow">›</span></a>
+                <div class="nav-subsubdropdown">
+                  <a href="crs-gingiva.html">CRS Gingiva</a>
+                </div>
+              </div>
+              <a href="#">za kirurgiju</a>
+            </div>
+          </div>
+          <a href="#" data-i18n="nav-print-service"></a>
+        </div>
+      </li>
+      <li>
+        <a href="#">
+          <span data-i18n="nav-dentistry"></span>
+          <span class="nav-arrow">▼</span>
+        </a>
+        <div class="nav-dropdown">
+          <a href="adhezija-jetkanje.html" data-i18n="nav-adhesion"></a>
+          <div class="nav-dropdown-item has-submenu">
+            <a href="kompoziti.html">
+              <span data-i18n="nav-composites"></span>
+              <span class="sub-arrow">›</span>
+            </a>
+            <div class="nav-subdropdown">
+              <a href="saremco-els.html">Saremco ELS</a>
+              <a href="saremco-els-flow.html">Saremco ELS Flow</a>
+            </div>
+          </div>
+          <div class="nav-dropdown-item has-submenu">
+            <a href="cementi.html">
+              <span data-i18n="nav-cements"></span>
+              <span class="sub-arrow">›</span>
+            </a>
+            <div class="nav-subdropdown" style="left: auto; right: 100%;">
+              <a href="saremco-els-duobond.html">Saremco ELS (Extra Low Shrinkage) DUOBOND</a>
+              <a href="saremco-els-cem.html">Saremco ELS (Extra Low Shrinkage) CEM</a>
+            </div>
+          </div>
+          <a href="primeri.html" data-i18n="nav-primers"></a>
+          <a href="karakterizacija.html" data-i18n="nav-characterization"></a>
+        </div>
+      </li>
+      <li><a href="#" data-i18n="nav-education"></a></li>
+      <li><a href="#" data-i18n="nav-about"></a></li>
+      <li><a href="index.html#contact" class="nav-contact-btn" data-i18n="nav-contact"></a></li>
+      <li>
+        <a href="#">
+          <span id="langLabel">HR</span>
+          <span class="nav-arrow">▼</span>
+        </a>
+        <div class="nav-dropdown lang-dropdown">
+          <a href="#" id="lang-hr" onclick="applyLang('hr'); return false;">HR – Hrvatski</a>
+          <a href="#" id="lang-en" onclick="applyLang('en'); return false;">EN – English</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <span class="hero-badge" data-i18n="hero-badge"></span>
+      <p class="hero-ref">REF 7463</p>
+      <h1>saremco ELS<em>extra low shrinkage® cem | syringe</em></h1>
+      <p class="hero-tagline" data-i18n="hero-tagline"></p>
+      <div class="hero-free">
+        <span class="hero-free-badge">bez TEGDMA</span>
+        <span class="hero-free-badge">bez HEMA</span>
+        <span class="hero-free-badge">bez BisGMA</span>
+        <span class="hero-free-badge">bez TPO-a</span>
+      </div>
+      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20Saremco%20ELS%20cem" class="hero-cta" data-i18n="hero-cta"></a>
+    </div>
+    <div class="hero-image">
+      <img src="brand_assets/els-cem.png" alt="saremco ELS cem – štrcaljka s dvostrukim miješanjem" />
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <div class="highlights">
+    <div class="highlights-grid">
+      <div class="highlight-item">
+        <span class="highlight-icon">💡</span>
+        <h3 data-i18n="hl1-title"></h3>
+        <p data-i18n="hl1-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">🔍</span>
+        <h3 data-i18n="hl2-title"></h3>
+        <p data-i18n="hl2-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">⏱️</span>
+        <h3 data-i18n="hl3-title"></h3>
+        <p data-i18n="hl3-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">🖨️</span>
+        <h3 data-i18n="hl4-title"></h3>
+        <p data-i18n="hl4-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section class="section">
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="section-label" data-i18n="about-label"></p>
+        <h2 class="section-title" data-i18n="about-title"></h2>
+        <p data-i18n="about-p1"></p>
+        <p data-i18n="about-p2"></p>
+        <div class="about-features">
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat1"></span></div>
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat2"></span></div>
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat3"></span></div>
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat4"></span></div>
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="feat5"></span></div>
+        </div>
+      </div>
+      <div class="about-image">
+        <img src="brand_assets/els-cem.png" alt="saremco ELS cem – štrcaljka s dvostrukim miješanjem" />
+      </div>
+    </div>
+  </section>
+
+  <!-- USES -->
+  <section class="section section-alt">
+    <p class="section-label" data-i18n="use-label"></p>
+    <h2 class="section-title" data-i18n="use-title"></h2>
+    <p class="section-subtitle" data-i18n="use-subtitle"></p>
+    <div class="use-grid">
+      <div class="use-card"><span class="use-icon">🦷</span><h3 data-i18n="use1-t"></h3><p data-i18n="use1-d"></p></div>
+      <div class="use-card"><span class="use-icon">👑</span><h3 data-i18n="use2-t"></h3><p data-i18n="use2-d"></p></div>
+      <div class="use-card"><span class="use-icon">🌉</span><h3 data-i18n="use3-t"></h3><p data-i18n="use3-d"></p></div>
+      <div class="use-card"><span class="use-icon">📍</span><h3 data-i18n="use4-t"></h3><p data-i18n="use4-d"></p></div>
+    </div>
+    <p class="pair-box" data-i18n="pair"></p>
+  </section>
+
+  <!-- SPECS -->
+  <section class="section">
+    <div style="text-align:center; margin-bottom: 1rem;">
+      <p class="section-label" data-i18n="specs-label"></p>
+      <h2 class="section-title" style="margin: 0 auto;" data-i18n="specs-title"></h2>
+    </div>
+    <div class="specs-wrap">
+      <table class="specs-table">
+        <tbody>
+          <tr><td data-i18n="spec1-label"></td><td data-i18n="spec1-val"></td></tr>
+          <tr><td data-i18n="spec2-label"></td><td data-i18n="spec2-val"></td></tr>
+          <tr><td data-i18n="spec3-label"></td><td data-i18n="spec3-val"></td></tr>
+          <tr><td data-i18n="spec4-label"></td><td data-i18n="spec4-val"></td></tr>
+          <tr><td data-i18n="spec5-label"></td><td data-i18n="spec5-val"></td></tr>
+          <tr><td data-i18n="spec6-label"></td><td data-i18n="spec6-val"></td></tr>
+          <tr><td data-i18n="spec7-label"></td><td data-i18n="spec7-val"></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 data-i18n="cta-title"></h2>
+    <p data-i18n="cta-desc"></p>
+    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20Saremco%20ELS%20cem" class="cta-btn" data-i18n="cta-btn"></a>
+    <p class="cta-note" data-i18n="cta-note"></p>
+  </section>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="brand_assets/Footer logo.png" alt="GWT Medical – Saremco Authorized Distributor" />
+    </div>
+    <p class="footer-copy" data-i18n="footer-copy"></p>
+    <div class="footer-links">
+      <a href="index.html" data-i18n="footer-link1"></a>
+      <a href="index.html#contact" data-i18n="footer-link3"></a>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      hr: {
+        'nav-3dprint':'Dental 3D Print','nav-printers':'3D Printeri','nav-materials':'Dentalne smole','nav-print-service':'Usluga 3D printa',
+        'nav-dentistry':'Stomatologija','nav-adhesion':'Adhezija/jetkanje','nav-composites':'Kompoziti (bez TEGDMA, HEMA)',
+        'nav-cements':'Cementi','nav-primers':'Primeri','nav-characterization':'Karakterizacija',
+        'nav-models-resin':'Smole za modele','nav-surgical-resin':'Smole za kirurške vodilice',
+        'nav-services':'Usluge','nav-education':'Edukacija','nav-about':'O nama','nav-support':'Podrška','nav-contact':'Kontakt',
+        'cta-btn':'Pošaljite upit',
+        'cta-note':'ili nam pišite na medical@gwt.hr',
+        'footer-copy':'© 2026 GWT Medical. Sva prava pridržana.',
+        'footer-link1':'Početna',
+        'footer-link3':'Kontakt',
+        'specs-label':'Specifikacije',
+        'specs-title':'Tehnički podaci',
+        'about-label':'O proizvodu',
+        'hero-cta':'Zatražite ponudu →',
+        'hero-badge':'Kompozitni cement za definitivno cementiranje',
+        'hero-tagline':'Svjetlosno i samopolimerizirajući, rendgenski vidljiv kompozitni cement bez TEGDMA, HEMA i BisGMA. Za inleje, onleje, krunice, mostove i endodontske kolčiće – u praktičnoj štrcaljki s dvostrukim miješanjem.',
+        'hl1-title':'Dvostruka polimerizacija',
+        'hl1-desc':'Svjetlosna i samopolimerizacija za sigurno stvrdnjavanje.',
+        'hl2-title':'Rendgenski vidljiv',
+        'hl2-desc':'Radioopaktan cement za jednostavnu kontrolu na snimci.',
+        'hl3-title':'Bez zasebnog jetkanja',
+        'hl3-desc':'U kombinaciji s ELS duobond – ušteda vremena.',
+        'hl4-title':'Za 3D printane radove',
+        'hl4-desc':'Prikladan i za nadomjeske ispisane saremco print smolama.',
+        'about-title':'Definitivno cementiranje, biokompatibilno',
+        'about-p1':'saremco ELS extra low shrinkage® cem svjetlosno je i samopolimerizirajući, rendgenski vidljiv kompozitni cement bez TEGDMA, HEMA i BisGMA. Namijenjen je definitivnom cementiranju inleja/onleja, krunica, mostova i endodontskih kolčića.',
+        'about-p2':'Dolazi u praktičnoj štrcaljki od 10 g s dvostrukim miješanjem za optimalan omjer miješanja i precizno nanošenje. Može se koristiti za indirektne nadomjeske od kompozita, metala te keramike i cirkonijeva oksida – kao i za 3D printane nadomjeske izrađene saremco print smolama poput CROWNTEC-a.',
+        'feat1':'Slobodan od TEGDMA, HEMA i BisGMA',
+        'feat2':'Slobodan od TPO-a',
+        'feat3':'Optimalna čvrstoća veze',
+        'feat4':'Bez zasebnog jetkanja u kombinaciji s ELS duobond',
+        'feat5':'Za kompozit, metal, keramiku/cirkonij i 3D printane radove',
+        'use-label':'Indikacije',
+        'use-title':'Za sve indirektne nadomjeske',
+        'use-subtitle':'Za definitivno cementiranje nadomjestaka od kompozita, metala, keramike i cirkonijeva oksida.',
+        'use1-t':'Inleji i onleji',
+        'use1-d':'Kompozitni, keramički i 3D printani.',
+        'use2-t':'Krunice',
+        'use2-d':'Uključujući krunice ispisane saremco print CROWNTEC smolom.',
+        'use3-t':'Mostovi',
+        'use3-d':'Od metala, keramike, cirkonija ili kompozita.',
+        'use4-t':'Endodontski kolčići',
+        'use4-d':'Definitivno cementiranje kolčića u korijenskom kanalu.',
+        'pair':'Za najbolje rezultate koristite ga sa <a href="saremco-els-duobond.html">saremco ELS duobond</a> samojetkajućim bondom. Za 3D printane krunice pogledajte <a href="saremco-crowntec.html">saremco print CROWNTEC</a>.',
+        'spec1-label':'Tip materijala',
+        'spec1-val':'Svjetlosno i samopolimerizirajući kompozitni cement, rendgenski vidljiv',
+        'spec2-label':'Pakiranje',
+        'spec2-val':'Štrcaljka s dvostrukim miješanjem, 10 g',
+        'spec3-label':'REF broj',
+        'spec3-val':'REF 7463',
+        'spec4-label':'Indikacije',
+        'spec4-val':'Inleji/onleji, krunice, mostovi, endodontski kolčići',
+        'spec5-label':'Materijali nadomjestaka',
+        'spec5-val':'Kompozit, metal, keramika / cirkonijev oksid, saremco print',
+        'spec6-label':'Adhezivni sustav',
+        'spec6-val':'saremco ELS duobond',
+        'spec7-label':'Bez',
+        'spec7-val':'TEGDMA, HEMA, BisGMA, TPO',
+        'cta-title':'Zainteresirani za saremco ELS cem?',
+        'cta-desc':'Kontaktirajte nas za narudžbu, uzorke ili više informacija o proizvodu.',
+      },
+      en: {
+        'nav-3dprint':'Dental 3D Print','nav-printers':'3D Printers','nav-materials':'3D Print Materials','nav-print-service':'3D Printing Service',
+        'nav-dentistry':'Dentistry','nav-adhesion':'Adhesion/Etching','nav-composites':'Composites (TEGDMA, HEMA-free)',
+        'nav-cements':'Cements','nav-primers':'Primers','nav-characterization':'Characterization',
+        'nav-models-resin':'Model Resins','nav-surgical-resin':'Surgical Guide Resins',
+        'nav-services':'Services','nav-education':'Education','nav-about':'About Us','nav-support':'Support','nav-contact':'Contact',
+        'cta-btn':'Send an Inquiry',
+        'cta-note':'or write to us at medical@gwt.hr',
+        'footer-copy':'© 2026 GWT Medical. All rights reserved.',
+        'footer-link1':'Home',
+        'footer-link3':'Contact',
+        'specs-label':'Specifications',
+        'specs-title':'Technical Data',
+        'about-label':'About the Product',
+        'hero-cta':'Request a Quote →',
+        'hero-badge':'Composite luting cement for definitive cementation',
+        'hero-tagline':'Light- and self-curing, radiopaque composite luting cement free from TEGDMA, HEMA and BisGMA. For inlays, onlays, crowns, bridges and endodontic posts – in a practical double-mix syringe.',
+        'hl1-title':'Dual-curing',
+        'hl1-desc':'Light and self-curing for reliable setting.',
+        'hl2-title':'Radiopaque',
+        'hl2-desc':'Easy to check on X-rays.',
+        'hl3-title':'No separate etching',
+        'hl3-desc':'Combined with ELS duobond – saves time.',
+        'hl4-title':'For 3D-printed work',
+        'hl4-desc':'Also suitable for restorations printed with saremco print resins.',
+        'about-title':'Definitive Cementation, Biocompatible',
+        'about-p1':'saremco ELS extra low shrinkage® cem is a light- and self-curing, radiopaque composite luting cement free from TEGDMA, HEMA and BisGMA. It is designed for the definitive cementation of inlays/onlays, crowns, bridges and endodontic posts.',
+        'about-p2':'It comes in a practical 10 g double-mix syringe for an optimal mixing ratio and precise application. It can be used for indirect restorations made from composite, metal and ceramics/zirconia – and for 3D-printed restorations made with saremco print resins such as CROWNTEC.',
+        'feat1':'Free from TEGDMA, HEMA and BisGMA',
+        'feat2':'Free from TPO',
+        'feat3':'Optimal bond strength',
+        'feat4':'No separate etching when used with ELS duobond',
+        'feat5':'For composite, metal, ceramic/zirconia and 3D-printed work',
+        'use-label':'Indications',
+        'use-title':'For All Indirect Restorations',
+        'use-subtitle':'For the definitive cementation of restorations made from composite, metal, ceramics and zirconia.',
+        'use1-t':'Inlays and onlays',
+        'use1-d':'Composite, ceramic and 3D-printed.',
+        'use2-t':'Crowns',
+        'use2-d':'Including crowns printed with saremco print CROWNTEC.',
+        'use3-t':'Bridges',
+        'use3-d':'Metal, ceramic, zirconia or composite.',
+        'use4-t':'Endodontic posts',
+        'use4-d':'Definitive cementation of posts in the root canal.',
+        'pair':'For best results use it with <a href="saremco-els-duobond.html">saremco ELS duobond</a> self-etch bond. For 3D-printed crowns see <a href="saremco-crowntec.html">saremco print CROWNTEC</a>.',
+        'spec1-label':'Material Type',
+        'spec1-val':'Light- and self-curing composite luting cement, radiopaque',
+        'spec2-label':'Packaging',
+        'spec2-val':'Double-mix syringe, 10 g',
+        'spec3-label':'REF Number',
+        'spec3-val':'REF 7463',
+        'spec4-label':'Indications',
+        'spec4-val':'Inlays/onlays, crowns, bridges, endodontic posts',
+        'spec5-label':'Restoration materials',
+        'spec5-val':'Composite, metal, ceramics / zirconia, saremco print',
+        'spec6-label':'Adhesive system',
+        'spec6-val':'saremco ELS duobond',
+        'spec7-label':'Free from',
+        'spec7-val':'TEGDMA, HEMA, BisGMA, TPO',
+        'cta-title':'Interested in saremco ELS cem?',
+        'cta-desc':'Contact us for orders, samples, or more product information.',
+      }
+    };
+    let currentLang = 'hr';
+    function applyLang(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
+      });
+      document.documentElement.lang = lang;
+      document.getElementById('langLabel').textContent = lang.toUpperCase();
+      document.getElementById('lang-hr').classList.toggle('lang-active', lang === 'hr');
+      document.getElementById('lang-en').classList.toggle('lang-active', lang === 'en');
+      currentLang = lang;
+    }
+    applyLang('hr');
+  </script>
+  <script>
+  (function(){
+    var timer=null, active=null;
+    function open(item){
+      if(timer){clearTimeout(timer);timer=null;}
+      if(active && active!==item) active.classList.remove('ssm-open');
+      active=item; item.classList.add('ssm-open');
+    }
+    function close(item){
+      timer=setTimeout(function(){
+        item.classList.remove('ssm-open');
+        if(active===item) active=null;
+        timer=null;
+      },400);
+    }
+    document.querySelectorAll('.has-subsubmenu').forEach(function(item){
+      var dd=item.querySelector('.nav-subsubdropdown');
+      item.addEventListener('mouseenter',function(){open(item);});
+      item.addEventListener('mouseleave',function(){close(item);});
+      if(dd){
+        dd.addEventListener('mouseenter',function(){open(item);});
+        dd.addEventListener('mouseleave',function(){close(item);});
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
