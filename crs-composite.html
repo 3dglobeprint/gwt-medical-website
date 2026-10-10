@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png" />
+  <link rel="shortcut icon" href="brand_assets/favicon-32.png" />
+  <title>CRS Composite – GWT Medical</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --blue: #004AAD; --blue-dark: #003580; --blue-light: #1A6DD4;
+      --blue-pale: #EBF2FF; --white: #FFFFFF;
+      --grey-100: #F4F7FB; --grey-200: #E2EAF4; --grey-600: #5A6A7E;
+      --text: #111827; --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,74,173,0.10);
+      --shadow-lg: 0 12px 48px rgba(0,74,173,0.16);
+    }
+    html { scroll-behavior: smooth; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', system-ui, sans-serif; }
+    body { font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+    /* NAV */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: var(--blue); display: flex; align-items: center; justify-content: space-between; padding: 0 5%; height: 72px; box-shadow: 0 2px 16px rgba(0,0,0,0.18); }
+    .nav-logo { height: 72px; overflow: hidden; display: flex; align-items: center; }
+    .nav-logo img { height: 179px; display: block; flex-shrink: 0; }
+    .nav-links { display: flex; gap: 0.2rem; list-style: none; align-items: center; }
+    .nav-links > li { position: relative; }
+    .nav-links > li > a { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 0.88rem; font-weight: 500; letter-spacing: 0.02em; transition: color 0.2s; display: flex; align-items: center; gap: 0.3rem; padding: 0.4rem 0.75rem; border-radius: 6px; white-space: nowrap; }
+    .nav-links > li > a:hover { color: #fff; background: rgba(255,255,255,0.08); }
+    .nav-arrow { font-size: 0.6rem; opacity: 0.75; transition: transform 0.2s; flex-shrink: 0; }
+    .nav-links > li:hover .nav-arrow { transform: rotate(180deg); }
+    .nav-dropdown { position: absolute; top: 100%; left: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 32px rgba(0,74,173,0.18); min-width: 210px; opacity: 0; pointer-events: none; transform: translateY(-4px); transition: opacity 0.2s, transform 0.2s; z-index: 200; padding: 0.4rem; padding-top: 0.6rem; border: 1px solid var(--grey-200); }
+    .nav-links > li:hover .nav-dropdown, .nav-links > li:focus-within .nav-dropdown { opacity: 1; pointer-events: all; transform: translateY(0); }
+    .nav-dropdown a { display: block; padding: 0.65rem 1rem; color: var(--text); text-decoration: none; font-size: 0.875rem; font-weight: 500; border-radius: 7px; transition: background 0.15s, color 0.15s; white-space: nowrap; }
+    .nav-dropdown a:hover { background: var(--blue-pale); color: var(--blue); }
+    .nav-contact-btn { background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); color: #fff !important; padding: 0.4rem 1rem !important; border-radius: 6px; transition: background 0.2s !important; }
+    .nav-contact-btn:hover { background: rgba(255,255,255,0.25) !important; }
+    .lang-dropdown { left: auto !important; right: 0; }
+    .lang-active { color: var(--blue) !important; background: var(--blue-pale) !important; }
+    .nav-dropdown-item { position: relative; }
+    .nav-dropdown-item > a { display: flex; justify-content: space-between; align-items: center; }
+    .sub-arrow { font-size: 1rem; opacity: 0.5; margin-left: 0.5rem; }
+    .nav-subdropdown { position: absolute; left: 100%; top: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 32px rgba(0,74,173,0.18); min-width: 200px; opacity: 0; pointer-events: none; transform: translateX(-6px); transition: opacity 0.2s, transform 0.2s; z-index: 300; padding: 0.4rem; border: 1px solid var(--grey-200); }
+    .has-submenu:hover .nav-subdropdown { opacity: 1; pointer-events: all; transform: translateX(0); }
+    .nav-subdropdown-item { position: relative; }
+    .nav-subdropdown-item > a { display: flex; justify-content: space-between; align-items: center; }
+    .nav-subsubdropdown { position: absolute; left: 100%; top: 0; background: #fff; border-radius: 10px; box-shadow: 0 8px 32px rgba(0,74,173,0.18); min-width: 200px; opacity: 0; visibility: hidden; transform: translateX(-6px); transition: opacity 0.15s 0.15s, transform 0.15s 0.15s, visibility 0s 0.3s; z-index: 400; padding: 0.4rem; border: 1px solid var(--grey-200); }
+    .has-subsubmenu:hover .nav-subsubdropdown, .has-subsubmenu.ssm-open .nav-subsubdropdown { opacity: 1; visibility: visible; transform: translateX(0); transition: opacity 0.15s, transform 0.15s, visibility 0s; }
+
+    /* HERO */
+    .hero { position: relative; min-height: 88vh; display: flex; align-items: center; overflow: hidden; padding-top: 72px; }
+    .hero-bg { position: absolute; inset: 0; background: url('brand_assets/crs/crs-composite-case3.jpg') 62% 55% / cover no-repeat; }
+    .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(8,22,48,0.94) 0%, rgba(8,22,48,0.82) 40%, rgba(8,22,48,0.25) 75%, rgba(8,22,48,0.1) 100%); }
+    .hero-content { position: relative; z-index: 2; padding: 5% 5% 6%; max-width: 600px; }
+    .hero-badge { display: inline-block; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); color: rgba(255,255,255,0.88); font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.35rem 0.9rem; border-radius: 20px; margin-bottom: 1.4rem; }
+    .hero-brand { font-size: 0.95rem; font-weight: 600; color: rgba(255,255,255,0.55); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .hero-content h1 { font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 800; color: #fff; line-height: 1.05; margin-bottom: 1.2rem; }
+    .hero-content p { color: rgba(255,255,255,0.75); font-size: 1.08rem; margin-bottom: 2.2rem; max-width: 480px; line-height: 1.75; }
+    .hero-ref { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-top: 1rem; letter-spacing: 0.05em; }
+    .hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; color: var(--blue); font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
+    .hero-product-img { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); height: 78vh; max-height: 640px; object-fit: contain; z-index: 2; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5)); }
+
+    /* HIGHLIGHTS */
+    .highlights { background: var(--blue); padding: 3rem 5%; }
+    .highlights-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,0.15); border-radius: var(--radius); overflow: hidden; }
+    .highlight-item { background: rgba(255,255,255,0.06); padding: 2rem 1.5rem; text-align: center; }
+    .highlight-icon { font-size: 2rem; margin-bottom: 0.75rem; display: block; }
+    .highlight-item h3 { color: #fff; font-size: 1rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .highlight-item p { color: rgba(255,255,255,0.65); font-size: 0.85rem; line-height: 1.5; }
+
+    /* SECTIONS */
+    .section { padding: 6rem 5%; }
+    .section-alt { background: var(--grey-100); }
+    .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.75rem; }
+    .section-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: var(--text); line-height: 1.2; margin-bottom: 1rem; }
+    .section-subtitle { font-size: 1.05rem; color: var(--grey-600); max-width: 580px; line-height: 1.7; }
+
+    /* INTRO */
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .intro-text p { color: var(--grey-600); margin-top: 1.5rem; line-height: 1.8; font-size: 1.02rem; }
+    .intro-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: #111; display: flex; align-items: center; justify-content: center; }
+    .intro-image img { width: 100%; display: block; object-fit: cover; }
+
+    /* PROPERTIES */
+    .props-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .prop-card { background: var(--white); border: 1.5px solid var(--grey-200); border-radius: var(--radius); padding: 2rem 1.5rem; text-align: center; transition: border-color 0.2s, box-shadow 0.2s; }
+    .prop-card:hover { border-color: var(--blue); box-shadow: var(--shadow); }
+    .prop-val { font-family: 'Poppins', sans-serif; font-size: 2rem; font-weight: 800; color: var(--blue); line-height: 1; margin-bottom: 0.5rem; }
+    .prop-label { font-size: 0.88rem; font-weight: 600; color: var(--text); margin-bottom: 0.35rem; }
+    .prop-desc { font-size: 0.8rem; color: var(--grey-600); line-height: 1.5; }
+
+    /* APPLICATIONS */
+    .apps-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2.5rem; }
+    .app-pill { background: var(--white); border: 1.5px solid var(--grey-200); color: var(--text); font-size: 0.88rem; font-weight: 500; padding: 0.55rem 1.1rem; border-radius: 30px; transition: border-color 0.2s, color 0.2s, background 0.2s; }
+    .app-pill:hover { border-color: var(--blue); color: var(--blue); background: var(--blue-pale); }
+
+    /* RESULTS */
+    .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-top: 3rem; }
+    .results-image { border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-lg); background: #111; }
+    .results-image img { width: 100%; display: block; object-fit: cover; }
+    .results-text h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 1rem; color: var(--text); }
+    .results-text p { color: var(--grey-600); line-height: 1.8; margin-bottom: 1.5rem; font-size: 0.98rem; }
+    .feature-list { display: flex; flex-direction: column; gap: 0.75rem; }
+    .feature-row { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .feature-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); flex-shrink: 0; margin-top: 0.45rem; }
+    .feature-row span { font-size: 0.92rem; color: var(--grey-600); line-height: 1.6; }
+    .feature-row strong { color: var(--text); }
+    .compat-badges { display: flex; flex-direction: column; gap: 0.6rem; margin-top: 1.5rem; }
+    .compat-badge { display: flex; align-items: center; gap: 0.75rem; padding: 0.75rem 1rem; background: var(--blue-pale); border-radius: 10px; border-left: 4px solid var(--blue); }
+    .compat-badge-dot { width: 10px; height: 10px; background: var(--blue); border-radius: 50%; flex-shrink: 0; }
+    .compat-badge span { font-size: 0.88rem; font-weight: 600; color: var(--blue-dark); }
+
+    /* GALLERY */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2.5rem; }
+    .gallery-item { border-radius: var(--radius); overflow: hidden; background: var(--white); box-shadow: var(--shadow); }
+    .gallery-item img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+    .gallery-item p { padding: 1rem 1.2rem; font-size: 0.88rem; color: var(--grey-600); line-height: 1.5; }
+    .doc-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.5rem; color: var(--blue); font-weight: 600; font-size: 0.92rem; text-decoration: none; }
+    .doc-link:hover { text-decoration: underline; }
+
+    /* COMPATIBLE PRINTERS */
+    .printers-section { padding: 5rem 0; text-align: center; overflow: hidden; }
+    .printers-section .section-label, .printers-section .section-title, .printers-section .section-subtitle { padding: 0 5%; }
+    .printers-section .section-subtitle { margin: 0 auto 3rem; }
+    .printers-marquee-wrap { overflow: hidden; width: 100%; mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); }
+    .printers-logos { display: flex; align-items: center; width: max-content; animation: printers-scroll 28s linear infinite; }
+    .printers-logos:hover { animation-play-state: paused; }
+    @keyframes printers-scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .printers-logos img { height: 40px; width: auto; object-fit: contain; filter: grayscale(100%); opacity: 0.65; transition: filter 0.25s, opacity 0.25s; margin: 0 3rem; flex-shrink: 0; }
+    .printers-logos img:hover { filter: grayscale(0%); opacity: 1; }
+    .printers-logos img[alt="Asiga"]    { height: 22px; }
+    .printers-logos img[alt="Anycubic"] { height: 28px; }
+    .printers-logos img[alt="Elegoo"]   { height: 34px; }
+    .printers-logos img[alt="Ackuretta"]{ height: 46px; }
+
+    /* HERO BOTTLE */
+    .hero-product-img { position: absolute; right: 7%; top: auto; bottom: 6%; transform: none; height: 62vh; max-height: 540px; object-fit: contain; z-index: 2; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.55)); }
+
+    /* STRENGTH vs ISO */
+    .strength-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 4rem; align-items: center; margin-top: 2.5rem; }
+    .bar-chart { background: var(--white); border-radius: 16px; box-shadow: var(--shadow); padding: 2rem 2.2rem; display: flex; flex-direction: column; gap: 1.6rem; }
+    .bar-row-label { display: flex; justify-content: space-between; font-size: 0.9rem; font-weight: 600; color: var(--text); margin-bottom: 0.45rem; }
+    .bar-row-label span:last-child { font-family: 'Poppins', sans-serif; font-weight: 800; color: var(--blue); }
+    .bar-track { height: 18px; background: var(--grey-100); border-radius: 10px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, var(--blue-light), var(--blue)); }
+    .bar-fill.iso { background: #B8C4D6; }
+    .bar-note { font-size: 0.78rem; color: var(--grey-600); line-height: 1.5; }
+    .strength-text h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.8rem; }
+    .strength-text p { color: var(--grey-600); line-height: 1.8; font-size: 0.97rem; margin-bottom: 1rem; }
+    .gallery-grid.case { display: flex; flex-wrap: wrap; justify-content: center; }
+    .gallery-grid.case .gallery-item { width: calc((100% - 3rem) / 3); }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); padding: 6rem 5%; text-align: center; }
+    .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: #fff; margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.72); font-size: 1.05rem; max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.7; }
+    .cta-btn { display: inline-block; background: #fff; color: var(--blue); font-weight: 700; font-size: 1rem; padding: 1rem 2.2rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.2); }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.28); }
+    .cta-note { margin-top: 1.2rem; color: rgba(255,255,255,0.5); font-size: 0.82rem; }
+
+    /* FOOTER */
+    footer { background: #033F8F; color: rgba(255,255,255,0.7); padding: 48px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-logo img { height: 31px; display: block; }
+    .footer-copy { font-size: 0.85rem; }
+    .footer-links { display: flex; gap: 1.5rem; }
+    .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .footer-links a:hover { color: #fff; }
+
+    @media (max-width: 900px) {
+      .highlights-grid { grid-template-columns: repeat(2, 1fr); }
+      .intro-grid, .results-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .props-grid, .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-grid.case .gallery-item { width: calc((100% - 1.5rem) / 2); }
+      .strength-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .hero-product-img { display: none; }
+    }
+    @media (max-width: 600px) {
+      .highlights-grid, .props-grid, .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-grid.case .gallery-item { width: 100%; }
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="brand_assets/GWT Medical logo.png" alt="GWT Medical" />
+    </a>
+    <ul class="nav-links">
+      <li>
+        <a href="#">
+          <span data-i18n="nav-3dprint"></span>
+          <span class="nav-arrow">▼</span>
+        </a>
+        <div class="nav-dropdown">
+          <div class="nav-dropdown-item has-submenu">
+            <a href="3d-printeri.html">
+              <span data-i18n="nav-printers"></span>
+              <span class="sub-arrow">›</span>
+            </a>
+            <div class="nav-subdropdown">
+              <a href="rayshape-edge-mini.html">Rayshape Edge Mini</a>
+              <a href="mash-p16l.html">MASH P16L</a>
+            </div>
+          </div>
+          <div class="nav-dropdown-item has-submenu">
+            <a href="3d-print-materijali.html">
+              <span data-i18n="nav-materials"></span>
+              <span class="sub-arrow">›</span>
+            </a>
+            <div class="nav-subdropdown">
+              <div class="nav-subdropdown-item has-subsubmenu">
+                <a href="#">za modele <span class="sub-arrow">›</span></a>
+                <div class="nav-subsubdropdown">
+                  <a href="ultracur3d-dm-4505-n.html">Ultracur3D DM 4505 N</a>
+                </div>
+              </div>
+              <div class="nav-subdropdown-item has-subsubmenu">
+                <a href="#">za zube <span class="sub-arrow">›</span></a>
+                <div class="nav-subsubdropdown">
+                  <a href="saremco-crowntec.html">saremco CROWNTEC</a>
+                  <a href="crs-composite.html">CRS Composite</a>
+                </div>
+              </div>
+              <div class="nav-subdropdown-item has-subsubmenu">
+                <a href="#">za proteze <span class="sub-arrow">›</span></a>
+                <div class="nav-subsubdropdown">
+                  <a href="saremco-denturetec.html">saremco DENTURETEC</a>
+                  <a href="crs-denture.html">CRS Denture</a>
+                  <a href="crs-flexit.html">CRS Flexit (fleksibilna)</a>
+                </div>
+              </div>
+              <div class="nav-subdropdown-item has-subsubmenu">
+                <a href="#">za gingivu <span class="sub-arrow">›</span></a>
+                <div class="nav-subsubdropdown">
+                  <a href="crs-gingiva.html">CRS Gingiva</a>
+                </div>
+              </div>
+              <a href="#">za kirurgiju</a>
+            </div>
+          </div>
+          <a href="#" data-i18n="nav-print-service"></a>
+        </div>
+      </li>
+      <li>
+        <a href="#">
+          <span data-i18n="nav-dentistry"></span>
+          <span class="nav-arrow">▼</span>
+        </a>
+        <div class="nav-dropdown">
+          <a href="adhezija-jetkanje.html" data-i18n="nav-adhesion"></a>
+          <div class="nav-dropdown-item has-submenu">
+            <a href="kompoziti.html">
+              <span data-i18n="nav-composites"></span>
+              <span class="sub-arrow">›</span>
+            </a>
+            <div class="nav-subdropdown">
+              <a href="saremco-els.html">Saremco ELS</a>
+              <a href="saremco-els-flow.html">Saremco ELS Flow</a>
+            </div>
+          </div>
+          <a href="cementi.html" data-i18n="nav-cements"></a>
+          <a href="primeri.html" data-i18n="nav-primers"></a>
+          <a href="karakterizacija.html" data-i18n="nav-characterization"></a>
+        </div>
+      </li>
+      <li><a href="#" data-i18n="nav-education"></a></li>
+      <li><a href="#" data-i18n="nav-about"></a></li>
+      <li><a href="index.html#contact" class="nav-contact-btn" data-i18n="nav-contact"></a></li>
+      <li>
+        <a href="#">
+          <span id="langLabel">HR</span>
+          <span class="nav-arrow">▼</span>
+        </a>
+        <div class="nav-dropdown lang-dropdown">
+          <a href="#" id="lang-hr" onclick="applyLang('hr'); return false;">HR – Hrvatski</a>
+          <a href="#" id="lang-en" onclick="applyLang('en'); return false;">EN – English</a>
+        </div>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-badge" data-i18n="hero-badge"></span>
+      <p class="hero-brand">Custom Resin Solutions</p>
+      <h1>CRS Composite</h1>
+      <p data-i18n="hero-desc"></p>
+      <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Composite" class="hero-cta" data-i18n="hero-cta"></a>
+      <p class="hero-ref">CE klasa IIa · EU MDR</p>
+    </div>
+    <img class="hero-product-img" src="brand_assets/crs/crs-composite-bottle.webp" alt="CRS Composite Resin" />
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <div class="highlights">
+    <div class="highlights-grid">
+      <div class="highlight-item">
+        <span class="highlight-icon">💪</span>
+        <h3 data-i18n="hl1-title"></h3>
+        <p data-i18n="hl1-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">🤍</span>
+        <h3 data-i18n="hl2-title"></h3>
+        <p data-i18n="hl2-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">🎯</span>
+        <h3 data-i18n="hl3-title"></h3>
+        <p data-i18n="hl3-desc"></p>
+      </div>
+      <div class="highlight-item">
+        <span class="highlight-icon">🇪🇺</span>
+        <h3 data-i18n="hl4-title"></h3>
+        <p data-i18n="hl4-desc"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="section">
+    <div class="intro-grid">
+      <div class="intro-text">
+        <p class="section-label" data-i18n="intro-label"></p>
+        <h2 class="section-title" data-i18n="intro-title"></h2>
+        <p data-i18n="intro-p1"></p>
+        <p data-i18n="intro-p2"></p>
+      </div>
+      <div class="intro-image">
+        <img src="brand_assets/crs/crs-composite-case4.jpg" alt="All-on-X rad izrađen CRS Composite smolom" />
+      </div>
+    </div>
+  </section>
+
+  <!-- MATERIAL PROPERTIES -->
+  <section class="section section-alt">
+    <p class="section-label" data-i18n="props-label"></p>
+    <h2 class="section-title" data-i18n="props-title"></h2>
+    <p class="section-subtitle" data-i18n="props-subtitle"></p>
+    <div class="props-grid">
+      <div class="prop-card">
+        <div class="prop-val">144 MPa</div>
+        <div class="prop-label" data-i18n="prop1-label"></div>
+        <div class="prop-desc" data-i18n="prop1-desc"></div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-val">5000 MPa</div>
+        <div class="prop-label" data-i18n="prop2-label"></div>
+        <div class="prop-desc" data-i18n="prop2-desc"></div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-val">150–155 MPa</div>
+        <div class="prop-label" data-i18n="prop3-label"></div>
+        <div class="prop-desc" data-i18n="prop3-desc"></div>
+      </div>
+      <div class="prop-card">
+        <div class="prop-val">IIa</div>
+        <div class="prop-label" data-i18n="prop4-label"></div>
+        <div class="prop-desc" data-i18n="prop4-desc"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRENGTH vs ISO -->
+  <section class="section">
+    <p class="section-label" data-i18n="str-label"></p>
+    <h2 class="section-title" data-i18n="str-title"></h2>
+    <div class="strength-grid">
+      <div class="bar-chart">
+        <div>
+          <div class="bar-row-label"><span data-i18n="bar-crs"></span><span>144 MPa</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width: 92.9%;"></div></div>
+        </div>
+        <div>
+          <div class="bar-row-label"><span data-i18n="bar-crs-post"></span><span>155 MPa</span></div>
+          <div class="bar-track"><div class="bar-fill" style="width: 100%;"></div></div>
+        </div>
+        <div>
+          <div class="bar-row-label"><span data-i18n="bar-iso"></span><span>50 MPa</span></div>
+          <div class="bar-track"><div class="bar-fill iso" style="width: 32.3%;"></div></div>
+        </div>
+        <p class="bar-note" data-i18n="bar-note"></p>
+      </div>
+      <div class="strength-text">
+        <h3 data-i18n="str-h3"></h3>
+        <p data-i18n="str-p1"></p>
+        <p data-i18n="str-p2"></p>
+        <div class="feature-list">
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="str-f1"></span></div>
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="str-f2"></span></div>
+          <div class="feature-row"><div class="feature-dot"></div><span data-i18n="str-f3"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATIONS -->
+  <section class="section section-alt">
+    <p class="section-label" data-i18n="apps-label"></p>
+    <h2 class="section-title" data-i18n="apps-title"></h2>
+    <p class="section-subtitle" data-i18n="apps-subtitle"></p>
+    <div class="apps-grid">
+      <span class="app-pill" data-i18n="app1"></span>
+      <span class="app-pill" data-i18n="app2"></span>
+      <span class="app-pill" data-i18n="app3"></span>
+      <span class="app-pill" data-i18n="app4"></span>
+      <span class="app-pill" data-i18n="app5"></span>
+    </div>
+  </section>
+
+  <!-- COMPATIBLE PRINTERS -->
+  <section class="printers-section">
+    <p class="section-label" data-i18n="printers-label"></p>
+    <h2 class="section-title" data-i18n="printers-title"></h2>
+    <p class="section-subtitle" data-i18n="printers-subtitle"></p>
+    <div class="printers-marquee-wrap">
+      <div class="printers-logos">
+        <img src="brand_assets/printer-logos/asiga.svg" alt="Asiga" />
+        <img src="brand_assets/printer-logos/sprintray.png" alt="SprintRay" />
+        <img src="brand_assets/printer-logos/ackuretta.svg" alt="Ackuretta" />
+        <img src="brand_assets/printer-logos/shining3d.png" alt="Shining 3D" />
+        <img src="brand_assets/printer-logos/phrozen.png" alt="Phrozen" />
+        <img src="brand_assets/printer-logos/anycubic.png" alt="Anycubic" />
+        <img src="brand_assets/printer-logos/elegoo.png" alt="Elegoo" />
+        <img src="brand_assets/printer-logos/creality.svg" alt="Creality" />
+        <img src="brand_assets/printer-logos/asiga.svg" alt="Asiga" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/sprintray.png" alt="SprintRay" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/ackuretta.svg" alt="Ackuretta" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/shining3d.png" alt="Shining 3D" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/phrozen.png" alt="Phrozen" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/anycubic.png" alt="Anycubic" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/elegoo.png" alt="Elegoo" aria-hidden="true" />
+        <img src="brand_assets/printer-logos/creality.svg" alt="Creality" aria-hidden="true" />
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CLINICAL CASE -->
+  <section class="section section-alt" id="klinicki-slucaj">
+    <p class="section-label" data-i18n="case-label"></p>
+    <h2 class="section-title" data-i18n="case-title"></h2>
+    <p class="section-subtitle" data-i18n="case-subtitle"></p>
+    <div class="gallery-grid case">
+      <div class="gallery-item">
+        <img src="brand_assets/crs/crs-composite-case1.jpg" alt="Priprema ispisa All-on-X rada u softveru – potpore" loading="lazy" />
+        <p data-i18n="case1"></p>
+      </div>
+      <div class="gallery-item">
+        <img src="brand_assets/crs/crs-composite-case2.jpg" alt="Raspored All-on-X radova na radnoj platformi" loading="lazy" />
+        <p data-i18n="case2"></p>
+      </div>
+      <div class="gallery-item">
+        <img src="brand_assets/crs/crs-composite-case3.jpg" alt="Ispisani All-on-X most od CRS Composite smole" loading="lazy" />
+        <p data-i18n="case3"></p>
+      </div>
+      <div class="gallery-item">
+        <img src="brand_assets/crs/crs-composite-case4.jpg" alt="Gotov All-on-X rad na modelu" loading="lazy" />
+        <p data-i18n="case4"></p>
+      </div>
+      <div class="gallery-item">
+        <img src="brand_assets/crs/crs-composite-case5.jpg" alt="Gotov All-on-X rad na modelu – pogled s druge strane" loading="lazy" />
+        <p data-i18n="case5"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2 data-i18n="cta-title"></h2>
+    <p data-i18n="cta-desc"></p>
+    <a href="mailto:medical@gwt.hr?subject=Upit%20–%20CRS%20Composite" class="cta-btn" data-i18n="cta-btn"></a>
+    <p class="cta-note" data-i18n="cta-note"></p>
+  </section>
+
+  <footer>
+    <div class="footer-logo">
+      <img src="brand_assets/Footer logo.png" alt="GWT Medical – Saremco Authorized Distributor" />
+    </div>
+    <p class="footer-copy" data-i18n="footer-copy"></p>
+    <div class="footer-links">
+      <a href="index.html" data-i18n="footer-link1"></a>
+      <a href="index.html#contact" data-i18n="footer-link3"></a>
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      hr: {
+        'nav-3dprint':'Dental 3D Print','nav-printers':'3D Printeri','nav-materials':'Dentalne smole','nav-print-service':'Usluga 3D printa',
+        'nav-dentistry':'Stomatologija','nav-adhesion':'Adhezija/jetkanje','nav-composites':'Kompoziti (bez TEGDMA, HEMA)',
+        'nav-cements':'Cementi','nav-primers':'Primeri','nav-characterization':'Karakterizacija',
+        'nav-models-resin':'Smole za modele','nav-surgical-resin':'Smole za kirurške vodilice',
+        'nav-education':'Edukacija','nav-about':'O nama','nav-contact':'Kontakt',
+
+        'hero-badge':'3D print smola za trajne i privremene radove',
+        'hero-desc':'Biokompatibilna kompozitna smola CE klase IIa za trajne i privremene krunice i mostove – od pojedinačnih krunica do All-on-X radova. Savojna čvrstoća 144 MPa, gotovo trostruko iznad ISO minimuma.',
+        'hero-cta':'Zatražite ponudu →',
+
+        'hl1-title':'144 MPa','hl1-desc':'Savojna čvrstoća prema ISO 10477 – za opterećene krunice i mostove.',
+        'hl2-title':'Ne žuti','hl2-desc':'Ostaje bijela nakon završne polimerizacije i u ustima pacijenta.',
+        'hl3-title':'Precizno rubno nalijeganje','hl3-desc':'Točan rubni dosjed i uravnotežena prozirnost i opaknost.',
+        'hl4-title':'CE klasa IIa · MDR','hl4-desc':'Netoksična formulacija, bez okusa i mirisa u ustima.',
+
+        'intro-label':'O proizvodu',
+        'intro-title':'Kompozitna smola za trajne i privremene radove',
+        'intro-p1':'CRS Composite Resin biokompatibilni je materijal CE klase IIa za aditivnu izradu privremenih i trajnih krunica i mostova. U usporedbi s vodećim konkurentima nudi veću savojnu čvrstoću i precizniji rubni dosjed, a zahvaljujući vlastitoj formulaciji ne žuti u ustima pacijenta.',
+        'intro-p2':'Boje su usklađene s VITA ključem, a odnos prozirnosti i opaknosti daje prirodan izgled. Optički glazuri mogu se nanositi neovisno o proizvođaču i boji, materijal je potpuno kompatibilan s kompozitima u štrcaljki za intraoralne korekcije, a iz 1 kg smole izrađuje se 1000–1200 članova.',
+
+        'props-label':'Svojstva materijala','props-title':'Tehnički podaci',
+        'props-subtitle':'Vrijednosti prema podacima proizvođača Custom Resin Solutions.',
+        'prop1-label':'Savojna čvrstoća','prop1-desc':'ISO 10477. Prosječna vrijednost izmjerena u testu savijanja u tri točke.',
+        'prop2-label':'Savojni modul','prop2-desc':'ISO 10477. Visoka krutost za stabilne mostove i dugačke konstrukcije.',
+        'prop3-label':'Čvrstoća nakon polimerizacije','prop3-desc':'Nakon završne polimerizacije čvrstoća raste s 135–145 MPa na 150–155 MPa.',
+        'prop4-label':'CE klasa · EU MDR','prop4-desc':'Certificirani medicinski proizvod, netoksičan, bez okusa i mirisa.',
+
+        'str-label':'Ključna prednost','str-title':'Čvrstoća daleko iznad standarda',
+        'bar-crs':'CRS Composite','bar-crs-post':'CRS Composite nakon polimerizacije','bar-iso':'ISO 10477 – zahtijevani minimum',
+        'bar-note':'Savojna čvrstoća u MPa. Podaci: Custom Resin Solutions, test savijanja u tri točke (Zwick Z250, 5 mm/min).',
+        'str-h3':'Zašto je savojna čvrstoća važna',
+        'str-p1':'Trajni radovi godinama podnose ponavljajuće žvačne sile. Ako je savojna čvrstoća preniska, nastaju mikropukotine koje se šire sa svakim ciklusom žvakanja i na kraju dovode do loma – osobito u stražnjem segmentu i kod opsežnih radova poput All-on-X.',
+        'str-p2':'Norma ISO 10477 za krunice i materijale za fasetiranje na bazi polimera zahtijeva najmanje 50 MPa. CRS Composite postiže prosječno 144 MPa – gotovo tri puta više – što daje veliku sigurnosnu marginu za opterećene krunice i mostove.',
+        'str-f1':'<strong>Veća nosivost</strong> – manji rizik loma pri velikim ili naglim opterećenjima',
+        'str-f2':'<strong>Dulji vijek trajanja</strong> – bolja otpornost na nastanak i širenje pukotina',
+        'str-f3':'<strong>Veća sloboda dizajna</strong> – pouzdanost i kod tanjih geometrija',
+
+        'apps-label':'Indikacije','apps-title':'Od krunice do All-on-X rada',
+        'apps-subtitle':'CRS Composite pokriva širok spektar trajnih i privremenih radova.',
+        'app1':'Trajne krunice','app2':'Mostovi','app3':'All-on-X radovi','app4':'Privremeni radovi','app5':'Zubi za totalne proteze',
+
+        'printers-label':'Kompatibilnost','printers-title':'Kompatibilni 3D printeri',
+        'printers-subtitle':'CRS Composite radi na LCD i DLP printerima renomiranih proizvođača. Ukoliko na popisu ne vidite proizvođača Vašeg printera, javite nam se, podesiti ćemo Vam postavke.',
+
+        'case-label':'Klinički slučaj','case-title':'All-on-X rad od CRS Composite smole',
+        'case-subtitle':'Od pripreme ispisa do gotovog rada na modelu.',
+        'case1':'Priprema ispisa – orijentacija i potpore u softveru.',
+        'case2':'Raspored radova na radnoj platformi printera.',
+        'case3':'Ispisani All-on-X most nakon obrade.',
+        'case4':'Gotov All-on-X rad na modelu.',
+        'case5':'Gotov rad na modelu – pogled s druge strane.',
+
+        'cta-title':'Zainteresirani za CRS Composite?',
+        'cta-desc':'Kontaktirajte nas za ponudu, uzorke ili pomoć s parametrima ispisa za vaš printer.',
+        'cta-btn':'Kontaktirajte nas',
+        'cta-note':'ili nas kontaktirajte na medical@gwt.hr',
+        'footer-copy':'© 2026 GWT Medical. Sva prava pridržana.',
+        'footer-link1':'Početna','footer-link3':'Kontakt',
+      },
+      en: {
+        'nav-3dprint':'Dental 3D Print','nav-printers':'3D Printers','nav-materials':'Dental Resins','nav-print-service':'3D Printing Service',
+        'nav-dentistry':'Dentistry','nav-adhesion':'Adhesion/Etching','nav-composites':'Composites (TEGDMA, HEMA-free)',
+        'nav-cements':'Cements','nav-primers':'Primers','nav-characterization':'Characterization',
+        'nav-models-resin':'Model Resins','nav-surgical-resin':'Surgical Guide Resins',
+        'nav-education':'Education','nav-about':'About Us','nav-contact':'Contact',
+
+        'hero-badge':'3D print resin for permanent and temporary work',
+        'hero-desc':'A biocompatible CE Class IIa composite resin for permanent and temporary crowns and bridges – from single crowns to All-on-X restorations. Flexural strength of 144 MPa, almost three times the ISO minimum.',
+        'hero-cta':'Request a Quote →',
+
+        'hl1-title':'144 MPa','hl1-desc':'Flexural strength per ISO 10477 – for load-bearing crowns and bridges.',
+        'hl2-title':'No yellowing','hl2-desc':'Stays white after post-curing and in the patient’s mouth.',
+        'hl3-title':'Precise marginal fit','hl3-desc':'Accurate margins and a balanced translucency and opacity.',
+        'hl4-title':'CE Class IIa · MDR','hl4-desc':'Non-toxic formulation, no taste or odour in the mouth.',
+
+        'intro-label':'About the Product',
+        'intro-title':'A Composite Resin for Permanent and Temporary Work',
+        'intro-p1':'CRS Composite Resin is a biocompatible CE Class IIa material for additive manufacturing of temporary and permanent crowns and bridges. Compared to leading competitors it offers higher flexural strength and a more precise marginal fit, and thanks to its proprietary formulation it does not yellow in the patient’s mouth.',
+        'intro-p2':'Shades are matched to the VITA guide, and the balance of translucency and opacity gives a natural look. Optical glaze can be applied regardless of brand and shade, the material is fully compatible with syringe composites for intraoral adjustments, and 1 kg of resin yields 1000–1200 units.',
+
+        'props-label':'Material Properties','props-title':'Technical Data',
+        'props-subtitle':'Values as published by the manufacturer, Custom Resin Solutions.',
+        'prop1-label':'Flexural strength','prop1-desc':'ISO 10477. Mean value measured in a three-point bending test.',
+        'prop2-label':'Flexural modulus','prop2-desc':'ISO 10477. High stiffness for stable bridges and long-span work.',
+        'prop3-label':'Strength after post-curing','prop3-desc':'After post-curing, strength rises from 135–145 MPa to 150–155 MPa.',
+        'prop4-label':'CE class · EU MDR','prop4-desc':'A certified medical device – non-toxic, with no taste or odour.',
+
+        'str-label':'Key Advantage','str-title':'Strength Far Above the Standard',
+        'bar-crs':'CRS Composite','bar-crs-post':'CRS Composite after post-curing','bar-iso':'ISO 10477 – required minimum',
+        'bar-note':'Flexural strength in MPa. Data: Custom Resin Solutions, three-point bending test (Zwick Z250, 5 mm/min).',
+        'str-h3':'Why Flexural Strength Matters',
+        'str-p1':'Permanent restorations withstand repeated chewing forces for years. If flexural strength is too low, microcracks form and grow with every chewing cycle until the restoration fractures – especially in posterior regions and in extensive work such as All-on-X.',
+        'str-p2':'ISO 10477 requires at least 50 MPa for polymer-based crown and veneering materials. CRS Composite averages 144 MPa – almost three times more – giving a wide safety margin for load-bearing crowns and bridges.',
+        'str-f1':'<strong>Higher load-bearing capacity</strong> – lower fracture risk under heavy or sudden loads',
+        'str-f2':'<strong>Longer service life</strong> – better resistance to crack initiation and growth',
+        'str-f3':'<strong>More design freedom</strong> – reliability even with thinner geometries',
+
+        'apps-label':'Indications','apps-title':'From a Single Crown to All-on-X',
+        'apps-subtitle':'CRS Composite covers a wide range of permanent and temporary restorations.',
+        'app1':'Permanent crowns','app2':'Bridges','app3':'All-on-X restorations','app4':'Temporary restorations','app5':'Teeth for complete dentures',
+
+        'printers-label':'Compatibility','printers-title':'Compatible 3D Printers',
+        'printers-subtitle':'CRS Composite works on LCD and DLP printers from leading manufacturers. If you don’t see your printer’s manufacturer on the list, get in touch and we’ll set up the print settings for you.',
+
+        'case-label':'Clinical Case','case-title':'An All-on-X Restoration in CRS Composite',
+        'case-subtitle':'From print preparation to the finished work on the model.',
+        'case1':'Print preparation – orientation and supports in the software.',
+        'case2':'Layout of the restorations on the build platform.',
+        'case3':'The printed All-on-X bridge after processing.',
+        'case4':'The finished All-on-X restoration on the model.',
+        'case5':'Finished work on the model – view from the other side.',
+
+        'cta-title':'Interested in CRS Composite?',
+        'cta-desc':'Contact us for a quote, samples or help with print settings for your printer.',
+        'cta-btn':'Contact Us',
+        'cta-note':'or reach us at medical@gwt.hr',
+        'footer-copy':'© 2026 GWT Medical. All rights reserved.',
+        'footer-link1':'Home','footer-link3':'Contact',
+      }
+    };
+    let currentLang = 'hr';
+    function applyLang(lang) {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (translations[lang][key] !== undefined) el.innerHTML = translations[lang][key];
+      });
+      document.documentElement.lang = lang;
+      document.getElementById('langLabel').textContent = lang.toUpperCase();
+      document.getElementById('lang-hr').classList.toggle('lang-active', lang === 'hr');
+      document.getElementById('lang-en').classList.toggle('lang-active', lang === 'en');
+      currentLang = lang;
+    }
+    applyLang('hr');
+  </script>
+  <script>
+  (function(){
+    var timer=null, active=null;
+    function open(item){
+      if(timer){clearTimeout(timer);timer=null;}
+      if(active && active!==item) active.classList.remove('ssm-open');
+      active=item; item.classList.add('ssm-open');
+    }
+    function close(item){
+      timer=setTimeout(function(){
+        item.classList.remove('ssm-open');
+        if(active===item) active=null;
+        timer=null;
+      },400);
+    }
+    document.querySelectorAll('.has-subsubmenu').forEach(function(item){
+      var dd=item.querySelector('.nav-subsubdropdown');
+      item.addEventListener('mouseenter',function(){open(item);});
+      item.addEventListener('mouseleave',function(){close(item);});
+      if(dd){
+        dd.addEventListener('mouseenter',function(){open(item);});
+        dd.addEventListener('mouseleave',function(){close(item);});
+      }
+    });
+  })();
+  </script>
+</body>
+</html>
