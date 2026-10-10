@@ -153,6 +153,17 @@
     .gallery-grid.case { display: flex; flex-wrap: wrap; justify-content: center; }
     .gallery-grid.case .gallery-item { width: calc((100% - 3rem) / 3); }
 
+    /* SHADES */
+    .shades-section { background: var(--grey-100); text-align: center; }
+    .shades-section .section-subtitle { margin: 0 auto; }
+    .shades-grid { display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; margin-top: 2.5rem; }
+    .shade-card { background: #fff; border-radius: var(--radius); padding: 1.4rem 1.8rem; text-align: center; box-shadow: var(--shadow); min-width: 120px; transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease; }
+    .shade-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-lg); }
+    .shade-swatch { width: 60px; height: 60px; border-radius: 50%; margin: 0 auto 0.8rem; border: 2px solid var(--grey-200); }
+    .shade-name { font-weight: 700; color: var(--text); font-size: 1rem; }
+    .shade-note { font-size: 0.75rem; color: var(--grey-600); margin-top: 0.2rem; display: flex; align-items: center; justify-content: center; gap: 0.35rem; }
+    .avail-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+
     /* CTA */
     .cta-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); padding: 6rem 5%; text-align: center; }
     .cta-section h2 { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 800; color: #fff; margin-bottom: 1rem; }
@@ -341,8 +352,57 @@
     </div>
   </section>
 
+  <!-- SHADES -->
+  <section class="section shades-section">
+    <p class="section-label" data-i18n="shades-label"></p>
+    <h2 class="section-title" data-i18n="shades-title"></h2>
+    <p class="section-subtitle" data-i18n="shades-desc"></p>
+    <div class="shades-grid">
+      <div class="shade-card">
+        <div class="shade-swatch" style="background:#F2E8D6;"></div>
+        <div class="shade-name">B1</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
+      </div>
+      <div class="shade-card">
+        <div class="shade-swatch" style="background:#EFE1C0;"></div>
+        <div class="shade-name">A1</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
+      </div>
+      <div class="shade-card">
+        <div class="shade-swatch" style="background:#E8D5A6;"></div>
+        <div class="shade-name">A2</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
+      </div>
+      <div class="shade-card">
+        <div class="shade-swatch" style="background:#DEC78D;"></div>
+        <div class="shade-name">A3</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
+      </div>
+      <div class="shade-card">
+        <div class="shade-swatch" style="background:#E3D8BC;"></div>
+        <div class="shade-name">C1</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
+      </div>
+      <div class="shade-card">
+        <div class="shade-swatch" style="background:#D6C8A2;"></div>
+        <div class="shade-name">C2</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
+      </div>
+      <div class="shade-card">
+        <div class="shade-swatch" style="background:#E0D2B4;"></div>
+        <div class="shade-name">D2</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
+      </div>
+      <div class="shade-card">
+        <div class="shade-swatch" style="background:#F4EDE4;"></div>
+        <div class="shade-name">1M1</div>
+        <div class="shade-note" data-i18n="shade-stock"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- MATERIAL PROPERTIES -->
-  <section class="section section-alt">
+  <section class="section">
     <p class="section-label" data-i18n="props-label"></p>
     <h2 class="section-title" data-i18n="props-title"></h2>
     <p class="section-subtitle" data-i18n="props-subtitle"></p>
@@ -371,7 +431,7 @@
   </section>
 
   <!-- STRENGTH vs ISO -->
-  <section class="section">
+  <section class="section section-alt">
     <p class="section-label" data-i18n="str-label"></p>
     <h2 class="section-title" data-i18n="str-title"></h2>
     <div class="strength-grid">
@@ -404,7 +464,7 @@
   </section>
 
   <!-- APPLICATIONS -->
-  <section class="section section-alt">
+  <section class="section">
     <p class="section-label" data-i18n="apps-label"></p>
     <h2 class="section-title" data-i18n="apps-title"></h2>
     <p class="section-subtitle" data-i18n="apps-subtitle"></p>
@@ -418,7 +478,7 @@
   </section>
 
   <!-- COMPATIBLE PRINTERS -->
-  <section class="printers-section">
+  <section class="printers-section section-alt">
     <p class="section-label" data-i18n="printers-label"></p>
     <h2 class="section-title" data-i18n="printers-title"></h2>
     <p class="section-subtitle" data-i18n="printers-subtitle"></p>
@@ -446,7 +506,7 @@
 
 
   <!-- CLINICAL CASE -->
-  <section class="section section-alt" id="klinicki-slucaj">
+  <section class="section" id="klinicki-slucaj">
     <p class="section-label" data-i18n="case-label"></p>
     <h2 class="section-title" data-i18n="case-title"></h2>
     <p class="section-subtitle" data-i18n="case-subtitle"></p>
@@ -516,6 +576,10 @@
         'intro-p1':'CRS Composite Resin biokompatibilni je materijal CE klase IIa za aditivnu izradu privremenih i trajnih krunica i mostova. U usporedbi s vodećim konkurentima na tržištu nudi impresivnu savojnu čvrstoću od čak 144MPa, a zahvaljujući posebno razvijenoj formulaciji, ovaj materijal pokazuje veliku razinu stabilnosti boje, nema problema sa žućenjem nakon polimerizacije.',
         'intro-p2':'Boje su usklađene s VITA ključem, a odnos prozirnosti i opaknosti daje prirodan izgled. Optički glazuri mogu se nanositi neovisno o proizvođaču i boji, materijal je potpuno kompatibilan s kompozitima u štrcaljki za intraoralne korekcije, a iz 1 kg smole izrađuje se 1000–1200 članova.',
 
+        'shades-label':'Sustav boja','shades-title':'Dostupne nijanse',
+        'shades-desc':'CRS Composite dostupan je u nijansama usklađenima s VITA ključem boja.',
+        'shade-stock':'<span class="avail-dot"></span>Dostupno',
+
         'props-label':'Svojstva materijala','props-title':'Tehnički podaci',
         'props-subtitle':'Vrijednosti prema podacima proizvođača Custom Resin Solutions.',
         'prop1-label':'Savojna čvrstoća','prop1-desc':'ISO 10477. Prosječna vrijednost izmjerena u testu savijanja u tri točke.',
@@ -575,6 +639,10 @@
         'intro-title':'A Composite Resin for Permanent and Temporary Work',
         'intro-p1':'CRS Composite Resin is a biocompatible CE Class IIa material for additive manufacturing of temporary and permanent crowns and bridges. Compared to leading competitors on the market it offers an impressive flexural strength of 144 MPa, and thanks to its specially developed formulation the material shows a high level of colour stability, with no yellowing after post-curing.',
         'intro-p2':'Shades are matched to the VITA guide, and the balance of translucency and opacity gives a natural look. Optical glaze can be applied regardless of brand and shade, the material is fully compatible with syringe composites for intraoral adjustments, and 1 kg of resin yields 1000–1200 units.',
+
+        'shades-label':'Color System','shades-title':'Available Shades',
+        'shades-desc':'CRS Composite is available in shades matched to the VITA shade guide.',
+        'shade-stock':'<span class="avail-dot"></span>Available',
 
         'props-label':'Material Properties','props-title':'Technical Data',
         'props-subtitle':'Values as published by the manufacturer, Custom Resin Solutions.',
