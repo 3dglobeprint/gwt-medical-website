@@ -163,6 +163,7 @@
     .shade-name { font-weight: 700; color: var(--text); font-size: 1rem; }
     .shade-note { font-size: 0.75rem; color: var(--grey-600); margin-top: 0.2rem; display: flex; align-items: center; justify-content: center; gap: 0.35rem; }
     .avail-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: #22c55e; flex-shrink: 0; }
+    .avail-dot.request { background: #eab308; }
 
     /* CTA */
     .cta-section { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); padding: 6rem 5%; text-align: center; }
@@ -381,17 +382,17 @@
       <div class="shade-card">
         <div class="shade-swatch" style="background:#E3D8BC;"></div>
         <div class="shade-name">C1</div>
-        <div class="shade-note" data-i18n="shade-stock"></div>
+        <div class="shade-note" data-i18n="shade-request"></div>
       </div>
       <div class="shade-card">
         <div class="shade-swatch" style="background:#D6C8A2;"></div>
         <div class="shade-name">C2</div>
-        <div class="shade-note" data-i18n="shade-stock"></div>
+        <div class="shade-note" data-i18n="shade-request"></div>
       </div>
       <div class="shade-card">
         <div class="shade-swatch" style="background:#E0D2B4;"></div>
         <div class="shade-name">D2</div>
-        <div class="shade-note" data-i18n="shade-stock"></div>
+        <div class="shade-note" data-i18n="shade-request"></div>
       </div>
       <div class="shade-card">
         <div class="shade-swatch" style="background:#F4EDE4;"></div>
@@ -579,6 +580,7 @@
         'shades-label':'Sustav boja','shades-title':'Dostupne nijanse',
         'shades-desc':'CRS Composite dostupan je u nijansama usklađenima s VITA ključem boja.',
         'shade-stock':'<span class="avail-dot"></span>Dostupno',
+        'shade-request':'<span class="avail-dot request"></span>Na zahtjev',
 
         'props-label':'Svojstva materijala','props-title':'Tehnički podaci',
         'props-subtitle':'Vrijednosti prema podacima proizvođača Custom Resin Solutions.',
@@ -643,6 +645,7 @@
         'shades-label':'Color System','shades-title':'Available Shades',
         'shades-desc':'CRS Composite is available in shades matched to the VITA shade guide.',
         'shade-stock':'<span class="avail-dot"></span>Available',
+        'shade-request':'<span class="avail-dot request"></span>On request',
 
         'props-label':'Material Properties','props-title':'Technical Data',
         'props-subtitle':'Values as published by the manufacturer, Custom Resin Solutions.',
