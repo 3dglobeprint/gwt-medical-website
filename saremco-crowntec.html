@@ -60,6 +60,9 @@
     .hero-content p { color: rgba(255,255,255,0.75); font-size: 1.08rem; margin-bottom: 2.2rem; max-width: 480px; line-height: 1.75; }
     .hero-ref { font-size: 0.78rem; color: rgba(255,255,255,0.38); margin-top: 1rem; letter-spacing: 0.05em; }
     .hero-cta { display: inline-flex; align-items: center; gap: 0.5rem; background: #fff; color: var(--blue); font-weight: 700; font-size: 0.95rem; padding: 0.85rem 1.8rem; border-radius: 8px; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(0,0,0,0.25); }
+    .hero-buttons { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .hero-cta-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.6); box-shadow: none; }
+    .hero-cta-outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
     .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.3); }
     .hero-product-img { position: absolute; right: 5%; top: 50%; transform: translateY(-50%); height: 78vh; max-height: 660px; object-fit: contain; z-index: 2; filter: drop-shadow(0 24px 48px rgba(0,0,0,0.5)); }
 
@@ -318,7 +321,10 @@
       <p class="hero-brand">saremco print</p>
       <h1>CROWNTEC</h1>
       <p data-i18n="hero-desc"></p>
-      <a href="#" onclick="openSampleForm(); return false;" class="hero-cta" data-i18n="hero-cta"></a>
+      <div class="hero-buttons">
+        <a href="#" onclick="openSampleForm(); return false;" class="hero-cta" data-i18n="hero-cta"></a>
+        <a href="#klinicki-slucajevi" class="hero-cta hero-cta-outline" data-i18n="hero-cases"></a>
+      </div>
       <p class="hero-ref">REF 8066 · 500 g</p>
     </div>
     <img class="hero-product-img" src="brand_assets/crowntec.webp" alt="saremco print CROWNTEC" />
@@ -553,7 +559,7 @@
 
         'hero-badge':'3D print smola za trajne restauracije',
         'hero-desc':'Svjetlošću stvrdnjavajući materijal vrhunske kvalitete za izradu visoko biokompatibilnih trajnih stomatoloških nadomjestaka. Razvijeno i proizvedeno u Švicarskoj.',
-        'hero-cta':'Zatražite uzorak →',
+        'hero-cta':'Zatražite uzorak →','hero-cases':'Klinički slučajevi',
 
         'hl1-title':'Trajne restauracije','hl1-desc':'Formulirano za krunice, inlaye, onlaye, ljuske i zube za proteze koji traju.',
         'hl2-title':'Visoka biokompatibilnost','hl2-desc':'Bez elucija u vodenom okruženju – sigurno za direktnu kliničku primjenu.',
@@ -606,7 +612,7 @@
 
         'hero-badge':'3D print resin for permanent restorations',
         'hero-desc':'An excellent-quality light-curing material for manufacturing highly biocompatible permanent dental restorations. Developed and manufactured in Switzerland.',
-        'hero-cta':'Request a Sample →',
+        'hero-cta':'Request a Sample →','hero-cases':'Clinical Cases',
 
         'hl1-title':'Permanent Restorations','hl1-desc':'Formulated for long-lasting crowns, inlays, onlays, veneers and denture teeth.',
         'hl2-title':'High Biocompatibility','hl2-desc':'No eluates in aqueous environment — safe for direct clinical use.',
