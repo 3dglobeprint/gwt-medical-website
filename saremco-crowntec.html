@@ -157,6 +157,17 @@
     .pdf-modal-close:hover { background: rgba(0,0,0,0.16); }
     .pdf-modal-header { padding: 1.1rem 3.5rem 0.8rem 1.5rem; border-bottom: 1px solid var(--grey-200); display: flex; justify-content: space-between; align-items: center; }
     .pdf-modal-title { font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.98rem; color: var(--text); }
+    .pdf-title-wrap { display: flex; align-items: center; gap: 0.6rem; }
+    .pdf-back { display: none; align-items: center; justify-content: center; width: 30px; height: 30px; border: none; border-radius: 50%; background: rgba(0,0,0,0.07); color: var(--text); cursor: pointer; transition: background 0.2s, color 0.2s; flex-shrink: 0; }
+    .pdf-back::before { content: ''; display: block; width: 8px; height: 8px; border-top: 2.5px solid currentColor; border-left: 2.5px solid currentColor; transform: translateX(2px) rotate(-45deg); }
+    .pdf-back:hover { background: var(--blue); color: #fff; }
+    .pdf-gallery-box { max-width: 760px; }
+    .pdf-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 1.2rem; padding: 1.5rem; background: #dde3ea; max-height: 75vh; overflow-y: auto; }
+    .pdf-thumb { background: #fff; border: 2px solid transparent; border-radius: 10px; padding: 0; cursor: pointer; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,0.14); text-align: left; font: inherit; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+    .pdf-thumb:hover { transform: translateY(-4px); border-color: var(--blue); box-shadow: 0 10px 28px rgba(0,74,173,0.25); }
+    .pdf-thumb canvas { display: block; width: 100%; height: auto; min-height: 180px; background: var(--grey-100); }
+    .pdf-thumb.loaded canvas { min-height: 0; }
+    .pdf-thumb span { display: block; padding: 0.7rem 0.9rem; font-size: 0.86rem; font-weight: 600; color: var(--text); border-top: 1px solid var(--grey-200); }
     .pdf-page-info { font-size: 0.82rem; color: var(--grey-600); background: var(--grey-100); padding: 0.2rem 0.7rem; border-radius: 20px; }
     .pdf-canvas-wrap { position: relative; display: flex; align-items: center; justify-content: center; padding: 1.5rem; background: #dde3ea; min-height: 220px; }
     #pdf-canvas { max-width: 100%; height: auto; border-radius: 3px; box-shadow: 0 4px 20px rgba(0,0,0,0.22); display: block; }
@@ -402,7 +413,7 @@
         <span class="pill-label" data-i18n="app1"></span>
         <button class="pill-pdf-btn" onclick="openPdfViewer(this)" aria-label="Pregledaj PDF">▾</button>
       </span>
-      <span class="app-pill has-pdf" data-pdf="Inlay case - Erak.pdf">
+      <span class="app-pill has-pdf" data-pdfs='[{"src":"Inlay case - Erak.pdf","title":"Inlay – dr. Erak"},{"src":"Overlay case - Erak.pdf","title":"Overlay – dr. Erak"}]'>
         <span class="pill-label" data-i18n="app2"></span>
         <button class="pill-pdf-btn" onclick="openPdfViewer(this)" aria-label="Pregledaj PDF">▾</button>
       </span>
@@ -465,7 +476,7 @@
     <div class="pdf-modal-box">
       <button class="pdf-modal-close" onclick="closePdfViewer()">✕</button>
       <div class="pdf-modal-header">
-        <span class="pdf-modal-title" id="pdf-modal-title"></span>
+        <span class="pdf-title-wrap"><button class="pdf-back" id="pdf-back" onclick="backToPdfGallery()" aria-label="Natrag"></button><span class="pdf-modal-title" id="pdf-modal-title"></span></span>
         <span class="pdf-page-info" id="pdf-page-info"></span>
       </div>
       <div class="pdf-canvas-wrap" id="pdf-canvas-wrap">
@@ -477,6 +488,17 @@
   </div>
 
   <!-- SAMPLE REQUEST MODAL -->
+  <div id="pdf-gallery" class="pdf-modal-overlay" style="display:none;" onclick="if(event.target===this)closePdfGallery()">
+    <div class="pdf-modal-box pdf-gallery-box">
+      <button class="pdf-modal-close" onclick="closePdfGallery()">✕</button>
+      <div class="pdf-modal-header">
+        <span class="pdf-modal-title" id="pdf-gallery-title"></span>
+        <span class="pdf-page-info" id="pdf-gallery-count"></span>
+      </div>
+      <div class="pdf-gallery-grid" id="pdf-gallery-grid"></div>
+    </div>
+  </div>
+
   <div id="sample-modal" class="pdf-modal-overlay" style="display:none;" onclick="if(event.target===this)closeSampleForm()">
     <div class="pdf-modal-box sample-modal-box">
       <button class="pdf-modal-close" onclick="closeSampleForm()">✕</button>
@@ -550,7 +572,7 @@
 
         'apps-label':'Indikacije','apps-title':'Klinički slučajevi',
         'apps-subtitle':'CROWNTEC pokriva cijeli spektar trajnih i privremenih protetskih radova. Kliknite na indikaciju koja Vas zanima kako biste pregledali stvarne kliničke slučajeve naših klijenata, a Vaših kolega.',
-        'app1':'Trajne krunice','app2':'Inlayi i onlayi','app3':'Ljuskice',
+        'app1':'Trajne krunice','app2':'Inlay/onlay/overlay','app3':'Ljuskice',
         'app4':'Zubi za proteze','app5':'All-on-X',
 
         'results-label':'Klinički rezultati','results-title':'Verificirana estetika i kvaliteta',
@@ -603,7 +625,7 @@
 
         'apps-label':'Indications','apps-title':'All Permanent Restorations',
         'apps-subtitle':'CROWNTEC covers the full spectrum of permanent and temporary prosthetic work.',
-        'app1':'Permanent crowns','app2':'Inlays & onlays','app3':'Veneers',
+        'app1':'Permanent crowns','app2':'Inlay/onlay/overlay','app3':'Veneers',
         'app4':'Denture teeth','app5':'All-on-X',
 
         'results-label':'Clinical Results','results-title':'Verified Aesthetics and Quality',
@@ -676,10 +698,63 @@
 
   var _pdfDoc = null, _pdfPage = 1, _pdfTotal = 0;
 
+  function encodePdfSrc(rawSrc) {
+    return rawSrc.split('/').map(function(seg){ return encodeURIComponent(seg); }).join('/');
+  }
+
   function openPdfViewer(btn) {
     var pill = btn.closest('.has-pdf');
-    var rawSrc = pill.dataset.pdf;
-    var label = pill.querySelector('.pill-label').textContent;
+    if (pill.dataset.pdfs) { openPdfGallery(pill); return; }
+    showPdf(pill.dataset.pdf, pill.querySelector('.pill-label').textContent, false);
+  }
+
+  // Pills with several PDFs show a grid of first-page previews; each opens in the viewer.
+  var _galleryPill = null;
+  function openPdfGallery(pill) {
+    var items = JSON.parse(pill.dataset.pdfs);
+    var grid = document.getElementById('pdf-gallery-grid');
+    document.getElementById('pdf-gallery-title').textContent = pill.querySelector('.pill-label').textContent;
+    document.getElementById('pdf-gallery-count').textContent = items.length + ' PDF';
+    if (_galleryPill !== pill) {
+      _galleryPill = pill;
+      grid.innerHTML = '';
+      items.forEach(function(item){
+        var card = document.createElement('button');
+        card.className = 'pdf-thumb';
+        var canvas = document.createElement('canvas');
+        var caption = document.createElement('span');
+        caption.textContent = item.title;
+        card.appendChild(canvas);
+        card.appendChild(caption);
+        card.onclick = function(){ closePdfGallery(true); showPdf(item.src, item.title, true); };
+        grid.appendChild(card);
+        pdfjsLib.getDocument(encodePdfSrc(item.src)).promise.then(function(doc){ return doc.getPage(1); }).then(function(page){
+          var dpr = window.devicePixelRatio || 1;
+          var vp = page.getViewport({ scale: 1 });
+          var scaled = page.getViewport({ scale: (260 / vp.width) * dpr });
+          canvas.width = scaled.width;
+          canvas.height = scaled.height;
+          return page.render({ canvasContext: canvas.getContext('2d'), viewport: scaled }).promise;
+        }).then(function(){ card.classList.add('loaded'); })
+          .catch(function(err){ console.error('PDF preview error:', err); });
+      });
+    }
+    document.getElementById('pdf-gallery').style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePdfGallery(keepLocked) {
+    document.getElementById('pdf-gallery').style.display = 'none';
+    if (!keepLocked) document.body.style.overflow = '';
+  }
+
+  function backToPdfGallery() {
+    closePdfViewer();
+    if (_galleryPill) openPdfGallery(_galleryPill);
+  }
+
+  function showPdf(rawSrc, label, fromGallery) {
+    document.getElementById('pdf-back').style.display = fromGallery ? 'flex' : 'none';
     document.getElementById('pdf-modal-title').textContent = label;
     document.getElementById('pdf-page-info').textContent = '…';
     document.getElementById('pdf-prev').disabled = true;
@@ -689,8 +764,7 @@
     document.getElementById('pdf-modal').style.display = 'flex';
     document.body.style.overflow = 'hidden';
     _pdfPage = 1;
-    var src = rawSrc.split('/').map(function(seg){ return encodeURIComponent(seg); }).join('/');
-    pdfjsLib.getDocument(src).promise.then(function(doc){
+    pdfjsLib.getDocument(encodePdfSrc(rawSrc)).promise.then(function(doc){
       _pdfDoc = doc;
       _pdfTotal = doc.numPages;
       renderPdfPage(1);
@@ -806,6 +880,7 @@
 
   document.addEventListener('keydown', function(e){
     if (e.key === 'Escape' && document.getElementById('sample-modal').style.display !== 'none') closeSampleForm();
+    if (e.key === 'Escape' && document.getElementById('pdf-gallery').style.display !== 'none') closePdfGallery();
     if (document.getElementById('pdf-modal').style.display !== 'none') {
       if (e.key === 'Escape') closePdfViewer();
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') changePdfPage(1);
