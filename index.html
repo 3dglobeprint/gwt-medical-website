@@ -401,6 +401,33 @@
     .section-header.center { text-align: center; }
     .section-header.center .section-desc { margin: 0 auto; }
 
+    /* ── INTRO + NUMBERS (scroll reveal) ── */
+    .intro-section { position: relative; z-index: 2; padding: 7rem 5% 0; background: var(--white); }
+    .intro-inner { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 4rem; align-items: start; max-width: 1240px; margin: 0 auto; }
+    .intro-text { font-size: 1.35rem; line-height: 2; color: var(--text); max-width: 90%; }
+    .intro-logo { position: relative; height: 100%; min-height: 220px; pointer-events: none; }
+    .intro-logo-parallax { position: absolute; top: 0; left: 0; width: 100%; will-change: transform; }
+    .intro-logo img { width: 100%; max-width: 520px; display: block; opacity: 0.4; }
+    .numbers { max-width: 1240px; margin: 6rem auto 0; color: var(--blue); }
+    .numbers hr { border: none; height: 2px; background: var(--blue); opacity: 0.85; }
+    .numbers-label { display: block; margin-top: 3.5rem; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.15rem; text-transform: uppercase; }
+    .numbers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; margin: 3rem 0 6rem; }
+    .number-value { display: block; font-family: 'Poppins', sans-serif; font-weight: 800; font-size: clamp(4.5rem, 9vw, 8rem); line-height: 1; letter-spacing: -0.25rem; }
+    .number-label { display: block; margin-top: 0.8rem; font-family: 'Poppins', sans-serif; font-size: 1.35rem; font-weight: 700; line-height: 1.25; max-width: 240px; }
+    .reveal { opacity: 0; transform: translateY(120px); transition: opacity 0.8s ease 0.3s, transform 0.8s cubic-bezier(0.45, 0, 0.55, 1) 0.3s; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+    @media (max-width: 900px) {
+      .intro-section { padding-top: 4rem; }
+      .intro-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .intro-text { max-width: 100%; font-size: 1.15rem; }
+      .intro-logo { min-height: 0; }
+      .intro-logo-parallax { position: static; }
+      .intro-logo img { width: 60%; margin-left: auto; }
+      .numbers { margin-top: 3.5rem; }
+      .numbers-grid { grid-template-columns: 1fr; gap: 3rem; margin-bottom: 4rem; }
+    }
+
     /* ── STATS STRIP ── */
     .stats-strip {
       background: var(--blue-pale);
@@ -1143,6 +1170,26 @@
 
   </section>
 
+  <!-- INTRO + NUMBERS -->
+  <section class="intro-section" id="o-nama">
+    <div class="intro-inner">
+      <p class="intro-text reveal" data-i18n="intro-text"></p>
+      <div class="intro-logo" aria-hidden="true">
+        <div class="intro-logo-parallax"><img src="brand_assets/gwt-logo-color.png" alt="" /></div>
+      </div>
+    </div>
+    <div class="numbers">
+      <hr class="reveal" />
+      <span class="numbers-label reveal" data-i18n="numbers-label"></span>
+      <div class="numbers-grid">
+        <div class="number-item reveal"><span class="number-value" data-count="9">0</span><span class="number-label" data-i18n="num1"></span></div>
+        <div class="number-item reveal"><span class="number-value" data-count="50" data-suffix="+">0</span><span class="number-label" data-i18n="num2"></span></div>
+        <div class="number-item reveal"><span class="number-value" data-count="2">0</span><span class="number-label" data-i18n="num3"></span></div>
+      </div>
+      <hr class="reveal" />
+    </div>
+  </section>
+
   <!-- STATS -->
   <div class="stats-strip">
     <div class="stat-item">
@@ -1595,6 +1642,9 @@
 
         /* CLIENTS */
         'clients-title': 'Naši klijenti',
+        'intro-text': '„GWT Medical je tvrtka koja se bavi distribucijom dentalnih materijala i rješenja za digitalnu stomatologiju i 3D print. S više od 9 godina iskustva i više od 50 uspješnih suradnji dio je digitalne transformacije u stomatologiji.“',
+        'numbers-label': 'GWT Medical u brojevima',
+        'num1': 'godina iskustva', 'num2': 'projekata', 'num3': 'ekskluzivna zastupstva',
 
         /* CTA */
         'cta-label': 'Kontaktirajte nas',
@@ -1730,6 +1780,9 @@
 
         /* CLIENTS */
         'clients-title': 'Our Clients',
+        'intro-text': '“GWT Medical is a company that distributes dental materials and solutions for digital dentistry and 3D printing. With more than 9 years of experience and more than 50 successful collaborations, it is part of the digital transformation of dentistry.”',
+        'numbers-label': 'GWT Medical in numbers',
+        'num1': 'years of experience', 'num2': 'projects', 'num3': 'exclusive distributorships',
 
         /* CTA */
         'cta-label': 'Get in Touch',
@@ -1836,6 +1889,60 @@
         dd.addEventListener('mouseleave',function(){close(item);});
       }
     });
+  })();
+  </script>
+  <script>
+  // Intro + numbers: reveal on scroll, count up, logo parallax
+  (function(){
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reveals = document.querySelectorAll('.reveal');
+    if (reduce || !('IntersectionObserver' in window)) {
+      reveals.forEach(function(el){ el.classList.add('in'); });
+    } else {
+      var ro = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px 120px 0px' });
+      reveals.forEach(function(el){ ro.observe(el); });
+    }
+
+    function countUp(el){
+      var target = parseInt(el.dataset.count, 10), suffix = el.dataset.suffix || '';
+      if (reduce) { el.textContent = target + suffix; return; }
+      var start = null, duration = 1400;
+      function step(ts){
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / duration, 1);
+        el.textContent = Math.round(target * (1 - Math.pow(1 - p, 3))) + (p === 1 ? suffix : '');
+        if (p < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    var counters = document.querySelectorAll('.number-value[data-count]');
+    if ('IntersectionObserver' in window) {
+      var co = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){ if (e.isIntersecting) { setTimeout(function(){ countUp(e.target); }, 500); co.unobserve(e.target); } });
+      }, { threshold: 1 });
+      counters.forEach(function(el){ co.observe(el); });
+    } else {
+      counters.forEach(countUp);
+    }
+
+    var logo = document.querySelector('.intro-logo-parallax');
+    var section = document.querySelector('.intro-section');
+    if (logo && section && !reduce) {
+      var ticking = false;
+      function parallax(){
+        ticking = false;
+        if (window.innerWidth < 900) { logo.style.transform = ''; return; }
+        var top = section.getBoundingClientRect().top;
+        // Drifts down more slowly than the page scrolls; starts just inside the white section.
+        var offset = Math.min(70, Math.max(0, (window.innerHeight - top) * 0.18 - 40));
+        logo.style.transform = 'translate3d(0,' + offset + 'px,0)';
+      }
+      window.addEventListener('scroll', function(){ if (!ticking) { ticking = true; requestAnimationFrame(parallax); } }, { passive: true });
+      window.addEventListener('resize', parallax);
+      parallax();
+    }
   })();
   </script>
 </body>
