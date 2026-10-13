@@ -117,7 +117,14 @@
     .cta-note { margin-top: 1.2rem; color: rgba(255,255,255,0.5); font-size: 0.82rem; }
 
     /* FOOTER */
-    footer { background: #033F8F; color: rgba(255,255,255,0.7); padding: 48px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+    footer { background: #033F8F; color: rgba(255,255,255,0.7); padding: 48px 5%; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
+    .footer-main { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 2rem; padding-bottom: 2rem; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.15); }
+    .footer-col { display: flex; flex-direction: column; gap: 0.45rem; font-size: 0.9rem; min-width: 180px; }
+    .footer-col strong { color: #fff; font-weight: 700; }
+    .footer-col a { color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s; }
+    .footer-col a:hover { color: #fff; }
+    @media (max-width: 600px) { .footer-main { flex-direction: column; gap: 1.5rem; } }
     .footer-logo img { height: 31px; display: block; }
     .footer-copy { font-size: 0.85rem; }
     .footer-links { display: flex; gap: 1.5rem; }
@@ -374,13 +381,28 @@
   </section>
 
   <footer>
-    <div class="footer-logo">
-      <img src="brand_assets/Footer logo.png" alt="GWT Medical – Saremco Authorized Distributor" />
+    <div class="footer-main">
+      <div class="footer-col">
+        <strong>GWT d.o.o.</strong>
+        <span>Voćarska 48</span>
+        <span>HR-10000 Zagreb</span>
+        <a href="mailto:medical@gwt.hr">medical@gwt.hr</a>
+      </div>
+      <div class="footer-col">
+        <a href="#" data-i18n="footer-terms"></a>
+        <a href="#" data-i18n="footer-privacy"></a>
+        <a href="#" data-i18n="footer-impressum"></a>
+      </div>
     </div>
-    <p class="footer-copy" data-i18n="footer-copy"></p>
-    <div class="footer-links">
-      <a href="index.html" data-i18n="footer-link1"></a>
-      <a href="index.html#contact" data-i18n="footer-link3"></a>
+    <div class="footer-bottom">
+      <div class="footer-logo">
+        <img src="brand_assets/Footer logo.png" alt="GWT Medical – Saremco Authorized Distributor" />
+      </div>
+      <p class="footer-copy" data-i18n="footer-copy"></p>
+      <div class="footer-links">
+        <a href="index.html" data-i18n="footer-link1"></a>
+        <a href="index.html#contact" data-i18n="footer-link3"></a>
+      </div>
     </div>
   </footer>
 
@@ -432,6 +454,7 @@
         'cta-btn':'Pošaljite upit',
         'cta-note':'ili nas kontaktirajte na medical@gwt.hr',
         'footer-copy':'© 2026 GWT Medical. Sva prava pridržana.',
+        'footer-terms':'Uvjeti korištenja','footer-privacy':'Zaštita privatnosti','footer-impressum':'Impressum',
         'footer-link1':'Početna','footer-link3':'Kontakt',
       },
       en: {
@@ -480,6 +503,7 @@
         'cta-btn':'Send an Inquiry',
         'cta-note':'or reach us at medical@gwt.hr',
         'footer-copy':'© 2026 GWT Medical. All rights reserved.',
+        'footer-terms':'Terms of Use','footer-privacy':'Privacy Policy','footer-impressum':'Impressum',
         'footer-link1':'Home','footer-link3':'Contact',
       }
     };
